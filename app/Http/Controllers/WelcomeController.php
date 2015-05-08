@@ -28,9 +28,29 @@ class WelcomeController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index()
+
+/*	public function index()
 	{
 		return view('welcome');
+	}
+*/
+
+
+
+/*	public function index()
+	{
+		return view('welcome');
+	}
+*/
+	public function index()
+	{
+		$items = array('items' => ['Pack luggage', 'Go to airport', 'Arrive in San Juan']);
+
+		//dd($items);
+
+		\Log::debug($items);
+
+		//return view('welcome');
 	}
 
 }
