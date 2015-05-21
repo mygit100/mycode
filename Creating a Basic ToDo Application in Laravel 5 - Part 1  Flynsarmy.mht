@@ -1,0 +1,3961 @@
+From: "Saved by Internet Explorer 11"
+Subject: =?Windows-1252?Q?Creating_a_Basic_ToDo_Application_in_Laravel_5_-_Part_?=
+	=?Windows-1252?Q?1=A0|=A0Flynsarmy?=
+Date: Wed, 20 May 2015 08:06:17 -0400
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----=_NextPart_000_0000_01D092D3.D92F39D0"
+X-MimeOLE: Produced By Microsoft MimeOLE V6.1.7601.17609
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_0000_01D092D3.D92F39D0
+Content-Type: text/html;
+	charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://www.flynsarmy.com/2015/02/creating-a-basic-todo-application-in-laravel-5-part-1/
+
+=EF=BB=BF<!DOCTYPE HTML>
+<!DOCTYPE html PUBLIC "" ""><HTML class=3D"no-js" lang=3D""><HEAD><META=20
+content=3D"IE=3D11.0000" http-equiv=3D"X-UA-Compatible">
+=20
+<META charset=3D"utf-8">=20
+<META http-equiv=3D"x-ua-compatible" content=3D"ie=3Dedge">=20
+<META name=3D"viewport" content=3D"width=3Ddevice-width, =
+initial-scale=3D1">=20
+<TITLE>Creating a Basic ToDo Application in Laravel 5 - Part=20
+1&nbsp;|&nbsp;Flynsarmy</TITLE>=20
+<META name=3D"google-site-verification" =
+content=3D"rIo7d1yTRLop1tWdpLawqQrO7osrvtXraRLbqAoQRSA">=20
+<META name=3D"google-site-verification" =
+content=3D"XZVWsM6Ma0gdDF8EmFB2VPHGmFJdPkQ7U8mA1xbNX2w">
+	 <LINK title=3D"RSS 2.0" href=3D"https://www.flynsarmy.com/feed/" =
+rel=3D"alternate"=20
+type=3D"application/rss+xml">	 <LINK title=3D"RSS .92" =
+href=3D"https://www.flynsarmy.com/feed/rss/"=20
+rel=3D"alternate" type=3D"text/xml">	 <LINK title=3D"Atom 0.3" =
+href=3D"https://www.flynsarmy.com/feed/atom/"=20
+rel=3D"alternate" type=3D"application/atom+xml">	 <LINK =
+title=3D"Flynsarmy RSS Comments Feed"=20
+href=3D"https://flynsarmy.disqus.com/latest.rss" rel=3D"alternate" =
+type=3D"application/rss+xml">=20
+<LINK title=3D"Favicon" =
+href=3D"https://d3oxhle8ytlqpy.cloudfront.net/wp-content/themes/simplefol=
+io/images/favicon.ico.gzip"=20
+rel=3D"shortcut icon"> <LINK =
+href=3D"https://d3oxhle8ytlqpy.cloudfront.net/wp-content/themes/simplefol=
+io/assets/css/style.css.gzip?20150511-3"=20
+rel=3D"stylesheet" type=3D"text/css" media=3D"screen"> <LINK =
+href=3D"https://www.flynsarmy.com/xmlrpc.php"=20
+rel=3D"pingback"> <!--[if IE]><script type=3D"text/javascript" =
+src=3D"https://d3oxhle8ytlqpy.cloudfront.net/wp-content/themes/simplefoli=
+o/js/DD_roundies.js.gzip"></script><![endif]--> <!-- This site is =
+optimized with the Yoast WordPress SEO plugin v2.1.1 - =
+https://yoast.com/wordpress/plugins/seo/ -->=20
+<LINK =
+href=3D"https://www.flynsarmy.com/2015/02/creating-a-basic-todo-applicati=
+on-in-laravel-5-part-1/"=20
+rel=3D"canonical">=20
+<META content=3D"en_US" property=3D"og:locale">=20
+<META content=3D"article" property=3D"og:type">=20
+<META content=3D"Creating a Basic ToDo Application in Laravel 5 - Part =
+1"=20
+property=3D"og:title">=20
+<META content=3D"With the release of Laravel 5, there have been a bunch =
+of backwards incompatible changes, new&nbsp;features added as well as =
+the usual influx of new users so I thought I'd take the time to redo =
+my&nbsp;basic to-do application with&nbsp;Laravel 5. The app&nbsp;covers =
+a wide range of concepts, links to relevant learning material where =
+possible and should make for a great introduction to the =
+framework.&#10;&#10;This tutorial is relatively long so I've broken it =
+up into multiple posts.&#10;&#10;&#9;Part 1 - Installation, Database and =
+Routes&#10;&#9;Part 2 - Listing Projects and Tasks&#10;&#9;Part 3 - =
+Create/Edit/Delete&#10;&#9;Part 4 - Validation&#10;&#10;The source for =
+each part can also be found on GitHub.&#10;&#10;Today will cover =
+installation, configuration, artisan, migration, seeding and routes."=20
+property=3D"og:description">=20
+<META =
+content=3D"https://www.flynsarmy.com/2015/02/creating-a-basic-todo-applic=
+ation-in-laravel-5-part-1/"=20
+property=3D"og:url">=20
+<META content=3D"Flynsarmy" property=3D"og:site_name">=20
+<META content=3D"laravel" property=3D"article:tag">=20
+<META content=3D"PHP" property=3D"article:section">=20
+<META content=3D"2015-02-05T22:08:19+00:00" =
+property=3D"article:published_time">=20
+<META content=3D"2015-05-13T08:37:02+00:00" =
+property=3D"article:modified_time">=20
+<META content=3D"2015-05-13T08:37:02+00:00" =
+property=3D"og:updated_time">=20
+<SCRIPT =
+type=3D"application/ld+json">{"@context":"http:\/\/schema.org","@type":"W=
+ebSite","url":"https:\/\/www.flynsarmy.com\/","name":"Flynsarmy"}</SCRIPT=
+>
+ <!-- / Yoast WordPress SEO plugin. --> <LINK title=3D"Flynsarmy =C2=BB =
+Creating a Basic ToDo Application in Laravel 5 =E2=80=93 Part 1 Comments =
+Feed"=20
+href=3D"https://www.flynsarmy.com/2015/02/creating-a-basic-todo-applicati=
+on-in-laravel-5-part-1/feed/"=20
+rel=3D"alternate" type=3D"application/rss+xml">		=20
+<SCRIPT type=3D"text/javascript">=0A=
+			window._wpemojiSettings =3D =
+{"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/72x72\/","ext":".png"=
+,"source":{"concatemoji":"https:\/\/www.flynsarmy.com\/wp-includes\/js\/w=
+p-emoji-release.min.js?ver=3D4.2.2"}};=0A=
+			!function(a,b,c){function d(a){var =
+c=3Db.createElement("canvas"),d=3Dc.getContext&&c.getContext("2d");return=
+ d&&d.fillText?(d.textBaseline=3D"top",d.font=3D"600 32px =
+Arial","flag"=3D=3D=3Da?(d.fillText(String.fromCharCode(55356,56812,55356=
+,56807),0,0),c.toDataURL().length>3e3):(d.fillText(String.fromCharCode(55=
+357,56835),0,0),0!=3D=3Dd.getImageData(16,16,1,1).data[0])):!1}function =
+e(a){var =
+c=3Db.createElement("script");c.src=3Da,c.type=3D"text/javascript",b.getE=
+lementsByTagName("head")[0].appendChild(c)}var =
+f,g;c.supports=3D{simple:d("simple"),flag:d("flag")},c.DOMReady=3D!1,c.re=
+adyCallback=3Dfunction(){c.DOMReady=3D!0},c.supports.simple&&c.supports.f=
+lag||(g=3Dfunction(){c.readyCallback()},b.addEventListener?(b.addEventLis=
+tener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attach=
+Event("onload",g),b.attachEvent("onreadystatechange",function(){"complete=
+"=3D=3D=3Db.readyState&&c.readyCallback()})),f=3Dc.source||{},f.concatemo=
+ji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(w=
+indow,document,window._wpemojiSettings);=0A=
+		</SCRIPT>
+		=20
+<STYLE type=3D"text/css">=0A=
+img.wp-smiley,=0A=
+img.emoji {=0A=
+	display: inline !important;=0A=
+	border: none !important;=0A=
+	box-shadow: none !important;=0A=
+	height: 1em !important;=0A=
+	width: 1em !important;=0A=
+	margin: 0 .07em !important;=0A=
+	vertical-align: -0.1em !important;=0A=
+	background: none !important;=0A=
+	padding: 0 !important;=0A=
+}=0A=
+</STYLE>
+=20
+<META name=3D"GENERATOR" content=3D"MSHTML 11.00.9600.17801"></HEAD>=20
+<BODY>
+<DIV id=3D"wrapper">
+<DIV id=3D"header">
+<DIV id=3D"logo"><A title=3D"Flynsarmy - Enter the world of HTML5, CSS3, =
+PHP and all things Web Development"=20
+href=3D"https://www.flynsarmy.com/"></A></DIV>
+<DIV id=3D"pagenav">
+<UL class=3D"sf-menu menu" id=3D"nav">
+  <LI class=3D"menu-item menu-item-type-custom menu-item-object-custom =
+menu-item-first menu-item-1800"=20
+  id=3D"menu-item-1800"><A =
+href=3D"http://www.flynsarmy.com/">Home</A></LI>
+  <LI class=3D"menu-item menu-item-type-post_type menu-item-object-page =
+menu-item-1801"=20
+  id=3D"menu-item-1801"><A=20
+  href=3D"https://www.flynsarmy.com/archive/">Archive</A></LI>
+  <LI class=3D"menu-item menu-item-type-post_type menu-item-object-page =
+menu-item-1802"=20
+  id=3D"menu-item-1802"><A =
+href=3D"https://www.flynsarmy.com/et/">ET</A></LI>
+  <LI class=3D"menu-item menu-item-type-post_type menu-item-object-page =
+menu-item-1803"=20
+  id=3D"menu-item-1803"><A=20
+  href=3D"https://www.flynsarmy.com/portfolio/">Portfolio</A></LI>
+  <LI class=3D"menu-item menu-item-type-post_type menu-item-object-page =
+menu-item-last menu-item-1804"=20
+  id=3D"menu-item-1804"><A=20
+  =
+href=3D"https://www.flynsarmy.com/contact/">Contact</A></LI></UL></DIV></=
+DIV>
+<DIV id=3D"main">
+<DIV class=3D"container">
+<DIV id=3D"mobile_menu">
+<DIV class=3D"widget widget_search" id=3D"search-3">
+<FORM name=3D"sidebarsearch" class=3D"sidebarsearch" =
+action=3D"https://www.flynsarmy.com"=20
+method=3D"get">
+<DIV><INPUT name=3D"s" class=3D"keyword" type=3D"text">
+	 <INPUT class=3D"searchsubmit" type=3D"submit" =
+value=3D"Search"></DIV></FORM></DIV>
+<DIV class=3D"widget widget_rss_widget" id=3D"rss_widget-3">
+<DIV class=3D"widget widget_rssfeed">
+<UL>
+  <LI class=3D"rss"><A =
+href=3D"https://www.flynsarmy.com/feed/">Subscribe to RSS=20
+  Feed</A></LI>
+  <LI class=3D"twitter"><A href=3D"http://twitter.com/flynsarmy">Follow =
+me on=20
+  Twitter</A></LI></UL></DIV></DIV>
+<DIV class=3D"widget widget_categories" id=3D"categories-5">
+<H3>Categories</H3>
+<UL>
+  <LI class=3D"cat-item cat-item-8"><A =
+href=3D"https://www.flynsarmy.com/category/database/">Database</A>=20
+  </LI>
+  <LI class=3D"cat-item cat-item-6"><A =
+href=3D"https://www.flynsarmy.com/category/javascript/">Javascript</A>=20
+  </LI>
+  <LI class=3D"cat-item cat-item-65"><A =
+href=3D"https://www.flynsarmy.com/category/linux/">Linux</A>=20
+  </LI>
+  <LI class=3D"cat-item cat-item-7"><A =
+href=3D"https://www.flynsarmy.com/category/php/">PHP</A>=20
+  </LI>
+  <LI class=3D"cat-item cat-item-1"><A =
+href=3D"https://www.flynsarmy.com/category/uncategorized/">Uncategorized<=
+/A>=20
+  </LI></UL></DIV></DIV>
+<DIV class=3D"content">
+<DIV class=3D"blogpost single">
+<DIV class=3D"comments"><SPAN class=3D"dsq-postid" =
+data-dsqidentifier=3D"1878 =
+https://www.flynsarmy.com/?p=3D1878">36</SPAN></DIV>
+<H2 class=3D"title">Creating a Basic ToDo Application in Laravel 5 =
+=E2=80=93 Part 1</H2>
+<DIV class=3D"meta">					Posted February 5th, 2015											(Updated 13 =
+May 2015)
+										in <A href=3D"https://www.flynsarmy.com/category/php/" =
+rel=3D"category tag">PHP</A>				</DIV>
+<DIV class=3D"entry">
+<P>With the release of Laravel 5, there have been a bunch of backwards=20
+incompatible changes, new&nbsp;features added as well as the usual =
+influx of new=20
+users so I thought I=E2=80=99d take the time to redo my&nbsp;basic to-do =
+application=20
+with&nbsp;Laravel 5. The app&nbsp;covers a wide range of concepts, links =
+to=20
+relevant learning material where possible and should make for a great=20
+introduction to the framework.</P>
+<P>This tutorial is relatively long so I=E2=80=99ve broken it up into =
+multiple=20
+posts.</P>
+<OL>
+  <LI><A title=3D"Creating a Basic ToDo Application With Laravel 5 - =
+Part 1" =
+href=3D"https://www.flynsarmy.com/2015/02/creating-a-basic-todo-applicati=
+on-in-laravel-5-part-1">Part=20
+  1 =E2=80=93 Installation, Database and Routes</A></LI>
+  <LI><A title=3D"Creating a Basic ToDo Application With Laravel 5 - =
+Part 2" =
+href=3D"https://www.flynsarmy.com/2015/02/creating-a-basic-todo-applicati=
+on-in-laravel-5-part-2">Part=20
+  2 =E2=80=93 Listing Projects and Tasks</A></LI>
+  <LI><A title=3D"Creating a Basic ToDo Application With Laravel 5 - =
+Part 3" =
+href=3D"https://www.flynsarmy.com/2015/02/creating-a-basic-todo-applicati=
+on-in-laravel-5-part-3">Part=20
+  3 =E2=80=93 Create/Edit/Delete</A></LI>
+  <LI><A title=3D"Creating a Basic ToDo Application With Laravel 5 - =
+Part 4" =
+href=3D"https://www.flynsarmy.com/2015/02/creating-a-basic-todo-applicati=
+on-in-laravel-5-part-4">Part=20
+  4 =E2=80=93 Validation</A></LI></OL>
+<P>The source for each part can also be found <A =
+title=3D"Flynsarmy/laravel-5-todo-tutorial"=20
+href=3D"https://github.com/Flynsarmy/laravel-5-todo-tutorial" =
+target=3D"_blank">on=20
+GitHub</A>.</P>
+<P>Today will cover installation, configuration, artisan, migration, =
+seeding and=20
+routes.</P>
+<P>&nbsp;</P>
+<H3>Before you Begin</H3>
+<P>Before you begin there are a few great resources you should check =
+out.</P>
+<P>You won=E2=80=99t get far in the Laravel world without hearing about =
+Jeffrey Way.=20
+Jeffrey has perhaps done more for the Laravel community than any other =
+non-core=20
+developer. He has produced high-quality, comprehensive video tutorials =
+on almost=20
+every aspect of L5, many of which are free to view and aimed at =
+beginners. I=20
+would highly recommend you check out the following pieces of his =
+work:</P>
+<OL>
+  <LI><A title=3D"Laravel 5 Fundamentals - Laracasts" =
+href=3D"https://laracasts.com/series/laravel-5-fundamentals/episodes/1"=20
+  target=3D"_blank">Laravel 5 Fundamentals</A> =E2=80=93 An absolute =
+must-see series of=20
+  free screencasts for new users of Laravel.</LI>
+  <LI><A title=3D"Laravel 5.0 - Form Requests - MattStauffer.co" =
+href=3D"http://mattstauffer.co/blog/laravel-5.0-form-requests"=20
+  target=3D"_blank">What=E2=80=99s New in Laravel 5</A> =E2=80=93 A =
+great series by Matt Stauffer=20
+  showing off some cool new stuff in Laravel.</LI>
+  <LI><A title=3D"Laracasts" href=3D"https://www.laracasts.com/"=20
+  target=3D"_blank">Laracasts</A>&nbsp;=E2=80=93 Mostly paid for videos =
+of very high=20
+  quality. New videos are regularly created and one a week is made =
+free.</LI></OL>
+<P>There are a few other places to find news and information:</P>
+<OL>
+  <LI>The Laravel&nbsp;<A title=3D"Laravel (laravelphp) on Twitter" =
+href=3D"https://twitter.com/laravelphp"=20
+  target=3D"_blank">Twitter feed</A>&nbsp;=E2=80=93 for the latest =
+breaking news on L4=20
+  development.</LI>
+  <LI>Taylor Otwell=E2=80=99s <A title=3D"Taylor Otwell (@taylorotwell) =
+| Twitter" href=3D"https://twitter.com/taylorotwell"=20
+  target=3D"_blank">Twitter feed</A> =E2=80=93 the author of Laravel =
+himself.</LI>
+  <LI><A title=3D"Welcome - Laravel.IO" href=3D"http://laravel.io/"=20
+  target=3D"_blank">Laravel.io</A>&nbsp;=E2=80=93 Weekly roundups =
+&nbsp;that gather the=20
+  latest news and tutorials from around the web. They also do a weekly =
+podcast=20
+  covering their thoughts/concerns relevant to the platform.</LI>
+  <LI><A title=3D"Laravel Packages Registry" =
+href=3D"http://registry.autopergamene.eu/"=20
+  target=3D"_blank">Laravel Packages Registry</A>&nbsp;=E2=80=93 good =
+place to go to find=20
+  some of the best Laravel&nbsp;packages</LI>
+  <LI><A title=3D"Code Bright | Dayle Rees" =
+href=3D"http://daylerees.com/codebright/the-primers"=20
+  target=3D"_blank">Code Bright</A> =E2=80=93 An e-book provided free of =
+charge by=20
+  framework author Dayle Rees</LI></OL>
+<P>If you=E2=80=99re coming from Laravel 4 I also recommend checking =
+out&nbsp;<A title=3D"Laravel 5.0 - Directory structure and namespace - =
+MattStauffer.co"=20
+href=3D"http://mattstauffer.co/blog/laravel-5.0-directory-structure-and-n=
+amespace"=20
+target=3D"_blank">Directory structure and namespace</A> by Matt =
+Stauffer.</P>
+<P>&nbsp;</P>
+<H3>Project Aim</H3>
+<P>Our to-do application will consist of one or more <I>projects</I>, =
+each with=20
+its own list of <EM>tasks</EM>. You will be able to create, list, modify =
+and=20
+delete both tasks and projects.</P>
+<P>In this lesson we will go through:</P>
+<OL>
+  <LI>Installing and setting up Laravel</LI>
+  <LI>Installing extra packages that will make development easier</LI>
+  <LI>Using migrations and seeds</LI>
+  <LI>Learning how to use resourceful controllers</LI>
+  <LI>Learning how to use views (including the blade templating language =
+and=20
+  content layouts)</LI>
+  <LI>Handling model relations</LI></OL>
+<P>&nbsp;</P>
+<H3>Installation</H3>
+<P>Installing Laravel is extremely quick and painless thanks to =
+Composer. I=E2=80=99ll=20
+blaze through this section as it=E2=80=99s really been covered to death =
+by this=20
+point.</P>
+<H4>Composer</H4>
+<DIV class=3D"alert info">Further Details: See <A title=3D"Meet Composer =
+- Laracasts"=20
+href=3D"https://laracasts.com/series/laravel-5-fundamentals/episodes/1" =
+target=3D"_blank">Meet=20
+Composer</A></DIV>
+<P>First you=E2=80=99ll need to install <A title=3D"Composer" =
+href=3D"http://getcomposer.org/doc/00-intro.md#installation-nix"=20
+target=3D"_blank">Composer</A>&nbsp;if you haven=E2=80=99t already =
+(you=E2=80=99ll only need to do=20
+this once):</P><!-- from cache -->=20
+<DIV class=3D"flyn_syntax">
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD class=3D"line_numbers">
+<PRE>1=0A=
+2=0A=
+</PRE></TD>
+    <TD class=3D"code">
+<PRE class=3D"bash" style=3D"font-family: monospace;">curl <SPAN =
+style=3D"color: rgb(102, 0, 51);">-sS</SPAN> https:<SPAN style=3D"color: =
+rgb(0, 0, 0); font-weight: bold;">//</SPAN>getcomposer.org<SPAN =
+style=3D"color: rgb(0, 0, 0); font-weight: bold;">/</SPAN>installer =
+<SPAN style=3D"color: rgb(0, 0, 0); font-weight: bold;">|</SPAN> php=0A=
+<SPAN style=3D"color: rgb(194, 12, 185); font-weight: bold;">mv</SPAN> =
+composer.phar <SPAN style=3D"color: rgb(0, 0, 0); font-weight: =
+bold;">/</SPAN>usr<SPAN style=3D"color: rgb(0, 0, 0); font-weight: =
+bold;">/</SPAN>local<SPAN style=3D"color: rgb(0, 0, 0); font-weight: =
+bold;">/</SPAN>bin<SPAN style=3D"color: rgb(0, 0, 0); font-weight: =
+bold;">/</SPAN>composer</PRE></TD></TR></TBODY></TABLE></DIV><!-- end =
+from cahe -->=20
+<H4>Laravel</H4>
+<P>Now for the laravel installer (you=E2=80=99ll only need to do this =
+once):</P><!-- from cache -->=20
+<DIV class=3D"flyn_syntax">
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD class=3D"line_numbers">
+<PRE>1=0A=
+</PRE></TD>
+    <TD class=3D"code">
+<PRE class=3D"bash" style=3D"font-family: monospace;">composer global =
+require <SPAN style=3D"color: rgb(255, 0, =
+0);">"laravel/installer=3D~1.1"</SPAN></PRE></TD></TR></TBODY></TABLE></D=
+IV><!-- end from cahe -->=20
+<P>and finally our project:</P><!-- from cache -->=20
+<DIV class=3D"flyn_syntax">
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD class=3D"line_numbers">
+<PRE>1=0A=
+</PRE></TD>
+    <TD class=3D"code">
+<PRE class=3D"bash" style=3D"font-family: monospace;">laravel new =
+l5todo</PRE></TD></TR></TBODY></TABLE></DIV><!-- end from cahe -->=20
+<H3>Configuration</H3>
+<DIV class=3D"alert info">Further Details: See <A title=3D"Environment =
+&amp; Configuration - Laracasts"=20
+href=3D"https://laracasts.com/series/laravel-5-fundamentals/episodes/6" =
+target=3D"_blank">Environment=20
+and Configuration</A>, <A title=3D"Laravel 5.0 - Environment Detection =
+&amp; Environment Variables - MattStauffer.co"=20
+href=3D"http://mattstauffer.co/blog/laravel-5.0-environment-detection-and=
+-environment-variables"=20
+target=3D"_blank">Environment Detaction and Environment =
+Variables</A></DIV>
+<P>Laravel 5 uses a package called <A title=3D"PHP dotenv - GitHub" =
+href=3D"https://github.com/vlucas/phpdotenv"=20
+target=3D"_blank">DotEnv</A>&nbsp;that&nbsp;stores sensitive information =
+
+in&nbsp;<EM>.env</EM> files which are loaded as PHP <A title=3D"PHP: =
+$_ENV - Manual"=20
+href=3D"http://php.net/manual/en/reserved.variables.environment.php" =
+target=3D"_blank">environment=20
+variables</A> at runtime. Sounds complicated but it just means your =
+sensitive=20
+credentials go into these files while the rest of your&nbsp;config=20
+remains&nbsp;in the standard config files.</P>
+<H4>Database</H4>
+<P>We need a database. Set one up for yourself in a DB of your choice =
+then copy=20
+<I>.env.example</I> to&nbsp;<EM>.env</EM>&nbsp;and update =
+accordingly:</P><!-- from cache -->=20
+<DIV class=3D"flyn_syntax">
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD class=3D"line_numbers">
+<PRE>1=0A=
+2=0A=
+3=0A=
+4=0A=
+</PRE></TD>
+    <TD class=3D"code">
+<PRE class=3D"text" style=3D"font-family: monospace;">DB_HOST=3Dlocalhost=0A=
+DB_DATABASE=3Dhomestead=0A=
+DB_USERNAME=3Dhomestead=0A=
+DB_PASSWORD=3Dsecret</PRE></TD></TR></TBODY></TABLE></DIV><!-- end from =
+cahe -->=20
+<P>Finally if you=E2=80=99re not using MySQL =
+open&nbsp;<EM>/config/database.php</EM>=20
+and&nbsp;change the&nbsp;<EM>default</EM> line:</P><!-- from cache -->=20
+<DIV class=3D"flyn_syntax">
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD class=3D"line_numbers">
+<PRE>1=0A=
+</PRE></TD>
+    <TD class=3D"code">
+<PRE class=3D"php" style=3D"font-family: monospace;"><SPAN =
+style=3D"color: rgb(0, 0, 255);">'default'</SPAN> <SPAN style=3D"color: =
+rgb(51, 153, 51);">=3D&gt;</SPAN> <SPAN style=3D"color: rgb(0, 0, =
+255);">'mysql'</SPAN><SPAN style=3D"color: rgb(51, 153, =
+51);">,</SPAN></PRE></TD></TR></TBODY></TABLE></DIV><!-- end from cahe =
+-->=20
+<P>Remember to add your environment files to your <A title=3D"Ignoring =
+files &amp;middot; GitHub Help"=20
+href=3D"https://help.github.com/articles/ignoring-files"=20
+target=3D"_blank">.gitignore</A>&nbsp;by adding=20
+a&nbsp;<EM>.env</EM>&nbsp;line!</P>
+<P>&nbsp;</P>
+<H3>Taking our First Steps</H3>
+<P>As mentioned above, our to-do application will comprise of one or =
+more=20
+projects each with their own task list. We=E2=80=99re going to need =
+<EM>Project</EM> and=20
+<EM>Task</EM> models, controllers, views, migrations, seeds (optional =
+but=20
+useful) and routes. You probably already understand what most/all of =
+these are,=20
+however if you don=E2=80=99t you should check out the video&nbsp;<A =
+title=3D"Laracasts | M-V-Huh?"=20
+href=3D"https://www.laracasts.com/series/laravel-from-scratch/episodes/2"=
+ target=3D"_blank">M-V-Huh?</A>&nbsp;and=20
+<A title=3D"Basic Model/Controller/View Workflow - Laravel 5 =
+Fundamentals" =
+href=3D"https://laracasts.com/series/laravel-5-fundamentals/episodes/9"=20
+target=3D"_blank">Basic Model/Controller/View Workflow</A>.</P>
+<P>Let=E2=80=99s make our way through them one at a time.</P>
+<P>&nbsp;</P>
+<H3>Migrations</H3>
+<DIV class=3D"alert info">Further Details: See <A title=3D"Migrations - =
+Laravel 5 Fundamentals"=20
+href=3D"https://laracasts.com/series/laravel-5-fundamentals/episodes/7" =
+target=3D"_blank">Migrations</A></DIV>
+<P>We want to get our table schema set up in&nbsp;the database. It will =
+look=20
+like the following:</P><!-- from cache -->=20
+<DIV class=3D"flyn_syntax">
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD class=3D"code">
+<PRE class=3D"text" style=3D"font-family: monospace;">Projects=0A=
++------------+------------------+------+-----+=0A=
+| Field      | Type             | Null | Key |=0A=
++------------+------------------+------+-----+=0A=
+| id         | int(10) unsigned | NO   | PRI |=0A=
+| name       | varchar(255)     | NO   |     |=0A=
+| slug       | varchar(255)     | NO   |     |=0A=
+| created_at | timestamp        | NO   |     |=0A=
+| updated_at | timestamp        | NO   |     |=0A=
++------------+------------------+------+-----+=0A=
+&nbsp;=0A=
+Tasks=0A=
++-------------+------------------+------+-----+=0A=
+| Field       | Type             | Null | Key |=0A=
++-------------+------------------+------+-----+=0A=
+| id          | int(10) unsigned | NO   | PRI |=0A=
+| project_id  | int(10) unsigned | NO   | MUL |=0A=
+| name        | varchar(255)     | NO   |     |=0A=
+| slug        | varchar(255)     | NO   |     |=0A=
+| completed   | tinyint(1)       | NO   |     |=0A=
+| description | text             | NO   |     |=0A=
+| created_at  | timestamp        | NO   |     |=0A=
+| updated_at  | timestamp        | NO   |     |=0A=
++-------------+------------------+------+-----+</PRE></TD></TR></TBODY></=
+TABLE></DIV><!-- end from cahe -->=20
+<P>First a migration must be set up:</P><!-- from cache -->=20
+<DIV class=3D"flyn_syntax">
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD class=3D"line_numbers">
+<PRE>1=0A=
+</PRE></TD>
+    <TD class=3D"code">
+<PRE class=3D"bash" style=3D"font-family: monospace;">php artisan =
+make:migration create_projects_and_tasks_tables <SPAN style=3D"color: =
+rgb(102, 0, 51);">--create</SPAN>=3D<SPAN style=3D"color: rgb(255, 0, =
+0);">"projects"</SPAN></PRE></TD></TR></TBODY></TABLE></DIV><!-- end =
+from cahe -->=20
+<P>We=E2=80=99re creating both tables in the one migration so that they =
+can be removed=20
+in reverse order to avoid an <A title=3D"MySQL :: MySQL 5.6 Reference =
+Manual :: 13.1.17.2 Using FOREIGN KEY Constraints"=20
+href=3D"http://dev.mysql.com/doc/refman/5.6/en/create-table-foreign-keys.=
+html"=20
+target=3D"_blank">integrity constraint violation</A>.=20
+Open&nbsp;<EM>/database/migrations/&lt;date&gt;_create_projects_and_tasks=
+_tables.php</EM>&nbsp;and=20
+set it up as follows:</P><!-- from cache -->=20
+<DIV class=3D"flyn_syntax">
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD class=3D"line_numbers">
+<PRE>1=0A=
+2=0A=
+3=0A=
+4=0A=
+5=0A=
+6=0A=
+7=0A=
+8=0A=
+9=0A=
+10=0A=
+11=0A=
+12=0A=
+13=0A=
+14=0A=
+15=0A=
+16=0A=
+17=0A=
+18=0A=
+19=0A=
+20=0A=
+21=0A=
+22=0A=
+23=0A=
+24=0A=
+25=0A=
+26=0A=
+27=0A=
+28=0A=
+29=0A=
+30=0A=
+31=0A=
+32=0A=
+33=0A=
+34=0A=
+35=0A=
+36=0A=
+37=0A=
+38=0A=
+39=0A=
+40=0A=
+41=0A=
+42=0A=
+43=0A=
+44=0A=
+45=0A=
+46=0A=
+</PRE></TD>
+    <TD class=3D"code">
+<PRE class=3D"php" style=3D"font-family: monospace;"><SPAN =
+style=3D"color: rgb(0, 0, 0); font-weight: bold;">&lt;?php</SPAN>=0A=
+&nbsp;=0A=
+<SPAN style=3D"color: rgb(0, 0, 0); font-weight: bold;">use</SPAN> =
+Illuminate\Database\Schema\Blueprint<SPAN style=3D"color: rgb(51, 153, =
+51);">;</SPAN>=0A=
+<SPAN style=3D"color: rgb(0, 0, 0); font-weight: bold;">use</SPAN> =
+Illuminate\Database\Migrations\Migration<SPAN style=3D"color: rgb(51, =
+153, 51);">;</SPAN>=0A=
+&nbsp;=0A=
+<SPAN style=3D"color: rgb(0, 0, 0); font-weight: bold;">class</SPAN> =
+CreateProjectsAndTasksTables <SPAN style=3D"color: rgb(0, 0, 0); =
+font-weight: bold;">extends</SPAN> Migration <SPAN style=3D"color: =
+rgb(0, 153, 0);">{</SPAN>=0A=
+&nbsp;=0A=
+	<SPAN style=3D"color: rgb(0, 153, 51); font-style: italic;">/**</SPAN>=0A=
+<SPAN style=3D"color: rgb(0, 153, 51); font-style: italic;">	 * Run the =
+migrations.</SPAN>=0A=
+<SPAN style=3D"color: rgb(0, 153, 51); font-style: italic;">	 *</SPAN>=0A=
+<SPAN style=3D"color: rgb(0, 153, 51); font-style: italic;">	 * @return =
+void</SPAN>=0A=
+<SPAN style=3D"color: rgb(0, 153, 51); font-style: italic;">	 */</SPAN>=0A=
+	<SPAN style=3D"color: rgb(0, 0, 0); font-weight: bold;">public</SPAN> =
+<SPAN style=3D"color: rgb(0, 0, 0); font-weight: bold;">function</SPAN> =
+up<SPAN style=3D"color: rgb(0, 153, 0);">(</SPAN><SPAN style=3D"color: =
+rgb(0, 153, 0);">)</SPAN>=0A=
+	<SPAN style=3D"color: rgb(0, 153, 0);">{</SPAN>=0A=
+		Schema<SPAN style=3D"color: rgb(51, 153, 51);">::</SPAN><SPAN =
+style=3D"color: rgb(0, 64, 0);">create</SPAN><SPAN style=3D"color: =
+rgb(0, 153, 0);">(</SPAN><SPAN style=3D"color: rgb(0, 0, =
+255);">'projects'</SPAN><SPAN style=3D"color: rgb(51, 153, =
+51);">,</SPAN> <SPAN style=3D"color: rgb(0, 0, 0); font-weight: =
+bold;">function</SPAN><SPAN style=3D"color: rgb(0, 153, =
+0);">(</SPAN>Blueprint <SPAN style=3D"color: rgb(0, 0, =
+136);">$table</SPAN><SPAN style=3D"color: rgb(0, 153, 0);">)</SPAN>=0A=
+		<SPAN style=3D"color: rgb(0, 153, 0);">{</SPAN>=0A=
+			<SPAN style=3D"color: rgb(0, 0, 136);">$table</SPAN><SPAN =
+style=3D"color: rgb(51, 153, 51);">-&gt;</SPAN><SPAN style=3D"color: =
+rgb(0, 64, 0);">increments</SPAN><SPAN style=3D"color: rgb(0, 153, =
+0);">(</SPAN><SPAN style=3D"color: rgb(0, 0, 255);">'id'</SPAN><SPAN =
+style=3D"color: rgb(0, 153, 0);">)</SPAN><SPAN style=3D"color: rgb(51, =
+153, 51);">;</SPAN>=0A=
+<SPAN style=3D"display: block; background-color: rgb(255, 255, 204);">			=
+<SPAN style=3D"color: rgb(0, 0, 136);">$table</SPAN><SPAN =
+style=3D"color: rgb(51, 153, 51);">-&gt;</SPAN><SPAN style=3D"color: =
+rgb(0, 64, 0);">string</SPAN><SPAN style=3D"color: rgb(0, 153, =
+0);">(</SPAN><SPAN style=3D"color: rgb(0, 0, 255);">'name'</SPAN><SPAN =
+style=3D"color: rgb(0, 153, 0);">)</SPAN><SPAN style=3D"color: rgb(51, =
+153, 51);">-&gt;</SPAN><SPAN style=3D"color: rgb(177, 177, =
+0);">default</SPAN><SPAN style=3D"color: rgb(0, 153, 0);">(</SPAN><SPAN =
+style=3D"color: rgb(0, 0, 255);">''</SPAN><SPAN style=3D"color: rgb(0, =
+153, 0);">)</SPAN><SPAN style=3D"color: rgb(51, 153, =
+51);">;</SPAN></SPAN><SPAN style=3D"display: block; background-color: =
+rgb(255, 255, 204);">			<SPAN style=3D"color: rgb(0, 0, =
+136);">$table</SPAN><SPAN style=3D"color: rgb(51, 153, =
+51);">-&gt;</SPAN><SPAN style=3D"color: rgb(0, 64, =
+0);">string</SPAN><SPAN style=3D"color: rgb(0, 153, 0);">(</SPAN><SPAN =
+style=3D"color: rgb(0, 0, 255);">'slug'</SPAN><SPAN style=3D"color: =
+rgb(0, 153, 0);">)</SPAN><SPAN style=3D"color: rgb(51, 153, =
+51);">-&gt;</SPAN><SPAN style=3D"color: rgb(177, 177, =
+0);">default</SPAN><SPAN style=3D"color: rgb(0, 153, 0);">(</SPAN><SPAN =
+style=3D"color: rgb(0, 0, 255);">''</SPAN><SPAN style=3D"color: rgb(0, =
+153, 0);">)</SPAN><SPAN style=3D"color: rgb(51, 153, =
+51);">;</SPAN></SPAN>			<SPAN style=3D"color: rgb(0, 0, =
+136);">$table</SPAN><SPAN style=3D"color: rgb(51, 153, =
+51);">-&gt;</SPAN><SPAN style=3D"color: rgb(0, 64, =
+0);">timestamps</SPAN><SPAN style=3D"color: rgb(0, 153, =
+0);">(</SPAN><SPAN style=3D"color: rgb(0, 153, 0);">)</SPAN><SPAN =
+style=3D"color: rgb(51, 153, 51);">;</SPAN>=0A=
+		<SPAN style=3D"color: rgb(0, 153, 0);">}</SPAN><SPAN style=3D"color: =
+rgb(0, 153, 0);">)</SPAN><SPAN style=3D"color: rgb(51, 153, =
+51);">;</SPAN>=0A=
+&nbsp;=0A=
+<SPAN style=3D"display: block; background-color: rgb(255, 255, 204);">		=
+Schema<SPAN style=3D"color: rgb(51, 153, 51);">::</SPAN><SPAN =
+style=3D"color: rgb(0, 64, 0);">create</SPAN><SPAN style=3D"color: =
+rgb(0, 153, 0);">(</SPAN><SPAN style=3D"color: rgb(0, 0, =
+255);">'tasks'</SPAN><SPAN style=3D"color: rgb(51, 153, 51);">,</SPAN> =
+<SPAN style=3D"color: rgb(0, 0, 0); font-weight: =
+bold;">function</SPAN><SPAN style=3D"color: rgb(0, 153, =
+0);">(</SPAN>Blueprint <SPAN style=3D"color: rgb(0, 0, =
+136);">$table</SPAN><SPAN style=3D"color: rgb(0, 153, 0);">)</SPAN> =
+<SPAN style=3D"color: rgb(0, 153, 0);">{</SPAN></SPAN><SPAN =
+style=3D"display: block; background-color: rgb(255, 255, 204);">			<SPAN =
+style=3D"color: rgb(0, 0, 136);">$table</SPAN><SPAN style=3D"color: =
+rgb(51, 153, 51);">-&gt;</SPAN><SPAN style=3D"color: rgb(0, 64, =
+0);">increments</SPAN><SPAN style=3D"color: rgb(0, 153, =
+0);">(</SPAN><SPAN style=3D"color: rgb(0, 0, 255);">'id'</SPAN><SPAN =
+style=3D"color: rgb(0, 153, 0);">)</SPAN><SPAN style=3D"color: rgb(51, =
+153, 51);">;</SPAN></SPAN><SPAN style=3D"display: block; =
+background-color: rgb(255, 255, 204);">			<SPAN style=3D"color: rgb(0, =
+0, 136);">$table</SPAN><SPAN style=3D"color: rgb(51, 153, =
+51);">-&gt;</SPAN><SPAN style=3D"color: rgb(0, 64, =
+0);">integer</SPAN><SPAN style=3D"color: rgb(0, 153, 0);">(</SPAN><SPAN =
+style=3D"color: rgb(0, 0, 255);">'project_id'</SPAN><SPAN =
+style=3D"color: rgb(0, 153, 0);">)</SPAN><SPAN style=3D"color: rgb(51, =
+153, 51);">-&gt;</SPAN><SPAN style=3D"color: rgb(0, 64, =
+0);">unsigned</SPAN><SPAN style=3D"color: rgb(0, 153, 0);">(</SPAN><SPAN =
+style=3D"color: rgb(0, 153, 0);">)</SPAN><SPAN style=3D"color: rgb(51, =
+153, 51);">-&gt;</SPAN><SPAN style=3D"color: rgb(177, 177, =
+0);">default</SPAN><SPAN style=3D"color: rgb(0, 153, 0);">(</SPAN><SPAN =
+style=3D"color: rgb(204, 102, 204);">0</SPAN><SPAN style=3D"color: =
+rgb(0, 153, 0);">)</SPAN><SPAN style=3D"color: rgb(51, 153, =
+51);">;</SPAN></SPAN><SPAN style=3D"display: block; background-color: =
+rgb(255, 255, 204);">			<SPAN style=3D"color: rgb(0, 0, =
+136);">$table</SPAN><SPAN style=3D"color: rgb(51, 153, =
+51);">-&gt;</SPAN><SPAN style=3D"color: rgb(0, 64, =
+0);">foreign</SPAN><SPAN style=3D"color: rgb(0, 153, 0);">(</SPAN><SPAN =
+style=3D"color: rgb(0, 0, 255);">'project_id'</SPAN><SPAN =
+style=3D"color: rgb(0, 153, 0);">)</SPAN><SPAN style=3D"color: rgb(51, =
+153, 51);">-&gt;</SPAN><SPAN style=3D"color: rgb(0, 64, =
+0);">references</SPAN><SPAN style=3D"color: rgb(0, 153, =
+0);">(</SPAN><SPAN style=3D"color: rgb(0, 0, 255);">'id'</SPAN><SPAN =
+style=3D"color: rgb(0, 153, 0);">)</SPAN><SPAN style=3D"color: rgb(51, =
+153, 51);">-&gt;</SPAN><SPAN style=3D"color: rgb(0, 64, =
+0);">on</SPAN><SPAN style=3D"color: rgb(0, 153, 0);">(</SPAN><SPAN =
+style=3D"color: rgb(0, 0, 255);">'projects'</SPAN><SPAN style=3D"color: =
+rgb(0, 153, 0);">)</SPAN><SPAN style=3D"color: rgb(51, 153, =
+51);">-&gt;</SPAN><SPAN style=3D"color: rgb(0, 64, =
+0);">onDelete</SPAN><SPAN style=3D"color: rgb(0, 153, 0);">(</SPAN><SPAN =
+style=3D"color: rgb(0, 0, 255);">'cascade'</SPAN><SPAN style=3D"color: =
+rgb(0, 153, 0);">)</SPAN><SPAN style=3D"color: rgb(51, 153, =
+51);">;</SPAN></SPAN><SPAN style=3D"display: block; background-color: =
+rgb(255, 255, 204);">			<SPAN style=3D"color: rgb(0, 0, =
+136);">$table</SPAN><SPAN style=3D"color: rgb(51, 153, =
+51);">-&gt;</SPAN><SPAN style=3D"color: rgb(0, 64, =
+0);">string</SPAN><SPAN style=3D"color: rgb(0, 153, 0);">(</SPAN><SPAN =
+style=3D"color: rgb(0, 0, 255);">'name'</SPAN><SPAN style=3D"color: =
+rgb(0, 153, 0);">)</SPAN><SPAN style=3D"color: rgb(51, 153, =
+51);">-&gt;</SPAN><SPAN style=3D"color: rgb(177, 177, =
+0);">default</SPAN><SPAN style=3D"color: rgb(0, 153, 0);">(</SPAN><SPAN =
+style=3D"color: rgb(0, 0, 255);">''</SPAN><SPAN style=3D"color: rgb(0, =
+153, 0);">)</SPAN><SPAN style=3D"color: rgb(51, 153, =
+51);">;</SPAN></SPAN><SPAN style=3D"display: block; background-color: =
+rgb(255, 255, 204);">			<SPAN style=3D"color: rgb(0, 0, =
+136);">$table</SPAN><SPAN style=3D"color: rgb(51, 153, =
+51);">-&gt;</SPAN><SPAN style=3D"color: rgb(0, 64, =
+0);">string</SPAN><SPAN style=3D"color: rgb(0, 153, 0);">(</SPAN><SPAN =
+style=3D"color: rgb(0, 0, 255);">'slug'</SPAN><SPAN style=3D"color: =
+rgb(0, 153, 0);">)</SPAN><SPAN style=3D"color: rgb(51, 153, =
+51);">-&gt;</SPAN><SPAN style=3D"color: rgb(177, 177, =
+0);">default</SPAN><SPAN style=3D"color: rgb(0, 153, 0);">(</SPAN><SPAN =
+style=3D"color: rgb(0, 0, 255);">''</SPAN><SPAN style=3D"color: rgb(0, =
+153, 0);">)</SPAN><SPAN style=3D"color: rgb(51, 153, =
+51);">;</SPAN></SPAN><SPAN style=3D"display: block; background-color: =
+rgb(255, 255, 204);">			<SPAN style=3D"color: rgb(0, 0, =
+136);">$table</SPAN><SPAN style=3D"color: rgb(51, 153, =
+51);">-&gt;</SPAN><SPAN style=3D"color: rgb(0, 64, =
+0);">boolean</SPAN><SPAN style=3D"color: rgb(0, 153, 0);">(</SPAN><SPAN =
+style=3D"color: rgb(0, 0, 255);">'completed'</SPAN><SPAN style=3D"color: =
+rgb(0, 153, 0);">)</SPAN><SPAN style=3D"color: rgb(51, 153, =
+51);">-&gt;</SPAN><SPAN style=3D"color: rgb(177, 177, =
+0);">default</SPAN><SPAN style=3D"color: rgb(0, 153, 0);">(</SPAN><SPAN =
+style=3D"color: rgb(0, 153, 0); font-weight: bold;">false</SPAN><SPAN =
+style=3D"color: rgb(0, 153, 0);">)</SPAN><SPAN style=3D"color: rgb(51, =
+153, 51);">;</SPAN></SPAN><SPAN style=3D"display: block; =
+background-color: rgb(255, 255, 204);">			<SPAN style=3D"color: rgb(0, =
+0, 136);">$table</SPAN><SPAN style=3D"color: rgb(51, 153, =
+51);">-&gt;</SPAN><SPAN style=3D"color: rgb(0, 64, 0);">text</SPAN><SPAN =
+style=3D"color: rgb(0, 153, 0);">(</SPAN><SPAN style=3D"color: rgb(0, 0, =
+255);">'description'</SPAN><SPAN style=3D"color: rgb(0, 153, =
+0);">)</SPAN><SPAN style=3D"color: rgb(51, 153, 51);">-&gt;</SPAN><SPAN =
+style=3D"color: rgb(177, 177, 0);">default</SPAN><SPAN style=3D"color: =
+rgb(0, 153, 0);">(</SPAN><SPAN style=3D"color: rgb(0, 0, =
+255);">''</SPAN><SPAN style=3D"color: rgb(0, 153, 0);">)</SPAN><SPAN =
+style=3D"color: rgb(51, 153, 51);">;</SPAN></SPAN><SPAN =
+style=3D"display: block; background-color: rgb(255, 255, 204);">			<SPAN =
+style=3D"color: rgb(0, 0, 136);">$table</SPAN><SPAN style=3D"color: =
+rgb(51, 153, 51);">-&gt;</SPAN><SPAN style=3D"color: rgb(0, 64, =
+0);">timestamps</SPAN><SPAN style=3D"color: rgb(0, 153, =
+0);">(</SPAN><SPAN style=3D"color: rgb(0, 153, 0);">)</SPAN><SPAN =
+style=3D"color: rgb(51, 153, 51);">;</SPAN></SPAN><SPAN =
+style=3D"display: block; background-color: rgb(255, 255, 204);">		<SPAN =
+style=3D"color: rgb(0, 153, 0);">}</SPAN><SPAN style=3D"color: rgb(0, =
+153, 0);">)</SPAN><SPAN style=3D"color: rgb(51, 153, =
+51);">;</SPAN></SPAN>	<SPAN style=3D"color: rgb(0, 153, 0);">}</SPAN>=0A=
+&nbsp;=0A=
+	<SPAN style=3D"color: rgb(0, 153, 51); font-style: italic;">/**</SPAN>=0A=
+<SPAN style=3D"color: rgb(0, 153, 51); font-style: italic;">	 * Reverse =
+the migrations.</SPAN>=0A=
+<SPAN style=3D"color: rgb(0, 153, 51); font-style: italic;">	 *</SPAN>=0A=
+<SPAN style=3D"color: rgb(0, 153, 51); font-style: italic;">	 * @return =
+void</SPAN>=0A=
+<SPAN style=3D"color: rgb(0, 153, 51); font-style: italic;">	 */</SPAN>=0A=
+	<SPAN style=3D"color: rgb(0, 0, 0); font-weight: bold;">public</SPAN> =
+<SPAN style=3D"color: rgb(0, 0, 0); font-weight: bold;">function</SPAN> =
+down<SPAN style=3D"color: rgb(0, 153, 0);">(</SPAN><SPAN style=3D"color: =
+rgb(0, 153, 0);">)</SPAN>=0A=
+	<SPAN style=3D"color: rgb(0, 153, 0);">{</SPAN>=0A=
+<SPAN style=3D"display: block; background-color: rgb(255, 255, 204);">		=
+Schema<SPAN style=3D"color: rgb(51, 153, 51);">::</SPAN><SPAN =
+style=3D"color: rgb(0, 64, 0);">drop</SPAN><SPAN style=3D"color: rgb(0, =
+153, 0);">(</SPAN><SPAN style=3D"color: rgb(0, 0, =
+255);">'tasks'</SPAN><SPAN style=3D"color: rgb(0, 153, =
+0);">)</SPAN><SPAN style=3D"color: rgb(51, 153, 51);">;</SPAN></SPAN>		=
+Schema<SPAN style=3D"color: rgb(51, 153, 51);">::</SPAN><SPAN =
+style=3D"color: rgb(0, 64, 0);">drop</SPAN><SPAN style=3D"color: rgb(0, =
+153, 0);">(</SPAN><SPAN style=3D"color: rgb(0, 0, =
+255);">'projects'</SPAN><SPAN style=3D"color: rgb(0, 153, =
+0);">)</SPAN><SPAN style=3D"color: rgb(51, 153, 51);">;</SPAN>=0A=
+	<SPAN style=3D"color: rgb(0, 153, 0);">}</SPAN>=0A=
+&nbsp;=0A=
+<SPAN style=3D"color: rgb(0, 153, =
+0);">}</SPAN></PRE></TD></TR></TBODY></TABLE></DIV><!-- end from cahe =
+-->=20
+<P>Perform the migration:</P><!-- from cache -->=20
+<DIV class=3D"flyn_syntax">
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD class=3D"line_numbers">
+<PRE>1=0A=
+</PRE></TD>
+    <TD class=3D"code">
+<PRE class=3D"bash" style=3D"font-family: monospace;">php artisan =
+migrate</PRE></TD></TR></TBODY></TABLE></DIV><!-- end from cahe -->=20
+<P>If you check the database, your tables should now be all set up.</P>
+<P>&nbsp;</P>
+<H3>Seeds</H3>
+<DIV class=3D"alert info">Further details: See <A title=3D"Tuts+ Premium =
+Course: What=E2=80=99s New in Laravel 4 - Database Seeding"=20
+href=3D"https://tutsplus.com/lesson/database-seeding/" =
+target=3D"_blank">Database=20
+Seeding</A></DIV>
+<P>We=E2=80=99ll seed some projects/tasks to have something to work with =
+when we finally=20
+get to the browser. =
+Create&nbsp;<EM>/database/seeds/ProjectsTableSeeder.php</EM>=20
+and <EM>TasksTableSeeder.php</EM> like so:</P><!-- from cache -->=20
+<DIV class=3D"flyn_syntax">
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD class=3D"line_numbers">
+<PRE>1=0A=
+2=0A=
+3=0A=
+4=0A=
+5=0A=
+6=0A=
+7=0A=
+8=0A=
+9=0A=
+10=0A=
+11=0A=
+12=0A=
+13=0A=
+14=0A=
+15=0A=
+16=0A=
+17=0A=
+18=0A=
+19=0A=
+20=0A=
+21=0A=
+22=0A=
+23=0A=
+24=0A=
+25=0A=
+26=0A=
+27=0A=
+28=0A=
+29=0A=
+30=0A=
+31=0A=
+32=0A=
+33=0A=
+34=0A=
+35=0A=
+36=0A=
+37=0A=
+38=0A=
+39=0A=
+40=0A=
+41=0A=
+42=0A=
+43=0A=
+44=0A=
+45=0A=
+46=0A=
+47=0A=
+48=0A=
+49=0A=
+50=0A=
+51=0A=
+</PRE></TD>
+    <TD class=3D"code">
+<PRE class=3D"php" style=3D"font-family: monospace;">// =
+/database/migrations/seeds/ProjectsTableSeeder.php=0A=
+<SPAN style=3D"color: rgb(0, 0, 0); font-weight: bold;">&lt;?php</SPAN>=0A=
+&nbsp;=0A=
+<SPAN style=3D"color: rgb(0, 0, 0); font-weight: bold;">use</SPAN> =
+Illuminate\Database\Seeder<SPAN style=3D"color: rgb(51, 153, =
+51);">;</SPAN>=0A=
+&nbsp;=0A=
+<SPAN style=3D"color: rgb(0, 0, 0); font-weight: bold;">class</SPAN> =
+ProjectsTableSeeder <SPAN style=3D"color: rgb(0, 0, 0); font-weight: =
+bold;">extends</SPAN> Seeder <SPAN style=3D"color: rgb(0, 153, =
+0);">{</SPAN>=0A=
+&nbsp;=0A=
+    <SPAN style=3D"color: rgb(0, 0, 0); font-weight: =
+bold;">public</SPAN> <SPAN style=3D"color: rgb(0, 0, 0); font-weight: =
+bold;">function</SPAN> run<SPAN style=3D"color: rgb(0, 153, =
+0);">(</SPAN><SPAN style=3D"color: rgb(0, 153, 0);">)</SPAN>=0A=
+    <SPAN style=3D"color: rgb(0, 153, 0);">{</SPAN>=0A=
+        <SPAN style=3D"color: rgb(102, 102, 102); font-style: =
+italic;">// Uncomment the below to wipe the table clean before =
+populating</SPAN>=0A=
+        DB<SPAN style=3D"color: rgb(51, 153, 51);">::</SPAN><SPAN =
+style=3D"color: rgb(0, 64, 0);">table</SPAN><SPAN style=3D"color: rgb(0, =
+153, 0);">(</SPAN><SPAN style=3D"color: rgb(0, 0, =
+255);">'projects'</SPAN><SPAN style=3D"color: rgb(0, 153, =
+0);">)</SPAN><SPAN style=3D"color: rgb(51, 153, 51);">-&gt;</SPAN><SPAN =
+style=3D"color: rgb(0, 64, 0);">delete</SPAN><SPAN style=3D"color: =
+rgb(0, 153, 0);">(</SPAN><SPAN style=3D"color: rgb(0, 153, =
+0);">)</SPAN><SPAN style=3D"color: rgb(51, 153, 51);">;</SPAN>=0A=
+&nbsp;=0A=
+        <SPAN style=3D"color: rgb(0, 0, 136);">$projects</SPAN> <SPAN =
+style=3D"color: rgb(51, 153, 51);">=3D</SPAN> <SPAN style=3D"color: =
+rgb(153, 0, 0);">array</SPAN><SPAN style=3D"color: rgb(0, 153, =
+0);">(</SPAN>=0A=
+            <SPAN style=3D"color: rgb(0, 153, 0);">[</SPAN><SPAN =
+style=3D"color: rgb(0, 0, 255);">'id'</SPAN> <SPAN style=3D"color: =
+rgb(51, 153, 51);">=3D&gt;</SPAN> <SPAN style=3D"color: rgb(204, 102, =
+204);">1</SPAN><SPAN style=3D"color: rgb(51, 153, 51);">,</SPAN> <SPAN =
+style=3D"color: rgb(0, 0, 255);">'name'</SPAN> <SPAN style=3D"color: =
+rgb(51, 153, 51);">=3D&gt;</SPAN> <SPAN style=3D"color: rgb(0, 0, =
+255);">'Project 1'</SPAN><SPAN style=3D"color: rgb(51, 153, =
+51);">,</SPAN> <SPAN style=3D"color: rgb(0, 0, 255);">'slug'</SPAN> =
+<SPAN style=3D"color: rgb(51, 153, 51);">=3D&gt;</SPAN> <SPAN =
+style=3D"color: rgb(0, 0, 255);">'project-1'</SPAN><SPAN style=3D"color: =
+rgb(51, 153, 51);">,</SPAN> <SPAN style=3D"color: rgb(0, 0, =
+255);">'created_at'</SPAN> <SPAN style=3D"color: rgb(51, 153, =
+51);">=3D&gt;</SPAN> <SPAN style=3D"color: rgb(0, 0, 0); font-weight: =
+bold;">new</SPAN> DateTime<SPAN style=3D"color: rgb(51, 153, =
+51);">,</SPAN> <SPAN style=3D"color: rgb(0, 0, =
+255);">'updated_at'</SPAN> <SPAN style=3D"color: rgb(51, 153, =
+51);">=3D&gt;</SPAN> <SPAN style=3D"color: rgb(0, 0, 0); font-weight: =
+bold;">new</SPAN> DateTime<SPAN style=3D"color: rgb(0, 153, =
+0);">]</SPAN><SPAN style=3D"color: rgb(51, 153, 51);">,</SPAN>=0A=
+            <SPAN style=3D"color: rgb(0, 153, 0);">[</SPAN><SPAN =
+style=3D"color: rgb(0, 0, 255);">'id'</SPAN> <SPAN style=3D"color: =
+rgb(51, 153, 51);">=3D&gt;</SPAN> <SPAN style=3D"color: rgb(204, 102, =
+204);">2</SPAN><SPAN style=3D"color: rgb(51, 153, 51);">,</SPAN> <SPAN =
+style=3D"color: rgb(0, 0, 255);">'name'</SPAN> <SPAN style=3D"color: =
+rgb(51, 153, 51);">=3D&gt;</SPAN> <SPAN style=3D"color: rgb(0, 0, =
+255);">'Project 2'</SPAN><SPAN style=3D"color: rgb(51, 153, =
+51);">,</SPAN> <SPAN style=3D"color: rgb(0, 0, 255);">'slug'</SPAN> =
+<SPAN style=3D"color: rgb(51, 153, 51);">=3D&gt;</SPAN> <SPAN =
+style=3D"color: rgb(0, 0, 255);">'project-2'</SPAN><SPAN style=3D"color: =
+rgb(51, 153, 51);">,</SPAN> <SPAN style=3D"color: rgb(0, 0, =
+255);">'created_at'</SPAN> <SPAN style=3D"color: rgb(51, 153, =
+51);">=3D&gt;</SPAN> <SPAN style=3D"color: rgb(0, 0, 0); font-weight: =
+bold;">new</SPAN> DateTime<SPAN style=3D"color: rgb(51, 153, =
+51);">,</SPAN> <SPAN style=3D"color: rgb(0, 0, =
+255);">'updated_at'</SPAN> <SPAN style=3D"color: rgb(51, 153, =
+51);">=3D&gt;</SPAN> <SPAN style=3D"color: rgb(0, 0, 0); font-weight: =
+bold;">new</SPAN> DateTime<SPAN style=3D"color: rgb(0, 153, =
+0);">]</SPAN><SPAN style=3D"color: rgb(51, 153, 51);">,</SPAN>=0A=
+            <SPAN style=3D"color: rgb(0, 153, 0);">[</SPAN><SPAN =
+style=3D"color: rgb(0, 0, 255);">'id'</SPAN> <SPAN style=3D"color: =
+rgb(51, 153, 51);">=3D&gt;</SPAN> <SPAN style=3D"color: rgb(204, 102, =
+204);">3</SPAN><SPAN style=3D"color: rgb(51, 153, 51);">,</SPAN> <SPAN =
+style=3D"color: rgb(0, 0, 255);">'name'</SPAN> <SPAN style=3D"color: =
+rgb(51, 153, 51);">=3D&gt;</SPAN> <SPAN style=3D"color: rgb(0, 0, =
+255);">'Project 3'</SPAN><SPAN style=3D"color: rgb(51, 153, =
+51);">,</SPAN> <SPAN style=3D"color: rgb(0, 0, 255);">'slug'</SPAN> =
+<SPAN style=3D"color: rgb(51, 153, 51);">=3D&gt;</SPAN> <SPAN =
+style=3D"color: rgb(0, 0, 255);">'project-3'</SPAN><SPAN style=3D"color: =
+rgb(51, 153, 51);">,</SPAN> <SPAN style=3D"color: rgb(0, 0, =
+255);">'created_at'</SPAN> <SPAN style=3D"color: rgb(51, 153, =
+51);">=3D&gt;</SPAN> <SPAN style=3D"color: rgb(0, 0, 0); font-weight: =
+bold;">new</SPAN> DateTime<SPAN style=3D"color: rgb(51, 153, =
+51);">,</SPAN> <SPAN style=3D"color: rgb(0, 0, =
+255);">'updated_at'</SPAN> <SPAN style=3D"color: rgb(51, 153, =
+51);">=3D&gt;</SPAN> <SPAN style=3D"color: rgb(0, 0, 0); font-weight: =
+bold;">new</SPAN> DateTime<SPAN style=3D"color: rgb(0, 153, =
+0);">]</SPAN><SPAN style=3D"color: rgb(51, 153, 51);">,</SPAN>=0A=
+        <SPAN style=3D"color: rgb(0, 153, 0);">)</SPAN><SPAN =
+style=3D"color: rgb(51, 153, 51);">;</SPAN>=0A=
+&nbsp;=0A=
+        <SPAN style=3D"color: rgb(102, 102, 102); font-style: =
+italic;">// Uncomment the below to run the seeder</SPAN>=0A=
+        DB<SPAN style=3D"color: rgb(51, 153, 51);">::</SPAN><SPAN =
+style=3D"color: rgb(0, 64, 0);">table</SPAN><SPAN style=3D"color: rgb(0, =
+153, 0);">(</SPAN><SPAN style=3D"color: rgb(0, 0, =
+255);">'projects'</SPAN><SPAN style=3D"color: rgb(0, 153, =
+0);">)</SPAN><SPAN style=3D"color: rgb(51, 153, 51);">-&gt;</SPAN><SPAN =
+style=3D"color: rgb(0, 64, 0);">insert</SPAN><SPAN style=3D"color: =
+rgb(0, 153, 0);">(</SPAN><SPAN style=3D"color: rgb(0, 0, =
+136);">$projects</SPAN><SPAN style=3D"color: rgb(0, 153, =
+0);">)</SPAN><SPAN style=3D"color: rgb(51, 153, 51);">;</SPAN>=0A=
+    <SPAN style=3D"color: rgb(0, 153, 0);">}</SPAN>=0A=
+&nbsp;=0A=
+<SPAN style=3D"color: rgb(0, 153, 0);">}</SPAN>=0A=
+&nbsp;=0A=
+<SPAN style=3D"color: rgb(102, 102, 102); font-style: italic;">// =
+/database/migrations/seeds/TasksTableSeeder.php</SPAN>=0A=
+<SPAN style=3D"color: rgb(0, 0, 0); font-weight: bold;">&lt;?php</SPAN>=0A=
+&nbsp;=0A=
+<SPAN style=3D"color: rgb(0, 0, 0); font-weight: bold;">use</SPAN> =
+Illuminate\Database\Seeder<SPAN style=3D"color: rgb(51, 153, =
+51);">;</SPAN>=0A=
+&nbsp;=0A=
+<SPAN style=3D"color: rgb(0, 0, 0); font-weight: bold;">class</SPAN> =
+TasksTableSeeder <SPAN style=3D"color: rgb(0, 0, 0); font-weight: =
+bold;">extends</SPAN> Seeder <SPAN style=3D"color: rgb(0, 153, =
+0);">{</SPAN>=0A=
+&nbsp;=0A=
+    <SPAN style=3D"color: rgb(0, 0, 0); font-weight: =
+bold;">public</SPAN> <SPAN style=3D"color: rgb(0, 0, 0); font-weight: =
+bold;">function</SPAN> run<SPAN style=3D"color: rgb(0, 153, =
+0);">(</SPAN><SPAN style=3D"color: rgb(0, 153, 0);">)</SPAN>=0A=
+    <SPAN style=3D"color: rgb(0, 153, 0);">{</SPAN>=0A=
+        <SPAN style=3D"color: rgb(102, 102, 102); font-style: =
+italic;">// Uncomment the below to wipe the table clean before =
+populating</SPAN>=0A=
+        DB<SPAN style=3D"color: rgb(51, 153, 51);">::</SPAN><SPAN =
+style=3D"color: rgb(0, 64, 0);">table</SPAN><SPAN style=3D"color: rgb(0, =
+153, 0);">(</SPAN><SPAN style=3D"color: rgb(0, 0, =
+255);">'tasks'</SPAN><SPAN style=3D"color: rgb(0, 153, =
+0);">)</SPAN><SPAN style=3D"color: rgb(51, 153, 51);">-&gt;</SPAN><SPAN =
+style=3D"color: rgb(0, 64, 0);">delete</SPAN><SPAN style=3D"color: =
+rgb(0, 153, 0);">(</SPAN><SPAN style=3D"color: rgb(0, 153, =
+0);">)</SPAN><SPAN style=3D"color: rgb(51, 153, 51);">;</SPAN>=0A=
+&nbsp;=0A=
+        <SPAN style=3D"color: rgb(0, 0, 136);">$tasks</SPAN> <SPAN =
+style=3D"color: rgb(51, 153, 51);">=3D</SPAN> <SPAN style=3D"color: =
+rgb(153, 0, 0);">array</SPAN><SPAN style=3D"color: rgb(0, 153, =
+0);">(</SPAN>=0A=
+            <SPAN style=3D"color: rgb(0, 153, 0);">[</SPAN><SPAN =
+style=3D"color: rgb(0, 0, 255);">'id'</SPAN> <SPAN style=3D"color: =
+rgb(51, 153, 51);">=3D&gt;</SPAN> <SPAN style=3D"color: rgb(204, 102, =
+204);">1</SPAN><SPAN style=3D"color: rgb(51, 153, 51);">,</SPAN> <SPAN =
+style=3D"color: rgb(0, 0, 255);">'name'</SPAN> <SPAN style=3D"color: =
+rgb(51, 153, 51);">=3D&gt;</SPAN> <SPAN style=3D"color: rgb(0, 0, =
+255);">'Task 1'</SPAN><SPAN style=3D"color: rgb(51, 153, 51);">,</SPAN> =
+<SPAN style=3D"color: rgb(0, 0, 255);">'slug'</SPAN> <SPAN =
+style=3D"color: rgb(51, 153, 51);">=3D&gt;</SPAN> <SPAN style=3D"color: =
+rgb(0, 0, 255);">'task-1'</SPAN><SPAN style=3D"color: rgb(51, 153, =
+51);">,</SPAN> <SPAN style=3D"color: rgb(0, 0, =
+255);">'project_id'</SPAN> <SPAN style=3D"color: rgb(51, 153, =
+51);">=3D&gt;</SPAN> <SPAN style=3D"color: rgb(204, 102, =
+204);">1</SPAN><SPAN style=3D"color: rgb(51, 153, 51);">,</SPAN> <SPAN =
+style=3D"color: rgb(0, 0, 255);">'completed'</SPAN> <SPAN =
+style=3D"color: rgb(51, 153, 51);">=3D&gt;</SPAN> <SPAN style=3D"color: =
+rgb(0, 153, 0); font-weight: bold;">false</SPAN><SPAN style=3D"color: =
+rgb(51, 153, 51);">,</SPAN> <SPAN style=3D"color: rgb(0, 0, =
+255);">'description'</SPAN> <SPAN style=3D"color: rgb(51, 153, =
+51);">=3D&gt;</SPAN> <SPAN style=3D"color: rgb(0, 0, 255);">'My first =
+task'</SPAN><SPAN style=3D"color: rgb(51, 153, 51);">,</SPAN> <SPAN =
+style=3D"color: rgb(0, 0, 255);">'created_at'</SPAN> <SPAN =
+style=3D"color: rgb(51, 153, 51);">=3D&gt;</SPAN> <SPAN style=3D"color: =
+rgb(0, 0, 0); font-weight: bold;">new</SPAN> DateTime<SPAN =
+style=3D"color: rgb(51, 153, 51);">,</SPAN> <SPAN style=3D"color: rgb(0, =
+0, 255);">'updated_at'</SPAN> <SPAN style=3D"color: rgb(51, 153, =
+51);">=3D&gt;</SPAN> <SPAN style=3D"color: rgb(0, 0, 0); font-weight: =
+bold;">new</SPAN> DateTime<SPAN style=3D"color: rgb(0, 153, =
+0);">]</SPAN><SPAN style=3D"color: rgb(51, 153, 51);">,</SPAN>=0A=
+            <SPAN style=3D"color: rgb(0, 153, 0);">[</SPAN><SPAN =
+style=3D"color: rgb(0, 0, 255);">'id'</SPAN> <SPAN style=3D"color: =
+rgb(51, 153, 51);">=3D&gt;</SPAN> <SPAN style=3D"color: rgb(204, 102, =
+204);">2</SPAN><SPAN style=3D"color: rgb(51, 153, 51);">,</SPAN> <SPAN =
+style=3D"color: rgb(0, 0, 255);">'name'</SPAN> <SPAN style=3D"color: =
+rgb(51, 153, 51);">=3D&gt;</SPAN> <SPAN style=3D"color: rgb(0, 0, =
+255);">'Task 2'</SPAN><SPAN style=3D"color: rgb(51, 153, 51);">,</SPAN> =
+<SPAN style=3D"color: rgb(0, 0, 255);">'slug'</SPAN> <SPAN =
+style=3D"color: rgb(51, 153, 51);">=3D&gt;</SPAN> <SPAN style=3D"color: =
+rgb(0, 0, 255);">'task-2'</SPAN><SPAN style=3D"color: rgb(51, 153, =
+51);">,</SPAN> <SPAN style=3D"color: rgb(0, 0, =
+255);">'project_id'</SPAN> <SPAN style=3D"color: rgb(51, 153, =
+51);">=3D&gt;</SPAN> <SPAN style=3D"color: rgb(204, 102, =
+204);">1</SPAN><SPAN style=3D"color: rgb(51, 153, 51);">,</SPAN> <SPAN =
+style=3D"color: rgb(0, 0, 255);">'completed'</SPAN> <SPAN =
+style=3D"color: rgb(51, 153, 51);">=3D&gt;</SPAN> <SPAN style=3D"color: =
+rgb(0, 153, 0); font-weight: bold;">false</SPAN><SPAN style=3D"color: =
+rgb(51, 153, 51);">,</SPAN> <SPAN style=3D"color: rgb(0, 0, =
+255);">'description'</SPAN> <SPAN style=3D"color: rgb(51, 153, =
+51);">=3D&gt;</SPAN> <SPAN style=3D"color: rgb(0, 0, 255);">'My first =
+task'</SPAN><SPAN style=3D"color: rgb(51, 153, 51);">,</SPAN> <SPAN =
+style=3D"color: rgb(0, 0, 255);">'created_at'</SPAN> <SPAN =
+style=3D"color: rgb(51, 153, 51);">=3D&gt;</SPAN> <SPAN style=3D"color: =
+rgb(0, 0, 0); font-weight: bold;">new</SPAN> DateTime<SPAN =
+style=3D"color: rgb(51, 153, 51);">,</SPAN> <SPAN style=3D"color: rgb(0, =
+0, 255);">'updated_at'</SPAN> <SPAN style=3D"color: rgb(51, 153, =
+51);">=3D&gt;</SPAN> <SPAN style=3D"color: rgb(0, 0, 0); font-weight: =
+bold;">new</SPAN> DateTime<SPAN style=3D"color: rgb(0, 153, =
+0);">]</SPAN><SPAN style=3D"color: rgb(51, 153, 51);">,</SPAN>=0A=
+            <SPAN style=3D"color: rgb(0, 153, 0);">[</SPAN><SPAN =
+style=3D"color: rgb(0, 0, 255);">'id'</SPAN> <SPAN style=3D"color: =
+rgb(51, 153, 51);">=3D&gt;</SPAN> <SPAN style=3D"color: rgb(204, 102, =
+204);">3</SPAN><SPAN style=3D"color: rgb(51, 153, 51);">,</SPAN> <SPAN =
+style=3D"color: rgb(0, 0, 255);">'name'</SPAN> <SPAN style=3D"color: =
+rgb(51, 153, 51);">=3D&gt;</SPAN> <SPAN style=3D"color: rgb(0, 0, =
+255);">'Task 3'</SPAN><SPAN style=3D"color: rgb(51, 153, 51);">,</SPAN> =
+<SPAN style=3D"color: rgb(0, 0, 255);">'slug'</SPAN> <SPAN =
+style=3D"color: rgb(51, 153, 51);">=3D&gt;</SPAN> <SPAN style=3D"color: =
+rgb(0, 0, 255);">'task-3'</SPAN><SPAN style=3D"color: rgb(51, 153, =
+51);">,</SPAN> <SPAN style=3D"color: rgb(0, 0, =
+255);">'project_id'</SPAN> <SPAN style=3D"color: rgb(51, 153, =
+51);">=3D&gt;</SPAN> <SPAN style=3D"color: rgb(204, 102, =
+204);">1</SPAN><SPAN style=3D"color: rgb(51, 153, 51);">,</SPAN> <SPAN =
+style=3D"color: rgb(0, 0, 255);">'completed'</SPAN> <SPAN =
+style=3D"color: rgb(51, 153, 51);">=3D&gt;</SPAN> <SPAN style=3D"color: =
+rgb(0, 153, 0); font-weight: bold;">false</SPAN><SPAN style=3D"color: =
+rgb(51, 153, 51);">,</SPAN> <SPAN style=3D"color: rgb(0, 0, =
+255);">'description'</SPAN> <SPAN style=3D"color: rgb(51, 153, =
+51);">=3D&gt;</SPAN> <SPAN style=3D"color: rgb(0, 0, 255);">'My first =
+task'</SPAN><SPAN style=3D"color: rgb(51, 153, 51);">,</SPAN> <SPAN =
+style=3D"color: rgb(0, 0, 255);">'created_at'</SPAN> <SPAN =
+style=3D"color: rgb(51, 153, 51);">=3D&gt;</SPAN> <SPAN style=3D"color: =
+rgb(0, 0, 0); font-weight: bold;">new</SPAN> DateTime<SPAN =
+style=3D"color: rgb(51, 153, 51);">,</SPAN> <SPAN style=3D"color: rgb(0, =
+0, 255);">'updated_at'</SPAN> <SPAN style=3D"color: rgb(51, 153, =
+51);">=3D&gt;</SPAN> <SPAN style=3D"color: rgb(0, 0, 0); font-weight: =
+bold;">new</SPAN> DateTime<SPAN style=3D"color: rgb(0, 153, =
+0);">]</SPAN><SPAN style=3D"color: rgb(51, 153, 51);">,</SPAN>=0A=
+            <SPAN style=3D"color: rgb(0, 153, 0);">[</SPAN><SPAN =
+style=3D"color: rgb(0, 0, 255);">'id'</SPAN> <SPAN style=3D"color: =
+rgb(51, 153, 51);">=3D&gt;</SPAN> <SPAN style=3D"color: rgb(204, 102, =
+204);">4</SPAN><SPAN style=3D"color: rgb(51, 153, 51);">,</SPAN> <SPAN =
+style=3D"color: rgb(0, 0, 255);">'name'</SPAN> <SPAN style=3D"color: =
+rgb(51, 153, 51);">=3D&gt;</SPAN> <SPAN style=3D"color: rgb(0, 0, =
+255);">'Task 4'</SPAN><SPAN style=3D"color: rgb(51, 153, 51);">,</SPAN> =
+<SPAN style=3D"color: rgb(0, 0, 255);">'slug'</SPAN> <SPAN =
+style=3D"color: rgb(51, 153, 51);">=3D&gt;</SPAN> <SPAN style=3D"color: =
+rgb(0, 0, 255);">'task-4'</SPAN><SPAN style=3D"color: rgb(51, 153, =
+51);">,</SPAN> <SPAN style=3D"color: rgb(0, 0, =
+255);">'project_id'</SPAN> <SPAN style=3D"color: rgb(51, 153, =
+51);">=3D&gt;</SPAN> <SPAN style=3D"color: rgb(204, 102, =
+204);">1</SPAN><SPAN style=3D"color: rgb(51, 153, 51);">,</SPAN> <SPAN =
+style=3D"color: rgb(0, 0, 255);">'completed'</SPAN> <SPAN =
+style=3D"color: rgb(51, 153, 51);">=3D&gt;</SPAN> <SPAN style=3D"color: =
+rgb(0, 153, 0); font-weight: bold;">true</SPAN><SPAN style=3D"color: =
+rgb(51, 153, 51);">,</SPAN> <SPAN style=3D"color: rgb(0, 0, =
+255);">'description'</SPAN> <SPAN style=3D"color: rgb(51, 153, =
+51);">=3D&gt;</SPAN> <SPAN style=3D"color: rgb(0, 0, 255);">'My second =
+task'</SPAN><SPAN style=3D"color: rgb(51, 153, 51);">,</SPAN> <SPAN =
+style=3D"color: rgb(0, 0, 255);">'created_at'</SPAN> <SPAN =
+style=3D"color: rgb(51, 153, 51);">=3D&gt;</SPAN> <SPAN style=3D"color: =
+rgb(0, 0, 0); font-weight: bold;">new</SPAN> DateTime<SPAN =
+style=3D"color: rgb(51, 153, 51);">,</SPAN> <SPAN style=3D"color: rgb(0, =
+0, 255);">'updated_at'</SPAN> <SPAN style=3D"color: rgb(51, 153, =
+51);">=3D&gt;</SPAN> <SPAN style=3D"color: rgb(0, 0, 0); font-weight: =
+bold;">new</SPAN> DateTime<SPAN style=3D"color: rgb(0, 153, =
+0);">]</SPAN><SPAN style=3D"color: rgb(51, 153, 51);">,</SPAN>=0A=
+            <SPAN style=3D"color: rgb(0, 153, 0);">[</SPAN><SPAN =
+style=3D"color: rgb(0, 0, 255);">'id'</SPAN> <SPAN style=3D"color: =
+rgb(51, 153, 51);">=3D&gt;</SPAN> <SPAN style=3D"color: rgb(204, 102, =
+204);">5</SPAN><SPAN style=3D"color: rgb(51, 153, 51);">,</SPAN> <SPAN =
+style=3D"color: rgb(0, 0, 255);">'name'</SPAN> <SPAN style=3D"color: =
+rgb(51, 153, 51);">=3D&gt;</SPAN> <SPAN style=3D"color: rgb(0, 0, =
+255);">'Task 5'</SPAN><SPAN style=3D"color: rgb(51, 153, 51);">,</SPAN> =
+<SPAN style=3D"color: rgb(0, 0, 255);">'slug'</SPAN> <SPAN =
+style=3D"color: rgb(51, 153, 51);">=3D&gt;</SPAN> <SPAN style=3D"color: =
+rgb(0, 0, 255);">'task-5'</SPAN><SPAN style=3D"color: rgb(51, 153, =
+51);">,</SPAN> <SPAN style=3D"color: rgb(0, 0, =
+255);">'project_id'</SPAN> <SPAN style=3D"color: rgb(51, 153, =
+51);">=3D&gt;</SPAN> <SPAN style=3D"color: rgb(204, 102, =
+204);">1</SPAN><SPAN style=3D"color: rgb(51, 153, 51);">,</SPAN> <SPAN =
+style=3D"color: rgb(0, 0, 255);">'completed'</SPAN> <SPAN =
+style=3D"color: rgb(51, 153, 51);">=3D&gt;</SPAN> <SPAN style=3D"color: =
+rgb(0, 153, 0); font-weight: bold;">true</SPAN><SPAN style=3D"color: =
+rgb(51, 153, 51);">,</SPAN> <SPAN style=3D"color: rgb(0, 0, =
+255);">'description'</SPAN> <SPAN style=3D"color: rgb(51, 153, =
+51);">=3D&gt;</SPAN> <SPAN style=3D"color: rgb(0, 0, 255);">'My third =
+task'</SPAN><SPAN style=3D"color: rgb(51, 153, 51);">,</SPAN> <SPAN =
+style=3D"color: rgb(0, 0, 255);">'created_at'</SPAN> <SPAN =
+style=3D"color: rgb(51, 153, 51);">=3D&gt;</SPAN> <SPAN style=3D"color: =
+rgb(0, 0, 0); font-weight: bold;">new</SPAN> DateTime<SPAN =
+style=3D"color: rgb(51, 153, 51);">,</SPAN> <SPAN style=3D"color: rgb(0, =
+0, 255);">'updated_at'</SPAN> <SPAN style=3D"color: rgb(51, 153, =
+51);">=3D&gt;</SPAN> <SPAN style=3D"color: rgb(0, 0, 0); font-weight: =
+bold;">new</SPAN> DateTime<SPAN style=3D"color: rgb(0, 153, =
+0);">]</SPAN><SPAN style=3D"color: rgb(51, 153, 51);">,</SPAN>=0A=
+            <SPAN style=3D"color: rgb(0, 153, 0);">[</SPAN><SPAN =
+style=3D"color: rgb(0, 0, 255);">'id'</SPAN> <SPAN style=3D"color: =
+rgb(51, 153, 51);">=3D&gt;</SPAN> <SPAN style=3D"color: rgb(204, 102, =
+204);">6</SPAN><SPAN style=3D"color: rgb(51, 153, 51);">,</SPAN> <SPAN =
+style=3D"color: rgb(0, 0, 255);">'name'</SPAN> <SPAN style=3D"color: =
+rgb(51, 153, 51);">=3D&gt;</SPAN> <SPAN style=3D"color: rgb(0, 0, =
+255);">'Task 6'</SPAN><SPAN style=3D"color: rgb(51, 153, 51);">,</SPAN> =
+<SPAN style=3D"color: rgb(0, 0, 255);">'slug'</SPAN> <SPAN =
+style=3D"color: rgb(51, 153, 51);">=3D&gt;</SPAN> <SPAN style=3D"color: =
+rgb(0, 0, 255);">'task-6'</SPAN><SPAN style=3D"color: rgb(51, 153, =
+51);">,</SPAN> <SPAN style=3D"color: rgb(0, 0, =
+255);">'project_id'</SPAN> <SPAN style=3D"color: rgb(51, 153, =
+51);">=3D&gt;</SPAN> <SPAN style=3D"color: rgb(204, 102, =
+204);">2</SPAN><SPAN style=3D"color: rgb(51, 153, 51);">,</SPAN> <SPAN =
+style=3D"color: rgb(0, 0, 255);">'completed'</SPAN> <SPAN =
+style=3D"color: rgb(51, 153, 51);">=3D&gt;</SPAN> <SPAN style=3D"color: =
+rgb(0, 153, 0); font-weight: bold;">true</SPAN><SPAN style=3D"color: =
+rgb(51, 153, 51);">,</SPAN> <SPAN style=3D"color: rgb(0, 0, =
+255);">'description'</SPAN> <SPAN style=3D"color: rgb(51, 153, =
+51);">=3D&gt;</SPAN> <SPAN style=3D"color: rgb(0, 0, 255);">'My fourth =
+task'</SPAN><SPAN style=3D"color: rgb(51, 153, 51);">,</SPAN> <SPAN =
+style=3D"color: rgb(0, 0, 255);">'created_at'</SPAN> <SPAN =
+style=3D"color: rgb(51, 153, 51);">=3D&gt;</SPAN> <SPAN style=3D"color: =
+rgb(0, 0, 0); font-weight: bold;">new</SPAN> DateTime<SPAN =
+style=3D"color: rgb(51, 153, 51);">,</SPAN> <SPAN style=3D"color: rgb(0, =
+0, 255);">'updated_at'</SPAN> <SPAN style=3D"color: rgb(51, 153, =
+51);">=3D&gt;</SPAN> <SPAN style=3D"color: rgb(0, 0, 0); font-weight: =
+bold;">new</SPAN> DateTime<SPAN style=3D"color: rgb(0, 153, =
+0);">]</SPAN><SPAN style=3D"color: rgb(51, 153, 51);">,</SPAN>=0A=
+            <SPAN style=3D"color: rgb(0, 153, 0);">[</SPAN><SPAN =
+style=3D"color: rgb(0, 0, 255);">'id'</SPAN> <SPAN style=3D"color: =
+rgb(51, 153, 51);">=3D&gt;</SPAN> <SPAN style=3D"color: rgb(204, 102, =
+204);">7</SPAN><SPAN style=3D"color: rgb(51, 153, 51);">,</SPAN> <SPAN =
+style=3D"color: rgb(0, 0, 255);">'name'</SPAN> <SPAN style=3D"color: =
+rgb(51, 153, 51);">=3D&gt;</SPAN> <SPAN style=3D"color: rgb(0, 0, =
+255);">'Task 7'</SPAN><SPAN style=3D"color: rgb(51, 153, 51);">,</SPAN> =
+<SPAN style=3D"color: rgb(0, 0, 255);">'slug'</SPAN> <SPAN =
+style=3D"color: rgb(51, 153, 51);">=3D&gt;</SPAN> <SPAN style=3D"color: =
+rgb(0, 0, 255);">'task-7'</SPAN><SPAN style=3D"color: rgb(51, 153, =
+51);">,</SPAN> <SPAN style=3D"color: rgb(0, 0, =
+255);">'project_id'</SPAN> <SPAN style=3D"color: rgb(51, 153, =
+51);">=3D&gt;</SPAN> <SPAN style=3D"color: rgb(204, 102, =
+204);">2</SPAN><SPAN style=3D"color: rgb(51, 153, 51);">,</SPAN> <SPAN =
+style=3D"color: rgb(0, 0, 255);">'completed'</SPAN> <SPAN =
+style=3D"color: rgb(51, 153, 51);">=3D&gt;</SPAN> <SPAN style=3D"color: =
+rgb(0, 153, 0); font-weight: bold;">false</SPAN><SPAN style=3D"color: =
+rgb(51, 153, 51);">,</SPAN> <SPAN style=3D"color: rgb(0, 0, =
+255);">'description'</SPAN> <SPAN style=3D"color: rgb(51, 153, =
+51);">=3D&gt;</SPAN> <SPAN style=3D"color: rgb(0, 0, 255);">'My fifth =
+task'</SPAN><SPAN style=3D"color: rgb(51, 153, 51);">,</SPAN> <SPAN =
+style=3D"color: rgb(0, 0, 255);">'created_at'</SPAN> <SPAN =
+style=3D"color: rgb(51, 153, 51);">=3D&gt;</SPAN> <SPAN style=3D"color: =
+rgb(0, 0, 0); font-weight: bold;">new</SPAN> DateTime<SPAN =
+style=3D"color: rgb(51, 153, 51);">,</SPAN> <SPAN style=3D"color: rgb(0, =
+0, 255);">'updated_at'</SPAN> <SPAN style=3D"color: rgb(51, 153, =
+51);">=3D&gt;</SPAN> <SPAN style=3D"color: rgb(0, 0, 0); font-weight: =
+bold;">new</SPAN> DateTime<SPAN style=3D"color: rgb(0, 153, =
+0);">]</SPAN><SPAN style=3D"color: rgb(51, 153, 51);">,</SPAN>=0A=
+        <SPAN style=3D"color: rgb(0, 153, 0);">)</SPAN><SPAN =
+style=3D"color: rgb(51, 153, 51);">;</SPAN>=0A=
+&nbsp;=0A=
+        <SPAN style=3D"color: rgb(102, 102, 102); font-style: =
+italic;">//// Uncomment the below to run the seeder</SPAN>=0A=
+        DB<SPAN style=3D"color: rgb(51, 153, 51);">::</SPAN><SPAN =
+style=3D"color: rgb(0, 64, 0);">table</SPAN><SPAN style=3D"color: rgb(0, =
+153, 0);">(</SPAN><SPAN style=3D"color: rgb(0, 0, =
+255);">'tasks'</SPAN><SPAN style=3D"color: rgb(0, 153, =
+0);">)</SPAN><SPAN style=3D"color: rgb(51, 153, 51);">-&gt;</SPAN><SPAN =
+style=3D"color: rgb(0, 64, 0);">insert</SPAN><SPAN style=3D"color: =
+rgb(0, 153, 0);">(</SPAN><SPAN style=3D"color: rgb(0, 0, =
+136);">$tasks</SPAN><SPAN style=3D"color: rgb(0, 153, 0);">)</SPAN><SPAN =
+style=3D"color: rgb(51, 153, 51);">;</SPAN>=0A=
+    <SPAN style=3D"color: rgb(0, 153, 0);">}</SPAN>=0A=
+&nbsp;=0A=
+<SPAN style=3D"color: rgb(0, 153, =
+0);">}</SPAN></PRE></TD></TR></TBODY></TABLE></DIV><!-- end from cahe =
+-->=20
+<P>Also don=E2=80=99t forget to add your seed classes to=20
+<EM>/database/seeds/DatabaseSeeder.php</EM>:</P><!-- from cache -->=20
+<DIV class=3D"flyn_syntax">
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD class=3D"line_numbers">
+<PRE>1=0A=
+2=0A=
+3=0A=
+4=0A=
+5=0A=
+6=0A=
+7=0A=
+8=0A=
+9=0A=
+10=0A=
+11=0A=
+12=0A=
+13=0A=
+14=0A=
+15=0A=
+16=0A=
+17=0A=
+18=0A=
+19=0A=
+</PRE></TD>
+    <TD class=3D"code">
+<PRE class=3D"php" style=3D"font-family: monospace;"><SPAN =
+style=3D"color: rgb(0, 0, 0); font-weight: bold;">use</SPAN> =
+Illuminate\Database\Seeder<SPAN style=3D"color: rgb(51, 153, =
+51);">;</SPAN>=0A=
+<SPAN style=3D"color: rgb(0, 0, 0); font-weight: bold;">use</SPAN> =
+Illuminate\Database\Eloquent\Model<SPAN style=3D"color: rgb(51, 153, =
+51);">;</SPAN>=0A=
+&nbsp;=0A=
+<SPAN style=3D"color: rgb(0, 0, 0); font-weight: bold;">class</SPAN> =
+DatabaseSeeder <SPAN style=3D"color: rgb(0, 0, 0); font-weight: =
+bold;">extends</SPAN> Seeder <SPAN style=3D"color: rgb(0, 153, =
+0);">{</SPAN>=0A=
+&nbsp;=0A=
+	<SPAN style=3D"color: rgb(0, 153, 51); font-style: italic;">/**</SPAN>=0A=
+<SPAN style=3D"color: rgb(0, 153, 51); font-style: italic;">	 * Run the =
+database seeds.</SPAN>=0A=
+<SPAN style=3D"color: rgb(0, 153, 51); font-style: italic;">	 *</SPAN>=0A=
+<SPAN style=3D"color: rgb(0, 153, 51); font-style: italic;">	 * @return =
+void</SPAN>=0A=
+<SPAN style=3D"color: rgb(0, 153, 51); font-style: italic;">	 */</SPAN>=0A=
+	<SPAN style=3D"color: rgb(0, 0, 0); font-weight: bold;">public</SPAN> =
+<SPAN style=3D"color: rgb(0, 0, 0); font-weight: bold;">function</SPAN> =
+run<SPAN style=3D"color: rgb(0, 153, 0);">(</SPAN><SPAN style=3D"color: =
+rgb(0, 153, 0);">)</SPAN>=0A=
+	<SPAN style=3D"color: rgb(0, 153, 0);">{</SPAN>=0A=
+		Model<SPAN style=3D"color: rgb(51, 153, 51);">::</SPAN><SPAN =
+style=3D"color: rgb(0, 64, 0);">unguard</SPAN><SPAN style=3D"color: =
+rgb(0, 153, 0);">(</SPAN><SPAN style=3D"color: rgb(0, 153, =
+0);">)</SPAN><SPAN style=3D"color: rgb(51, 153, 51);">;</SPAN>=0A=
+&nbsp;=0A=
+<SPAN style=3D"display: block; background-color: rgb(255, 255, 204);">		=
+<SPAN style=3D"color: rgb(0, 0, 136);">$this</SPAN><SPAN style=3D"color: =
+rgb(51, 153, 51);">-&gt;</SPAN><SPAN style=3D"color: rgb(0, 64, =
+0);">call</SPAN><SPAN style=3D"color: rgb(0, 153, 0);">(</SPAN><SPAN =
+style=3D"color: rgb(0, 0, 255);">'ProjectsTableSeeder'</SPAN><SPAN =
+style=3D"color: rgb(0, 153, 0);">)</SPAN><SPAN style=3D"color: rgb(51, =
+153, 51);">;</SPAN></SPAN><SPAN style=3D"display: block; =
+background-color: rgb(255, 255, 204);">		<SPAN style=3D"color: rgb(0, 0, =
+136);">$this</SPAN><SPAN style=3D"color: rgb(51, 153, =
+51);">-&gt;</SPAN><SPAN style=3D"color: rgb(0, 64, 0);">call</SPAN><SPAN =
+style=3D"color: rgb(0, 153, 0);">(</SPAN><SPAN style=3D"color: rgb(0, 0, =
+255);">'TasksTableSeeder'</SPAN><SPAN style=3D"color: rgb(0, 153, =
+0);">)</SPAN><SPAN style=3D"color: rgb(51, 153, 51);">;</SPAN></SPAN>	=
+<SPAN style=3D"color: rgb(0, 153, 0);">}</SPAN>=0A=
+&nbsp;=0A=
+<SPAN style=3D"color: rgb(0, 153, =
+0);">}</SPAN></PRE></TD></TR></TBODY></TABLE></DIV><!-- end from cahe =
+-->=20
+<P>Now we seed:</P><!-- from cache -->=20
+<DIV class=3D"flyn_syntax">
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD class=3D"line_numbers">
+<PRE>1=0A=
+</PRE></TD>
+    <TD class=3D"code">
+<PRE class=3D"bash" style=3D"font-family: monospace;">composer =
+dump-autoload</PRE></TD></TR></TBODY></TABLE></DIV><!-- end from cahe =
+-->=20
+<P>then</P><!-- from cache -->=20
+<DIV class=3D"flyn_syntax">
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD class=3D"line_numbers">
+<PRE>1=0A=
+2=0A=
+3=0A=
+</PRE></TD>
+    <TD class=3D"code">
+<PRE class=3D"bash" style=3D"font-family: monospace;">php artisan db:seed=0A=
+<SPAN style=3D"color: rgb(102, 102, 102); font-style: italic;"># =
+or</SPAN>=0A=
+php artisan migrate:refresh <SPAN style=3D"color: rgb(102, 0, =
+51);">--seed</SPAN></PRE></TD></TR></TBODY></TABLE></DIV><!-- end from =
+cahe -->=20
+<P>Your database should now be seeded!</P><!-- from cache -->=20
+<DIV class=3D"flyn_syntax">
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD class=3D"line_numbers">
+<PRE>1=0A=
+2=0A=
+3=0A=
+4=0A=
+5=0A=
+6=0A=
+7=0A=
+8=0A=
+9=0A=
+10=0A=
+11=0A=
+12=0A=
+13=0A=
+14=0A=
+15=0A=
+16=0A=
+17=0A=
+18=0A=
+19=0A=
+20=0A=
+21=0A=
+</PRE></TD>
+    <TD class=3D"code">
+<PRE class=3D"text" style=3D"font-family: monospace;">mysql&gt; select * =
+from projects;=0A=
++----+-----------+-----------+---------------------+---------------------=
++=0A=
+| id | name      | slug      | created_at          | updated_at          =
+|=0A=
++----+-----------+-----------+---------------------+---------------------=
++=0A=
+|  1 | Project 1 | project-1 | 2015-02-05 01:25:43 | 2015-02-05 01:25:43 =
+|=0A=
+|  2 | Project 2 | project-2 | 2015-02-05 01:25:43 | 2015-02-05 01:25:43 =
+|=0A=
+|  3 | Project 3 | project-3 | 2015-02-05 01:25:43 | 2015-02-05 01:25:43 =
+|=0A=
++----+-----------+-----------+---------------------+---------------------=
++=0A=
+&nbsp;=0A=
+mysql&gt; select * from tasks;=0A=
++----+------------+--------+--------+-----------+----------------+-------=
+--------------+---------------------+=0A=
+| id | project_id | name   | slug   | completed | description    | =
+created_at          | updated_at          |=0A=
++----+------------+--------+--------+-----------+----------------+-------=
+--------------+---------------------+=0A=
+|  1 |          1 | Task 1 | task-1 |         0 | My first task  | =
+2015-02-05 01:25:43 | 2015-02-05 01:25:43 |=0A=
+|  2 |          1 | Task 2 | task-2 |         0 | My first task  | =
+2015-02-05 01:25:43 | 2015-02-05 01:25:43 |=0A=
+|  3 |          1 | Task 3 | task-3 |         0 | My first task  | =
+2015-02-05 01:25:43 | 2015-02-05 01:25:43 |=0A=
+|  4 |          1 | Task 4 | task-4 |         1 | My second task | =
+2015-02-05 01:25:43 | 2015-02-05 01:25:43 |=0A=
+|  5 |          1 | Task 5 | task-5 |         1 | My third task  | =
+2015-02-05 01:25:43 | 2015-02-05 01:25:43 |=0A=
+|  6 |          2 | Task 6 | task-6 |         1 | My fourth task | =
+2015-02-05 01:25:43 | 2015-02-05 01:25:43 |=0A=
+|  7 |          2 | Task 7 | task-7 |         0 | My fifth task  | =
+2015-02-05 01:25:43 | 2015-02-05 01:25:43 |=0A=
++----+------------+--------+--------+-----------+----------------+-------=
+--------------+---------------------+</PRE></TD></TR></TBODY></TABLE></DI=
+V><!-- end from cahe -->=20
+<P>&nbsp;</P>
+<H3>Models</H3>
+<P>To work with our&nbsp;<EM>projects</EM> and&nbsp;<EM>tasks</EM> =
+tables we=20
+need equivalent Models so create them now:</P><!-- from cache -->=20
+<DIV class=3D"flyn_syntax">
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD class=3D"line_numbers">
+<PRE>1=0A=
+2=0A=
+</PRE></TD>
+    <TD class=3D"code">
+<PRE class=3D"bash" style=3D"font-family: monospace;">php artisan =
+make:model Project=0A=
+php artisan make:model Task</PRE></TD></TR></TBODY></TABLE></DIV><!-- =
+end from cahe -->=20
+<P>That was easy!</P>
+<P>&nbsp;</P>
+<H3>Artisan =E2=80=93 Tinker</H3>
+<P>Now that we have information in the database it would be a great time =
+to=20
+learn about one of artisan=E2=80=99s handy features =E2=80=93 =
+<I>tinker</I>. As explained in the=20
+informative article <A title=3D"Tinkering with Tinker Like an Artisan | =
+Developing in Laravel"=20
+href=3D"http://blog.enge.me/post/tinkering-with-tinker-like-an-artisan" =
+target=3D"_blank">Tinkering=20
+with Tinker Like an Artisan</A>, tinker provides a command line for =
+interacting=20
+with your Laravel installation. As an example, let=E2=80=99s use it to =
+retrieve the=20
+number of projects currently in the database:</P><!-- from cache -->=20
+<DIV class=3D"flyn_syntax">
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD class=3D"code">
+<PRE class=3D"text" style=3D"font-family: monospace;">$ php artisan =
+tinker=0A=
+&gt;App\Project::count();    =0A=
+3=0A=
+&gt;App\Task::count();=0A=
+7</PRE></TD></TR></TBODY></TABLE></DIV><!-- end from cahe -->=20
+<P>As you can see tinker has the potential to be quite useful. =
+I=E2=80=99ll be=20
+referencing it a few times in this tutorial.</P>
+<P>&nbsp;</P>
+<H3>Controllers</H3>
+<DIV class=3D"alert info">Further Details: See&nbsp;<A title=3D"A Gentle =
+Introduction to Routing, Controllers, and Views - Laravel 5 =
+Fundamentals"=20
+href=3D"https://laracasts.com/series/laravel-5-fundamentals/episodes/3" =
+target=3D"_blank">A=20
+Gentle Introduction to Routing, Controllers, and Views</A></DIV>
+<P>We=E2=80=99ve gotten to the point now where we can start hitting the =
+browser. To do=20
+that we need to set up some Controllers and Routes to point to them. =
+First up=20
+the controllers:</P><!-- from cache -->=20
+<DIV class=3D"flyn_syntax">
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD class=3D"line_numbers">
+<PRE>1=0A=
+2=0A=
+</PRE></TD>
+    <TD class=3D"code">
+<PRE class=3D"bash" style=3D"font-family: monospace;">php artisan =
+make:controller ProjectsController=0A=
+php artisan make:controller =
+TasksController</PRE></TD></TR></TBODY></TABLE></DIV><!-- end from cahe =
+-->=20
+<P>&nbsp;</P>
+<H3>Nested Resources</H3>
+<DIV class=3D"alert info">Further Details: See&nbsp;<A title=3D"Tuts+ =
+Premium Course: What&amp;#8217;s New in Laravel 4 - Nested Resources"=20
+href=3D"https://tutsplus.com/lesson/nested-resources/" =
+target=3D"_blank">Nested=20
+Resources</A><A title=3D"A Gentle Introduction to Routing, Controllers, =
+and Views - Laravel 5 Fundamentals"=20
+href=3D"https://laracasts.com/series/laravel-5-fundamentals/episodes/3" =
+target=3D"_blank"></A></DIV>
+<P>Begin by adding the <EM>Project</EM> and <EM>Task</EM> resources to=20
+<EM>/app/Http/routes.php</EM>:</P><!-- from cache -->=20
+<DIV class=3D"flyn_syntax">
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD class=3D"line_numbers">
+<PRE>1=0A=
+2=0A=
+3=0A=
+4=0A=
+5=0A=
+6=0A=
+7=0A=
+8=0A=
+9=0A=
+10=0A=
+11=0A=
+</PRE></TD>
+    <TD class=3D"code">
+<PRE class=3D"php" style=3D"font-family: monospace;">Route<SPAN =
+style=3D"color: rgb(51, 153, 51);">::</SPAN><SPAN style=3D"color: rgb(0, =
+64, 0);">get</SPAN><SPAN style=3D"color: rgb(0, 153, 0);">(</SPAN><SPAN =
+style=3D"color: rgb(0, 0, 255);">'/'</SPAN><SPAN style=3D"color: rgb(51, =
+153, 51);">,</SPAN> <SPAN style=3D"color: rgb(0, 0, =
+255);">'WelcomeController@index'</SPAN><SPAN style=3D"color: rgb(0, 153, =
+0);">)</SPAN><SPAN style=3D"color: rgb(51, 153, 51);">;</SPAN>=0A=
+&nbsp;=0A=
+<SPAN style=3D"color: rgb(102, 102, 102); font-style: =
+italic;">//Route::get('home', 'HomeController@index');</SPAN>=0A=
+<SPAN style=3D"color: rgb(102, 102, 102); font-style: italic;">//</SPAN>=0A=
+<SPAN style=3D"color: rgb(102, 102, 102); font-style: =
+italic;">//Route::controllers([</SPAN>=0A=
+<SPAN style=3D"color: rgb(102, 102, 102); font-style: italic;">//	'auth' =
+=3D&gt; 'Auth\AuthController',</SPAN>=0A=
+<SPAN style=3D"color: rgb(102, 102, 102); font-style: italic;">//	=
+'password' =3D&gt; 'Auth\PasswordController',</SPAN>=0A=
+<SPAN style=3D"color: rgb(102, 102, 102); font-style: =
+italic;">//]);</SPAN>=0A=
+&nbsp;=0A=
+<SPAN style=3D"display: block; background-color: rgb(255, 255, =
+204);">Route<SPAN style=3D"color: rgb(51, 153, 51);">::</SPAN><SPAN =
+style=3D"color: rgb(0, 64, 0);">resource</SPAN><SPAN style=3D"color: =
+rgb(0, 153, 0);">(</SPAN><SPAN style=3D"color: rgb(0, 0, =
+255);">'projects'</SPAN><SPAN style=3D"color: rgb(51, 153, =
+51);">,</SPAN> <SPAN style=3D"color: rgb(0, 0, =
+255);">'ProjectsController'</SPAN><SPAN style=3D"color: rgb(0, 153, =
+0);">)</SPAN><SPAN style=3D"color: rgb(51, 153, =
+51);">;</SPAN></SPAN><SPAN style=3D"display: block; background-color: =
+rgb(255, 255, 204);">Route<SPAN style=3D"color: rgb(51, 153, =
+51);">::</SPAN><SPAN style=3D"color: rgb(0, 64, =
+0);">resource</SPAN><SPAN style=3D"color: rgb(0, 153, 0);">(</SPAN><SPAN =
+style=3D"color: rgb(0, 0, 255);">'tasks'</SPAN><SPAN style=3D"color: =
+rgb(51, 153, 51);">,</SPAN> <SPAN style=3D"color: rgb(0, 0, =
+255);">'TasksController'</SPAN><SPAN style=3D"color: rgb(0, 153, =
+0);">)</SPAN><SPAN style=3D"color: rgb(51, 153, =
+51);">;</SPAN></SPAN></PRE></TD></TR></TBODY></TABLE></DIV><!-- end from =
+cahe -->=20
+<P>Let=E2=80=99s now look at a neat little artisan feature =E2=80=93 =
+<I>route:list</I>. In your=20
+command line enter the following:</P><!-- from cache -->=20
+<DIV class=3D"flyn_syntax">
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD class=3D"line_numbers">
+<PRE>1=0A=
+2=0A=
+3=0A=
+4=0A=
+5=0A=
+6=0A=
+7=0A=
+8=0A=
+9=0A=
+10=0A=
+11=0A=
+12=0A=
+13=0A=
+14=0A=
+15=0A=
+16=0A=
+17=0A=
+18=0A=
+19=0A=
+20=0A=
+21=0A=
+22=0A=
+</PRE></TD>
+    <TD class=3D"code">
+<PRE class=3D"text" style=3D"font-family: monospace;">php artisan =
+route:list=0A=
++--------+----------+--------------------------+------------------+------=
+-------------------------------------------+------------+=0A=
+| Domain | Method   | URI                      | Name             | =
+Action                                          | Middleware |=0A=
++--------+----------+--------------------------+------------------+------=
+-------------------------------------------+------------+=0A=
+|        | GET|HEAD | /                        |                  | =
+App\Http\Controllers\WelcomeController@index    |            |=0A=
+|        | GET|HEAD | projects                 | projects.index   | =
+App\Http\Controllers\ProjectsController@index   |            |=0A=
+|        | GET|HEAD | projects/create          | projects.create  | =
+App\Http\Controllers\ProjectsController@create  |            |=0A=
+|        | POST     | projects                 | projects.store   | =
+App\Http\Controllers\ProjectsController@store   |            |=0A=
+|        | GET|HEAD | projects/{projects}      | projects.show    | =
+App\Http\Controllers\ProjectsController@show    |            |=0A=
+|        | GET|HEAD | projects/{projects}/edit | projects.edit    | =
+App\Http\Controllers\ProjectsController@edit    |            |=0A=
+|        | PUT      | projects/{projects}      | projects.update  | =
+App\Http\Controllers\ProjectsController@update  |            |=0A=
+|        | PATCH    | projects/{projects}      |                  | =
+App\Http\Controllers\ProjectsController@update  |            |=0A=
+|        | DELETE   | projects/{projects}      | projects.destroy | =
+App\Http\Controllers\ProjectsController@destroy |            |=0A=
+|        | GET|HEAD | tasks                    | tasks.index      | =
+App\Http\Controllers\TasksController@index      |            |=0A=
+|        | GET|HEAD | tasks/create             | tasks.create     | =
+App\Http\Controllers\TasksController@create     |            |=0A=
+|        | POST     | tasks                    | tasks.store      | =
+App\Http\Controllers\TasksController@store      |            |=0A=
+|        | GET|HEAD | tasks/{tasks}            | tasks.show       | =
+App\Http\Controllers\TasksController@show       |            |=0A=
+|        | GET|HEAD | tasks/{tasks}/edit       | tasks.edit       | =
+App\Http\Controllers\TasksController@edit       |            |=0A=
+|        | PUT      | tasks/{tasks}            | tasks.update     | =
+App\Http\Controllers\TasksController@update     |            |=0A=
+|        | PATCH    | tasks/{tasks}            |                  | =
+App\Http\Controllers\TasksController@update     |            |=0A=
+|        | DELETE   | tasks/{tasks}            | tasks.destroy    | =
+App\Http\Controllers\TasksController@destroy    |            |=0A=
++--------+----------+--------------------------+------------------+------=
+-------------------------------------------+------------+</PRE></TD></TR>=
+</TBODY></TABLE></DIV><!-- end from cahe -->=20
+<P>You=E2=80=99ll notice that both <I>projects</I> and <I>tasks</I> are =
+top level urls.=20
+In our to-do app, <I>tasks</I> belong to <I>projects</I> though, so it =
+makes=20
+sense for URLs to be nested more like <EM>/projects/1/tasks/3</EM> =
+instead of=20
+just <EM>/tasks/3</EM>. This can be accomplished using something called =
+nested=20
+resources. As with most things in Laravel, the modification required is =
+quick=20
+and simple. Open <EM>/app/Http/routes.php</EM> and make the following=20
+change:</P><!-- from cache -->=20
+<DIV class=3D"flyn_syntax">
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD class=3D"line_numbers">
+<PRE>1=0A=
+2=0A=
+</PRE></TD>
+    <TD class=3D"code">
+<PRE class=3D"php" style=3D"font-family: monospace;"><SPAN =
+style=3D"color: rgb(102, 102, 102); font-style: italic;">// =
+Route::resource('tasks', 'TasksController');</SPAN>=0A=
+Route<SPAN style=3D"color: rgb(51, 153, 51);">::</SPAN><SPAN =
+style=3D"color: rgb(0, 64, 0);">resource</SPAN><SPAN style=3D"color: =
+rgb(0, 153, 0);">(</SPAN><SPAN style=3D"color: rgb(0, 0, =
+255);">'projects.tasks'</SPAN><SPAN style=3D"color: rgb(51, 153, =
+51);">,</SPAN> <SPAN style=3D"color: rgb(0, 0, =
+255);">'TasksController'</SPAN><SPAN style=3D"color: rgb(0, 153, =
+0);">)</SPAN><SPAN style=3D"color: rgb(51, 153, =
+51);">;</SPAN></PRE></TD></TR></TBODY></TABLE></DIV><!-- end from cahe =
+-->=20
+<P>That=E2=80=99s it. Do another <EM>php artisan =
+route:list</EM>&nbsp;and see what you=20
+have now:</P><!-- from cache -->=20
+<DIV class=3D"flyn_syntax">
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD class=3D"line_numbers">
+<PRE>1=0A=
+2=0A=
+3=0A=
+4=0A=
+5=0A=
+6=0A=
+7=0A=
+8=0A=
+9=0A=
+10=0A=
+11=0A=
+12=0A=
+13=0A=
+14=0A=
+15=0A=
+16=0A=
+17=0A=
+18=0A=
+19=0A=
+20=0A=
+21=0A=
+22=0A=
+</PRE></TD>
+    <TD class=3D"code">
+<PRE class=3D"text" style=3D"font-family: monospace;">php artisan =
+route:list=0A=
++--------+----------+----------------------------------------+-----------=
+-------------+-------------------------------------------------+---------=
+---+=0A=
+| Domain | Method   | URI                                    | Name      =
+             | Action                                          | =
+Middleware |=0A=
++--------+----------+----------------------------------------+-----------=
+-------------+-------------------------------------------------+---------=
+---+=0A=
+|        | GET|HEAD | /                                      |           =
+             | App\Http\Controllers\WelcomeController@index    |         =
+   |=0A=
+|        | GET|HEAD | projects                               | =
+projects.index         | App\Http\Controllers\ProjectsController@index   =
+|            |=0A=
+|        | GET|HEAD | projects/create                        | =
+projects.create        | App\Http\Controllers\ProjectsController@create  =
+|            |=0A=
+|        | POST     | projects                               | =
+projects.store         | App\Http\Controllers\ProjectsController@store   =
+|            |=0A=
+|        | GET|HEAD | projects/{projects}                    | =
+projects.show          | App\Http\Controllers\ProjectsController@show    =
+|            |=0A=
+|        | GET|HEAD | projects/{projects}/edit               | =
+projects.edit          | App\Http\Controllers\ProjectsController@edit    =
+|            |=0A=
+|        | PUT      | projects/{projects}                    | =
+projects.update        | App\Http\Controllers\ProjectsController@update  =
+|            |=0A=
+|        | PATCH    | projects/{projects}                    |           =
+             | App\Http\Controllers\ProjectsController@update  |         =
+   |=0A=
+|        | DELETE   | projects/{projects}                    | =
+projects.destroy       | App\Http\Controllers\ProjectsController@destroy =
+|            |=0A=
+|        | GET|HEAD | projects/{projects}/tasks              | =
+projects.tasks.index   | App\Http\Controllers\TasksController@index      =
+|            |=0A=
+|        | GET|HEAD | projects/{projects}/tasks/create       | =
+projects.tasks.create  | App\Http\Controllers\TasksController@create     =
+|            |=0A=
+|        | POST     | projects/{projects}/tasks              | =
+projects.tasks.store   | App\Http\Controllers\TasksController@store      =
+|            |=0A=
+|        | GET|HEAD | projects/{projects}/tasks/{tasks}      | =
+projects.tasks.show    | App\Http\Controllers\TasksController@show       =
+|            |=0A=
+|        | GET|HEAD | projects/{projects}/tasks/{tasks}/edit | =
+projects.tasks.edit    | App\Http\Controllers\TasksController@edit       =
+|            |=0A=
+|        | PUT      | projects/{projects}/tasks/{tasks}      | =
+projects.tasks.update  | App\Http\Controllers\TasksController@update     =
+|            |=0A=
+|        | PATCH    | projects/{projects}/tasks/{tasks}      |           =
+             | App\Http\Controllers\TasksController@update     |         =
+   |=0A=
+|        | DELETE   | projects/{projects}/tasks/{tasks}      | =
+projects.tasks.destroy | App\Http\Controllers\TasksController@destroy    =
+|            |=0A=
++--------+----------+----------------------------------------+-----------=
+-------------+-------------------------------------------------+---------=
+---+</PRE></TD></TR></TBODY></TABLE></DIV><!-- end from cahe -->=20
+<P>&nbsp;</P>
+<H3>Setting Slug-based URLs</H3>
+<P>We=E2=80=99ve almost got our routes perfect however in their current =
+state we=E2=80=99ll have=20
+URLs like <EM>/projects/1/tasks/2</EM>. It would be much better for our =
+visitors=20
+if the model IDs were replaced with their respective =
+<I>slug</I>&nbsp;fields=20
+instead. So we=E2=80=99d get for example=20
+<I>/projects/my-first-project/tasks/buy-milk</I>.</P>
+<P>Open <I>/app/Http/routes.php</I>&nbsp;and drop the following =
+in:</P><!-- from cache -->=20
+<DIV class=3D"flyn_syntax">
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD class=3D"line_numbers">
+<PRE>1=0A=
+2=0A=
+3=0A=
+4=0A=
+5=0A=
+6=0A=
+</PRE></TD>
+    <TD class=3D"code">
+<PRE class=3D"php" style=3D"font-family: monospace;">Route<SPAN =
+style=3D"color: rgb(51, 153, 51);">::</SPAN><SPAN style=3D"color: rgb(0, =
+64, 0);">bind</SPAN><SPAN style=3D"color: rgb(0, 153, 0);">(</SPAN><SPAN =
+style=3D"color: rgb(0, 0, 255);">'tasks'</SPAN><SPAN style=3D"color: =
+rgb(51, 153, 51);">,</SPAN> <SPAN style=3D"color: rgb(0, 0, 0); =
+font-weight: bold;">function</SPAN><SPAN style=3D"color: rgb(0, 153, =
+0);">(</SPAN><SPAN style=3D"color: rgb(0, 0, 136);">$value</SPAN><SPAN =
+style=3D"color: rgb(51, 153, 51);">,</SPAN> <SPAN style=3D"color: rgb(0, =
+0, 136);">$route</SPAN><SPAN style=3D"color: rgb(0, 153, 0);">)</SPAN> =
+<SPAN style=3D"color: rgb(0, 153, 0);">{</SPAN>=0A=
+	<SPAN style=3D"color: rgb(177, 177, 0);">return</SPAN> App\Task<SPAN =
+style=3D"color: rgb(51, 153, 51);">::</SPAN><SPAN style=3D"color: rgb(0, =
+64, 0);">whereSlug</SPAN><SPAN style=3D"color: rgb(0, 153, =
+0);">(</SPAN><SPAN style=3D"color: rgb(0, 0, 136);">$value</SPAN><SPAN =
+style=3D"color: rgb(0, 153, 0);">)</SPAN><SPAN style=3D"color: rgb(51, =
+153, 51);">-&gt;</SPAN><SPAN style=3D"color: rgb(0, 64, =
+0);">first</SPAN><SPAN style=3D"color: rgb(0, 153, 0);">(</SPAN><SPAN =
+style=3D"color: rgb(0, 153, 0);">)</SPAN><SPAN style=3D"color: rgb(51, =
+153, 51);">;</SPAN>=0A=
+<SPAN style=3D"color: rgb(0, 153, 0);">}</SPAN><SPAN style=3D"color: =
+rgb(0, 153, 0);">)</SPAN><SPAN style=3D"color: rgb(51, 153, =
+51);">;</SPAN>=0A=
+Route<SPAN style=3D"color: rgb(51, 153, 51);">::</SPAN><SPAN =
+style=3D"color: rgb(0, 64, 0);">bind</SPAN><SPAN style=3D"color: rgb(0, =
+153, 0);">(</SPAN><SPAN style=3D"color: rgb(0, 0, =
+255);">'projects'</SPAN><SPAN style=3D"color: rgb(51, 153, =
+51);">,</SPAN> <SPAN style=3D"color: rgb(0, 0, 0); font-weight: =
+bold;">function</SPAN><SPAN style=3D"color: rgb(0, 153, =
+0);">(</SPAN><SPAN style=3D"color: rgb(0, 0, 136);">$value</SPAN><SPAN =
+style=3D"color: rgb(51, 153, 51);">,</SPAN> <SPAN style=3D"color: rgb(0, =
+0, 136);">$route</SPAN><SPAN style=3D"color: rgb(0, 153, 0);">)</SPAN> =
+<SPAN style=3D"color: rgb(0, 153, 0);">{</SPAN>=0A=
+	<SPAN style=3D"color: rgb(177, 177, 0);">return</SPAN> App\Project<SPAN =
+style=3D"color: rgb(51, 153, 51);">::</SPAN><SPAN style=3D"color: rgb(0, =
+64, 0);">whereSlug</SPAN><SPAN style=3D"color: rgb(0, 153, =
+0);">(</SPAN><SPAN style=3D"color: rgb(0, 0, 136);">$value</SPAN><SPAN =
+style=3D"color: rgb(0, 153, 0);">)</SPAN><SPAN style=3D"color: rgb(51, =
+153, 51);">-&gt;</SPAN><SPAN style=3D"color: rgb(0, 64, =
+0);">first</SPAN><SPAN style=3D"color: rgb(0, 153, 0);">(</SPAN><SPAN =
+style=3D"color: rgb(0, 153, 0);">)</SPAN><SPAN style=3D"color: rgb(51, =
+153, 51);">;</SPAN>=0A=
+<SPAN style=3D"color: rgb(0, 153, 0);">}</SPAN><SPAN style=3D"color: =
+rgb(0, 153, 0);">)</SPAN><SPAN style=3D"color: rgb(51, 153, =
+51);">;</SPAN></PRE></TD></TR></TBODY></TABLE></DIV><!-- end from cahe =
+-->=20
+<P>the above will override the default behavior for=20
+the&nbsp;<I>tasks</I>&nbsp;and <I>projects</I>&nbsp;wildcards in <I>php =
+artisan=20
+routes.</I></P>
+<P>&nbsp;</P>
+<H3>Conclusion</H3>
+<P>Today we:</P>
+<UL>
+  <LI>installed and configured Laravel</LI>
+  <LI>created two resources</LI>
+  <LI>set up our migrations</LI>
+  <LI>added some data seeds</LI>
+  <LI>configured our URL structure</LI></UL>
+<P>We laid the groundwork for the next lesson by creating all the =
+components=20
+required for the frontend to function. We now have data in our database =
+and=20
+routes to hit. In the next lesson we=E2=80=99ll get started on the =
+frontend of the=20
+site!</P>
+<P>&nbsp;</P>
+<DIV class=3D"crp_related" id=3D"crp_related">
+<H3>Related Posts:</H3>
+<UL>
+  <LI><A class=3D"crp_title" =
+href=3D"https://www.flynsarmy.com/2013/12/creating-a-basic-todo-applicati=
+on-with-laravel-4-part-1/">Creating=20
+  a Basic ToDo Application With Laravel 4 =E2=80=93=E2=80=A6</A></LI>
+  <LI><A class=3D"crp_title" =
+href=3D"https://www.flynsarmy.com/2013/12/creating-a-basic-todo-applicati=
+on-with-laravel-4-part-2/">Creating=20
+  a Basic ToDo Application With Laravel 4 =E2=80=93=E2=80=A6</A></LI>
+  <LI><A class=3D"crp_title" =
+href=3D"https://www.flynsarmy.com/2013/12/creating-a-basic-todo-applicati=
+on-with-laravel-4-part-3/">Creating=20
+  a Basic ToDo Application With Laravel 4 =E2=80=93=E2=80=A6</A></LI>
+  <LI><A class=3D"crp_title" =
+href=3D"https://www.flynsarmy.com/2013/12/creating-a-basic-todo-applicati=
+on-with-laravel-4-part-4/">Creating=20
+  a Basic ToDo Application With Laravel 4 =E2=80=93=E2=80=A6</A></LI>
+  <LI><A class=3D"crp_title" =
+href=3D"https://www.flynsarmy.com/2013/03/get-mysql-table-sizes/">Get=20
+  MySQL Table Sizes</A></LI></UL>
+<DIV style=3D"clear: both;"></DIV></DIV></DIV></DIV>
+<DIV class=3D"social post_aside">
+<H3>Share This</H3>
+<P>If you have enjoyed this entry, please feel free to share it using =
+one of the=20
+following social sites</P>
+<UL>
+  <LI><A title=3D"Tweet This" class=3D"twitter" =
+href=3D"https://twitter.com/share?original_referer=3Dhttps://www.flynsarm=
+y.com/2015/02/creating-a-basic-todo-application-in-laravel-5-part-1/&amp;=
+source=3Dtweetbutton&amp;text=3DCreating a Basic ToDo Application in =
+Laravel 5 =E2=80=93 Part =
+1&amp;url=3Dhttps://www.flynsarmy.com/2015/02/creating-a-basic-todo-appli=
+cation-in-laravel-5-part-1/&amp;via=3Dflynsarmy"=20
+  target=3D"_blank"><SPAN class=3D"icon"></SPAN>				Twitter			 </A></LI>
+  <LI><A title=3D"Send to Delicious" class=3D"delicious" =
+href=3D"http://del.icio.us/post?url=3Dhttps://www.flynsarmy.com/2015/02/c=
+reating-a-basic-todo-application-in-laravel-5-part-1/&amp;titleCreating =
+a Basic ToDo Application in Laravel 5 =E2=80=93 Part 1"=20
+  target=3D"_blank"><SPAN class=3D"icon"></SPAN>				Delicious			 =
+</A></LI>
+  <LI><A title=3D"Send to Reddit" class=3D"reddit" =
+href=3D"http://www.reddit.com/submit?url=3Dhttps://www.flynsarmy.com/2015=
+/02/creating-a-basic-todo-application-in-laravel-5-part-1/&amp;title=3DCr=
+eating a Basic ToDo Application in Laravel 5 =E2=80=93 Part 1"=20
+  target=3D"_blank"><SPAN class=3D"icon"></SPAN>				Reddit			 </A></LI>
+  <LI><A title=3D"Digg This" class=3D"digg" =
+href=3D"http://digg.com/submit?phase=3D2&amp;url=3Dhttps://www.flynsarmy.=
+com/2015/02/creating-a-basic-todo-application-in-laravel-5-part-1/&amp;ti=
+tle=3DCreating a Basic ToDo Application in Laravel 5 =E2=80=93 Part 1"=20
+  target=3D"_blank"><SPAN class=3D"icon"></SPAN>				Digg			 </A></LI>
+  <LI><A title=3D"Send to StumbleUpon" class=3D"stumbleupon" =
+href=3D"http://www.stumbleupon.com/submit?url=3Dhttps://www.flynsarmy.com=
+/2015/02/creating-a-basic-todo-application-in-laravel-5-part-1/&amp;title=
+=3DCreating a Basic ToDo Application in Laravel 5 =E2=80=93 Part 1"=20
+  target=3D"_blank"><SPAN class=3D"icon"></SPAN>				StumbleUpon			 =
+</A></LI></UL>
+<DIV class=3D"clear"></DIV></DIV>
+<DIV class=3D"donate post_aside">
+<H3>Donate</H3>
+<P>Was this post helpful? Donate and keep a developer fed.</P>
+<DIV align=3D"center">
+<FORM class=3D"paypal" action=3D"https://www.paypal.com/cgi-bin/webscr" =
+method=3D"post"=20
+target=3D"_top"><INPUT name=3D"cmd" type=3D"hidden" value=3D"_s-xclick">	=
+		 <INPUT name=3D"encrypted" type=3D"hidden" value=3D"-----BEGIN =
+PKCS7-----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3D-----END =
+PKCS7-----&#10;&#9;&#9;&#9;">
+			 <INPUT name=3D"submit" type=3D"image" alt=3D"PayPal =E2=80=94 The =
+safer, easier way to pay online."=20
+src=3D"https://www.paypalobjects.com/en_AU/i/btn/btn_donateCC_LG.gif" =
+border=3D"0">
+			 <IMG width=3D"1" height=3D"1" alt=3D"" =
+src=3D"https://www.paypalobjects.com/en_AU/i/scr/pixel.gif"=20
+border=3D"0">		 </FORM></DIV>
+<DIV class=3D"clear"></DIV></DIV>
+<DIV id=3D"disqus_thread">
+<DIV id=3D"dsq-content">
+<UL id=3D"dsq-comments">
+  <LI class=3D"comment even thread-even depth-1" =
+id=3D"dsq-comment-4849">
+  <DIV class=3D"dsq-comment-header" id=3D"dsq-comment-header-4849"><CITE =
+id=3D"dsq-cite-4849"><SPAN=20
+  id=3D"dsq-author-user-4849">Ben</SPAN>             </CITE>         =
+</DIV>
+  <DIV class=3D"dsq-comment-body" id=3D"dsq-comment-body-4849">
+  <DIV class=3D"dsq-comment-message" id=3D"dsq-comment-message-4849">
+  <P>Great Tutorial Thanks, one part I had issues with:</P>
+  <P>php artisan create:controller ProjectsController;</P>
+  <P>should be<BR>php artisan make:controller=20
+ProjectsController;</P></DIV></DIV>
+  <UL class=3D"children">
+    <LI class=3D"comment odd alt depth-2" id=3D"dsq-comment-4850">
+    <DIV class=3D"dsq-comment-header" =
+id=3D"dsq-comment-header-4850"><CITE id=3D"dsq-cite-4850"><SPAN=20
+    id=3D"dsq-author-user-4850">flynsarmy</SPAN>             </CITE>     =
+   =20
+</DIV>
+    <DIV class=3D"dsq-comment-body" id=3D"dsq-comment-body-4850">
+    <DIV class=3D"dsq-comment-message" id=3D"dsq-comment-message-4850">
+    <P>Thanks Ben. Fixed. This tutorial was an adaptation of one by the =
+same=20
+    name for Laravel 4, so there may be a few inconsistencies around. =
+Keep=20
+    letting me know and I=E2=80=99ll update away <IMG =
+class=3D"wp-smiley" style=3D"height: 1em; max-height: 1em;"=20
+    alt=3D":)" src=3D""></P></DIV></DIV></LI><!-- #comment-## --> =
+</UL><!-- .children -->=20
+  </LI><!-- #comment-## -->    =20
+  <LI class=3D"comment even thread-odd thread-alt depth-1" =
+id=3D"dsq-comment-4853">
+  <DIV class=3D"dsq-comment-header" id=3D"dsq-comment-header-4853"><CITE =
+id=3D"dsq-cite-4853"><SPAN=20
+  id=3D"dsq-author-user-4853">Pete</SPAN>             </CITE>         =
+</DIV>
+  <DIV class=3D"dsq-comment-body" id=3D"dsq-comment-body-4853">
+  <DIV class=3D"dsq-comment-message" id=3D"dsq-comment-message-4853">
+  <P>Shouldn=E2=80=99t you prefix static calls to Task and Project in =
+Route::bind?:</P>
+  <P>return AppTask::whereSlug($value)-&gt;first();</P>
+  <P>return AppProject::whereSlug($value)-&gt;first();</P></DIV></DIV>
+  <UL class=3D"children">
+    <LI class=3D"comment odd alt depth-2" id=3D"dsq-comment-4856">
+    <DIV class=3D"dsq-comment-header" =
+id=3D"dsq-comment-header-4856"><CITE id=3D"dsq-cite-4856"><SPAN=20
+    id=3D"dsq-author-user-4856">Joonas Lieppinen</SPAN>             =
+</CITE>       =20
+     </DIV>
+    <DIV class=3D"dsq-comment-body" id=3D"dsq-comment-body-4856">
+    <DIV class=3D"dsq-comment-message" id=3D"dsq-comment-message-4856">
+    <P>Thanks for saving me  ^_^</P></DIV></DIV></LI><!-- #comment-## =
+-->    =20
+    <LI class=3D"comment even depth-2" id=3D"dsq-comment-4857">
+    <DIV class=3D"dsq-comment-header" =
+id=3D"dsq-comment-header-4857"><CITE id=3D"dsq-cite-4857"><SPAN=20
+    id=3D"dsq-author-user-4857">flynsarmy</SPAN>             </CITE>     =
+   =20
+</DIV>
+    <DIV class=3D"dsq-comment-body" id=3D"dsq-comment-body-4857">
+    <DIV class=3D"dsq-comment-message" id=3D"dsq-comment-message-4857">
+    <P>Fixed. Thanks</P></DIV></DIV></LI><!-- #comment-## --> </UL><!-- =
+.children -->=20
+  </LI><!-- #comment-## -->    =20
+  <LI class=3D"comment odd alt thread-even depth-1" =
+id=3D"dsq-comment-4867">
+  <DIV class=3D"dsq-comment-header" id=3D"dsq-comment-header-4867"><CITE =
+id=3D"dsq-cite-4867"><SPAN=20
+  id=3D"dsq-author-user-4867">Infacq</SPAN>             </CITE>         =
+</DIV>
+  <DIV class=3D"dsq-comment-body" id=3D"dsq-comment-body-4867">
+  <DIV class=3D"dsq-comment-message" id=3D"dsq-comment-message-4867">
+  <P>where do i need to copy the files .env to?</P></DIV></DIV>
+  <UL class=3D"children">
+    <LI class=3D"comment even depth-2" id=3D"dsq-comment-4868">
+    <DIV class=3D"dsq-comment-header" =
+id=3D"dsq-comment-header-4868"><CITE id=3D"dsq-cite-4868"><SPAN=20
+    id=3D"dsq-author-user-4868">flynsarmy</SPAN>             </CITE>     =
+   =20
+</DIV>
+    <DIV class=3D"dsq-comment-body" id=3D"dsq-comment-body-4868">
+    <DIV class=3D"dsq-comment-message" id=3D"dsq-comment-message-4868">
+    <P>Copy .env.example to .env in project root =
+directory.</P></DIV></DIV></LI><!-- #comment-## -->=20
+  </UL><!-- .children --> </LI><!-- #comment-## -->    =20
+  <LI class=3D"comment odd alt thread-odd thread-alt depth-1" =
+id=3D"dsq-comment-4874">
+  <DIV class=3D"dsq-comment-header" id=3D"dsq-comment-header-4874"><CITE =
+id=3D"dsq-cite-4874">
+  http://slick.pl/                <SPAN =
+id=3D"dsq-author-user-4874">slick</SPAN>  =20
+            </CITE>         </DIV>
+  <DIV class=3D"dsq-comment-body" id=3D"dsq-comment-body-4874">
+  <DIV class=3D"dsq-comment-message" id=3D"dsq-comment-message-4874">
+  <P>Hi. Great article but you have an issue. Based on what you wrote in =
+this=20
+  article, seeding will fail and you will get ReflectionException. =
+Before=20
+  seeding you have to run composer dump-autoload and then seed (tested =
+in L5).=20
+  Anyway keep going! <IMG class=3D"wp-smiley" style=3D"height: 1em; =
+max-height: 1em;"=20
+  alt=3D":)" src=3D""></P></DIV></DIV>
+  <UL class=3D"children">
+    <LI class=3D"comment even depth-2" id=3D"dsq-comment-4875">
+    <DIV class=3D"dsq-comment-header" =
+id=3D"dsq-comment-header-4875"><CITE id=3D"dsq-cite-4875"><SPAN=20
+    id=3D"dsq-author-user-4875">flynsarmy</SPAN>             </CITE>     =
+   =20
+</DIV>
+    <DIV class=3D"dsq-comment-body" id=3D"dsq-comment-body-4875">
+    <DIV class=3D"dsq-comment-message" id=3D"dsq-comment-message-4875">
+    <P>Not sure if you=E2=80=99re seeing an older cached copy of this =
+article but=20
+    instructions to dump-autoload are already in it.</P>
+    <P><CODE><BR>composer dump-autoload<BR>php artisan db:seed<BR># =
+or<BR>php=20
+    artisan migrate:refresh --seed<BR></CODE></P></DIV></DIV>
+    <UL class=3D"children">
+      <LI class=3D"comment odd alt depth-3" id=3D"dsq-comment-4892">
+      <DIV class=3D"dsq-comment-header" =
+id=3D"dsq-comment-header-4892"><CITE id=3D"dsq-cite-4892"><SPAN=20
+      id=3D"dsq-author-user-4892">hannon</SPAN>             </CITE>      =
+   </DIV>
+      <DIV class=3D"dsq-comment-body" id=3D"dsq-comment-body-4892">
+      <DIV class=3D"dsq-comment-message" =
+id=3D"dsq-comment-message-4892">
+      <P>[ReflectionException]<BR>Class DatabaseSeeder does not =
+exist</P>
+      <P>After php artisan dB:seed  or php artisan migrate:refresh =
+=E2=80=93seed </P>
+      <P>any clue?=C2=BF<BR>Files exist : $</P></DIV></DIV>
+      <UL class=3D"children">
+        <LI class=3D"comment even depth-4" id=3D"dsq-comment-4894">
+        <DIV class=3D"dsq-comment-header" =
+id=3D"dsq-comment-header-4894"><CITE id=3D"dsq-cite-4894"><SPAN=20
+        id=3D"dsq-author-user-4894">flynsarmy</SPAN>             </CITE> =
+       =20
+        </DIV>
+        <DIV class=3D"dsq-comment-body" id=3D"dsq-comment-body-4894">
+        <DIV class=3D"dsq-comment-message" =
+id=3D"dsq-comment-message-4894">
+        <P>Have you called <CODE>composer dump-autoload</CODE> as per my =
+above=20
+        comment?</P></DIV></DIV>
+        <UL class=3D"children">
+          <LI class=3D"comment odd alt depth-5" id=3D"dsq-comment-4949">
+          <DIV class=3D"dsq-comment-header" =
+id=3D"dsq-comment-header-4949"><CITE id=3D"dsq-cite-4949"><SPAN=20
+          id=3D"dsq-author-user-4949">g</SPAN>             </CITE>       =
+  </DIV>
+          <DIV class=3D"dsq-comment-body" id=3D"dsq-comment-body-4949">
+          <DIV class=3D"dsq-comment-message" =
+id=3D"dsq-comment-message-4949">
+          <P>It is the alternate:</P>
+          <P>  # or<BR>  php artisan migrate:refresh =E2=80=93seed</P>
+          <P>that desn=E2=80=99t work.</P></DIV></DIV>
+          <UL class=3D"children">
+            <LI class=3D"comment even depth-6" id=3D"dsq-comment-5003">
+            <DIV class=3D"dsq-comment-header" =
+id=3D"dsq-comment-header-5003"><CITE=20
+            id=3D"dsq-cite-5003">http://www.guddler.co.uk/               =
+ <SPAN=20
+            id=3D"dsq-author-user-5003">Martin White</SPAN>             =
+</CITE>   =20
+                 </DIV>
+            <DIV class=3D"dsq-comment-body" =
+id=3D"dsq-comment-body-5003">
+            <DIV class=3D"dsq-comment-message" =
+id=3D"dsq-comment-message-5003">
+            <P>The article really needs to be clearer that the =
+=E2=80=98composer=20
+            dump-autoload=E2=80=99 is not part of the two options but =
+must in fact be=20
+            run before whichever option you choose.</P>
+            <P>I just spent some time trying to work out why I was =
+getting the=20
+            exception and it was only when I read the comments down this =
+far I=20
+            realised that you =E2=80=98dump-autoload=E2=80=99 first, =
+THEN choose to either=20
+            db:seed OR migrate:refresh =E2=80=93seed.</P></DIV></DIV>
+            <UL class=3D"children">
+              <LI class=3D"comment odd alt depth-7" =
+id=3D"dsq-comment-5004">
+              <DIV class=3D"dsq-comment-header" =
+id=3D"dsq-comment-header-5004"><CITE=20
+              id=3D"dsq-cite-5004"><SPAN=20
+              id=3D"dsq-author-user-5004">flynsarmy</SPAN>             =
+</CITE>    =20
+                  </DIV>
+              <DIV class=3D"dsq-comment-body" =
+id=3D"dsq-comment-body-5004">
+              <DIV class=3D"dsq-comment-message" =
+id=3D"dsq-comment-message-5004">
+              <P>I updated my post. Thanks for the =
+comment</P></DIV></DIV></LI><!-- #comment-## -->=20
+            </UL><!-- .children --> </LI><!-- #comment-## --> </UL><!-- =
+.children -->=20
+          </LI><!-- #comment-## --> </UL><!-- .children --> </LI><!-- =
+#comment-## -->=20
+      </UL><!-- .children --> </LI><!-- #comment-## --> </UL><!-- =
+.children -->=20
+    </LI><!-- #comment-## --> </UL><!-- .children --> </LI><!-- =
+#comment-## -->   =20
+=20
+  <LI class=3D"comment even thread-even depth-1" =
+id=3D"dsq-comment-4877">
+  <DIV class=3D"dsq-comment-header" id=3D"dsq-comment-header-4877"><CITE =
+id=3D"dsq-cite-4877"><SPAN=20
+  id=3D"dsq-author-user-4877">Jason</SPAN>             </CITE>         =
+</DIV>
+  <DIV class=3D"dsq-comment-body" id=3D"dsq-comment-body-4877">
+  <DIV class=3D"dsq-comment-message" id=3D"dsq-comment-message-4877">
+  <P>Shouldn=E2=80=99t make:migration be migrate:make?</P></DIV></DIV>
+  <UL class=3D"children">
+    <LI class=3D"comment odd alt depth-2" id=3D"dsq-comment-4879">
+    <DIV class=3D"dsq-comment-header" =
+id=3D"dsq-comment-header-4879"><CITE id=3D"dsq-cite-4879"><SPAN=20
+    id=3D"dsq-author-user-4879">flynsarmy</SPAN>             </CITE>     =
+   =20
+</DIV>
+    <DIV class=3D"dsq-comment-body" id=3D"dsq-comment-body-4879">
+    <DIV class=3D"dsq-comment-message" id=3D"dsq-comment-message-4879">
+    <P>Nope.</P></DIV></DIV></LI><!-- #comment-## -->    =20
+    <LI class=3D"comment even depth-2" id=3D"dsq-comment-4895">
+    <DIV class=3D"dsq-comment-header" =
+id=3D"dsq-comment-header-4895"><CITE id=3D"dsq-cite-4895"><SPAN=20
+    id=3D"dsq-author-user-4895">UnixAgain</SPAN>             </CITE>     =
+   =20
+</DIV>
+    <DIV class=3D"dsq-comment-body" id=3D"dsq-comment-body-4895">
+    <DIV class=3D"dsq-comment-message" id=3D"dsq-comment-message-4895">
+    <P>L5 and L4 are different at this point.</P></DIV></DIV></LI><!-- =
+#comment-## -->=20
+  </UL><!-- .children --> </LI><!-- #comment-## -->    =20
+  <LI class=3D"comment odd alt thread-odd thread-alt depth-1" =
+id=3D"dsq-comment-4885">
+  <DIV class=3D"dsq-comment-header" id=3D"dsq-comment-header-4885"><CITE =
+id=3D"dsq-cite-4885"><SPAN=20
+  id=3D"dsq-author-user-4885">kimball</SPAN>             </CITE>         =
+</DIV>
+  <DIV class=3D"dsq-comment-body" id=3D"dsq-comment-body-4885">
+  <DIV class=3D"dsq-comment-message" id=3D"dsq-comment-message-4885">
+  <P>In Schema builder, why do you have<BR>
+  =
+$table-&gt;string(=E2=80=98name=E2=80=99)-&gt;default(=E2=80=9D)<BR>inste=
+ad of<BR>
+  =
+$table-&gt;string(=E2=80=98name=E2=80=99)-&gt;nullable()</P></DIV></DIV>
+  <UL class=3D"children">
+    <LI class=3D"comment even depth-2" id=3D"dsq-comment-4886">
+    <DIV class=3D"dsq-comment-header" =
+id=3D"dsq-comment-header-4886"><CITE id=3D"dsq-cite-4886"><SPAN=20
+    id=3D"dsq-author-user-4886">flynsarmy</SPAN>             </CITE>     =
+   =20
+</DIV>
+    <DIV class=3D"dsq-comment-body" id=3D"dsq-comment-body-4886">
+    <DIV class=3D"dsq-comment-message" id=3D"dsq-comment-message-4886">
+    <P>Personal preference. I like to know my model attribute will =
+always be a=20
+    string. Null isn=E2=80=99t a string.</P></DIV></DIV>
+    <UL class=3D"children">
+      <LI class=3D"comment odd alt depth-3" id=3D"dsq-comment-4887">
+      <DIV class=3D"dsq-comment-header" =
+id=3D"dsq-comment-header-4887"><CITE id=3D"dsq-cite-4887"><SPAN=20
+      id=3D"dsq-author-user-4887">kimball</SPAN>             </CITE>     =
+   =20
+</DIV>
+      <DIV class=3D"dsq-comment-body" id=3D"dsq-comment-body-4887">
+      <DIV class=3D"dsq-comment-message" =
+id=3D"dsq-comment-message-4887">
+      <P>Thanks. Great tutorial!</P></DIV></DIV></LI><!-- #comment-## =
+--> </UL><!-- .children -->=20
+    </LI><!-- #comment-## --> </UL><!-- .children --> </LI><!-- =
+#comment-## -->   =20
+=20
+  <LI class=3D"comment even thread-even depth-1" =
+id=3D"dsq-comment-4898">
+  <DIV class=3D"dsq-comment-header" id=3D"dsq-comment-header-4898"><CITE =
+id=3D"dsq-cite-4898"><SPAN=20
+  id=3D"dsq-author-user-4898">Jordy</SPAN>             </CITE>         =
+</DIV>
+  <DIV class=3D"dsq-comment-body" id=3D"dsq-comment-body-4898">
+  <DIV class=3D"dsq-comment-message" id=3D"dsq-comment-message-4898">
+  <P>When changing to this route</P>
+  <P>// Route::resource(=E2=80=98tasks=E2=80=99,=20
+  =
+=E2=80=98TasksController=E2=80=99);<BR>Route::resource(=E2=80=98projects.=
+tasks=E2=80=99,=20
+  =E2=80=98TasksController=E2=80=99);</P>
+  <P>I am not able to go to /projects/ and am getting a=20
+  NotFoundHttpException<BR>How to fix this issue</P></DIV></DIV>
+  <UL class=3D"children">
+    <LI class=3D"comment odd alt depth-2" id=3D"dsq-comment-4899">
+    <DIV class=3D"dsq-comment-header" =
+id=3D"dsq-comment-header-4899"><CITE id=3D"dsq-cite-4899"><SPAN=20
+    id=3D"dsq-author-user-4899">flynsarmy</SPAN>             </CITE>     =
+   =20
+</DIV>
+    <DIV class=3D"dsq-comment-body" id=3D"dsq-comment-body-4899">
+    <DIV class=3D"dsq-comment-message" id=3D"dsq-comment-message-4899">
+    <P>You still need <A =
+href=3D"https://github.com/Flynsarmy/laravel-5-todo-tutorial/blob/tutoria=
+l-1/app/Http/routes.php#L26-L28"=20
+    rel=3D"nofollow">these lines</A> along with your <A =
+href=3D"https://github.com/Flynsarmy/laravel-5-todo-tutorial/blob/tutoria=
+l-1/app/Http/Controllers/ProjectsController.php"=20
+    rel=3D"nofollow">ProjectsController</A>.</P></DIV></DIV>
+    <UL class=3D"children">
+      <LI class=3D"comment even depth-3" id=3D"dsq-comment-4900">
+      <DIV class=3D"dsq-comment-header" =
+id=3D"dsq-comment-header-4900"><CITE id=3D"dsq-cite-4900"><SPAN=20
+      id=3D"dsq-author-user-4900">Jordy</SPAN>             </CITE>       =
+  </DIV>
+      <DIV class=3D"dsq-comment-body" id=3D"dsq-comment-body-4900">
+      <DIV class=3D"dsq-comment-message" =
+id=3D"dsq-comment-message-4900">
+      <P>Thanks alot that fixed it, I thought I had to comment projects=20
+      away.</P></DIV></DIV></LI><!-- #comment-## --> </UL><!-- .children =
+--> </LI><!-- #comment-## -->=20
+  </UL><!-- .children --> </LI><!-- #comment-## -->    =20
+  <LI class=3D"comment odd alt thread-odd thread-alt depth-1" =
+id=3D"dsq-comment-4903">
+  <DIV class=3D"dsq-comment-header" id=3D"dsq-comment-header-4903"><CITE =
+id=3D"dsq-cite-4903"><SPAN=20
+  id=3D"dsq-author-user-4903">deepak</SPAN>             </CITE>         =
+</DIV>
+  <DIV class=3D"dsq-comment-body" id=3D"dsq-comment-body-4903">
+  <DIV class=3D"dsq-comment-message" id=3D"dsq-comment-message-4903">
+  <P>when i run it at local  <A =
+href=3D"http://127.0.0.1:84/demo/projects" =
+rel=3D"nofollow">http://127.0.0.1:84/demo/projects</A>.</P>
+  <P>i am getting this exception Object not =
+found!</P></DIV></DIV></LI><!-- #comment-## -->=20
+     =20
+  <LI class=3D"comment even thread-even depth-1" =
+id=3D"dsq-comment-4906">
+  <DIV class=3D"dsq-comment-header" id=3D"dsq-comment-header-4906"><CITE =
+id=3D"dsq-cite-4906"><SPAN=20
+  id=3D"dsq-author-user-4906">Reed</SPAN>             </CITE>         =
+</DIV>
+  <DIV class=3D"dsq-comment-body" id=3D"dsq-comment-body-4906">
+  <DIV class=3D"dsq-comment-message" id=3D"dsq-comment-message-4906">
+  <P>Can anyone help me.  when I try to run laravel new l5todo, I get =
+this:<BR>
+  Warning: ZipArchive::extractTo(): Invalid or uninitialized Zip object =
+in=20
+  C:User<BR>
+  =
+sreed.clarkeAppDataRoamingComposervendorlaravelinstallersrcNewCommand.p<B=
+R>hp=20
+  on line 99</P>
+  <P>Warning: ZipArchive::close(): Invalid or uninitialized Zip object =
+in=20
+  C:Usersre<BR>
+  ed.clarkeAppDataRoamingComposervendorlaravelinstallersrcNewCommand.php =
+o<BR>n=20
+  line 101</P></DIV></DIV>
+  <UL class=3D"children">
+    <LI class=3D"comment odd alt depth-2" id=3D"dsq-comment-4907">
+    <DIV class=3D"dsq-comment-header" =
+id=3D"dsq-comment-header-4907"><CITE id=3D"dsq-cite-4907"><SPAN=20
+    id=3D"dsq-author-user-4907">flynsarmy</SPAN>             </CITE>     =
+   =20
+</DIV>
+    <DIV class=3D"dsq-comment-body" id=3D"dsq-comment-body-4907">
+    <DIV class=3D"dsq-comment-message" id=3D"dsq-comment-message-4907">
+    <P>Sounds like a file permissions error.</P></DIV></DIV></LI><!-- =
+#comment-## -->=20
+  </UL><!-- .children --> </LI><!-- #comment-## -->    =20
+  <LI class=3D"comment even thread-odd thread-alt depth-1" =
+id=3D"dsq-comment-4924">
+  <DIV class=3D"dsq-comment-header" id=3D"dsq-comment-header-4924"><CITE =
+id=3D"dsq-cite-4924"><SPAN=20
+  id=3D"dsq-author-user-4924">arialleeve</SPAN>             </CITE>      =
+   </DIV>
+  <DIV class=3D"dsq-comment-body" id=3D"dsq-comment-body-4924">
+  <DIV class=3D"dsq-comment-message" id=3D"dsq-comment-message-4924">
+  <P>Nice.. Thanks for this.</P></DIV></DIV></LI><!-- #comment-## -->    =
+=20
+  <LI class=3D"comment odd alt thread-even depth-1" =
+id=3D"dsq-comment-4932">
+  <DIV class=3D"dsq-comment-header" id=3D"dsq-comment-header-4932"><CITE =
+id=3D"dsq-cite-4932"><SPAN=20
+  id=3D"dsq-author-user-4932">Duncan Stokes</SPAN>             </CITE>   =
+     =20
+  </DIV>
+  <DIV class=3D"dsq-comment-body" id=3D"dsq-comment-body-4932">
+  <DIV class=3D"dsq-comment-message" id=3D"dsq-comment-message-4932">
+  <P>If anyone is using PostgreSQL be aware that insertions with =
+specific values=20
+  into fields that have sequences attached do not change the last_value =
+of the=20
+  sequence.  If the sequences are not correctly set you will experience =
+key=20
+  violations later in this tutorial (when you try adding Projects or =
+Tasks).</P>
+  <P>To fix this problem do the following.</P>
+  <P>Add the following to the end of the run() function in=20
+  <I>database/migrations/seeds/ProjectsTableSeeder.php</I>:</P>
+  <P>if (DB::connection()-&gt;getName() =3D=3D =E2=80=98pgsql=E2=80=99) =
+{<BR>DB::select(=E2=80=98SELECT=20
+  setval(=E2=80=98projects_id_seq=E2=80=99, =E2=80=98.=20
+  =
+DB::table(=E2=80=98projects=E2=80=99)-&gt;select(DB::raw(=E2=80=98MAX(id)=
+=E2=80=99))-&gt;first()-&gt;max.=E2=80=99)=E2=80=99);<BR>
+  }</P>
+  <P>Add the following to the end of the run() function in=20
+  <I>database/migrations/seeds/TasksTableSeeder.php</I>:</P>
+  <P>if (DB::connection()-&gt;getName() =3D=3D =E2=80=98pgsql=E2=80=99) =
+{<BR>DB::select(=E2=80=98SELECT=20
+  setval(=E2=80=98tasks_id_seq=E2=80=99, =E2=80=98.=20
+  =
+DB::table(=E2=80=98tasks=E2=80=99)-&gt;select(DB::raw(=E2=80=98MAX(id)=E2=
+=80=99))-&gt;first()-&gt;max.=E2=80=99)=E2=80=99);<BR>
+  }</P></DIV></DIV></LI><!-- #comment-## -->    =20
+  <LI class=3D"comment even thread-odd thread-alt depth-1" =
+id=3D"dsq-comment-4945">
+  <DIV class=3D"dsq-comment-header" id=3D"dsq-comment-header-4945"><CITE =
+id=3D"dsq-cite-4945"><SPAN=20
+  id=3D"dsq-author-user-4945">up23</SPAN>             </CITE>         =
+</DIV>
+  <DIV class=3D"dsq-comment-body" id=3D"dsq-comment-body-4945">
+  <DIV class=3D"dsq-comment-message" id=3D"dsq-comment-message-4945">
+  <P>For the tasks table, I got an SQL error on OSX with MySQL official =
+install.=20
+  </P>
+  <P>I needed to change =
+$table-&gt;text(=E2=80=98description=E2=80=99)-&gt;default(=E2=80=9D); =
+to=20
+  $table-&gt;text(=E2=80=98description=E2=80=99);</P></DIV></DIV>
+  <UL class=3D"children">
+    <LI class=3D"comment odd alt depth-2" id=3D"dsq-comment-4946">
+    <DIV class=3D"dsq-comment-header" =
+id=3D"dsq-comment-header-4946"><CITE id=3D"dsq-cite-4946"><SPAN=20
+    id=3D"dsq-author-user-4946">flynsarmy</SPAN>             </CITE>     =
+   =20
+</DIV>
+    <DIV class=3D"dsq-comment-body" id=3D"dsq-comment-body-4946">
+    <DIV class=3D"dsq-comment-message" id=3D"dsq-comment-message-4946">
+    <P>What=E2=80=99s the error? I=E2=80=99m on OSX with MySQL. Works =
+fine. Might have something=20
+    to do with your default table engine?</P>
+    <P>EDIT: It=E2=80=99s a known bug. See <A =
+href=3D"https://www.flynsarmy.com/2015/02/creating-a-basic-todo-applicati=
+on-in-laravel-5-part-1/#comment-1950179495"=20
+    rel=3D"nofollow">this comment</A> for more =
+details.</P></DIV></DIV></LI><!-- #comment-## -->=20
+  </UL><!-- .children --> </LI><!-- #comment-## -->    =20
+  <LI class=3D"comment even thread-even depth-1" =
+id=3D"dsq-comment-4950">
+  <DIV class=3D"dsq-comment-header" id=3D"dsq-comment-header-4950"><CITE =
+id=3D"dsq-cite-4950"><SPAN=20
+  id=3D"dsq-author-user-4950">LPadmin</SPAN>             </CITE>         =
+</DIV>
+  <DIV class=3D"dsq-comment-body" id=3D"dsq-comment-body-4950">
+  <DIV class=3D"dsq-comment-message" id=3D"dsq-comment-message-4950">
+  <P>Migration will not work for =E2=80=9Ctasks=E2=80=9D table =
+on=E2=80=A6</P>
+  <P> =
+=E2=80=9C$table-&gt;text(=E2=80=98description=E2=80=99)-&gt;default(=E2=80=
+=9D);=E2=80=9D</P>
+  <P>Using mysql  Ver 14.14 Distrib 5.6.2 the following error =
+occurs=E2=80=A6</P>
+  <P>[PDOException]<BR>SQLSTATE[42000]: Syntax error or access =
+violation: 1101=20
+  BLOB/TEXT column =E2=80=98description=E2=80=99 can=E2=80=99t have a =
+default value</P>
+  <P>Seems to be a known bug reported on <A =
+href=3D"http://bugs.mysql.com/bug.php?id=3D21532"=20
+  rel=3D"nofollow">http://bugs.mysql.com/bug.php?id=3D21532</A></P>
+  <P>Migration works if you remove =
+=E2=80=9C-&gt;default(=E2=80=9D);=E2=80=9D</P>
+  <P>Not sure if this matters for the app, because I have just started =
+working=20
+  through the tutorial.</P></DIV></DIV>
+  <UL class=3D"children">
+    <LI class=3D"comment odd alt depth-2" id=3D"dsq-comment-4951">
+    <DIV class=3D"dsq-comment-header" =
+id=3D"dsq-comment-header-4951"><CITE id=3D"dsq-cite-4951"><SPAN=20
+    id=3D"dsq-author-user-4951">flynsarmy</SPAN>             </CITE>     =
+   =20
+</DIV>
+    <DIV class=3D"dsq-comment-body" id=3D"dsq-comment-body-4951">
+    <DIV class=3D"dsq-comment-message" id=3D"dsq-comment-message-4951">
+    <P>Thanks for the info! Very helpful for those experiencing similar =
+issues.=20
+    Removing -&gt;default(=E2=80=9D) should do the =
+trick.</P></DIV></DIV></LI><!-- #comment-## -->=20
+  </UL><!-- .children --> </LI><!-- #comment-## -->    =20
+  <LI class=3D"comment even thread-odd thread-alt depth-1" =
+id=3D"dsq-comment-4953">
+  <DIV class=3D"dsq-comment-header" id=3D"dsq-comment-header-4953"><CITE =
+id=3D"dsq-cite-4953"><SPAN=20
+  id=3D"dsq-author-user-4953">vacaflaca</SPAN>             </CITE>       =
+  </DIV>
+  <DIV class=3D"dsq-comment-body" id=3D"dsq-comment-body-4953">
+  <DIV class=3D"dsq-comment-message" id=3D"dsq-comment-message-4953">
+  <P>For the =E2=80=9C[ReflectionException]                Class =
+DatabaseSeeder does not=20
+  exist=E2=80=9D problem. </P>
+  <P>DatabaseSeeder.php should start with &lt;?php  </P>
+  <P>It was not working for me without it</P></DIV></DIV></LI><!-- =
+#comment-## -->=20
+     =20
+  <LI class=3D"comment odd alt thread-even depth-1" =
+id=3D"dsq-comment-4954">
+  <DIV class=3D"dsq-comment-header" id=3D"dsq-comment-header-4954"><CITE =
+id=3D"dsq-cite-4954"><SPAN=20
+  id=3D"dsq-author-user-4954">LPadmin</SPAN>             </CITE>         =
+</DIV>
+  <DIV class=3D"dsq-comment-body" id=3D"dsq-comment-body-4954">
+  <DIV class=3D"dsq-comment-message" id=3D"dsq-comment-message-4954">
+  <P>The =E2=80=9C=E2=80=93no-migration=E2=80=9D tag should be added to =
+avoid creating new migration=20
+  tables when making new models.  =E2=80=9Cphp artisan make:model =
+Project=E2=80=9D and =E2=80=9Cphp=20
+  artisan make:model Task=E2=80=9D will create two new migration tables =
+without the tag,=20
+  which isn=E2=80=99t necessary because you are making both tables in =
+one migration=20
+  prior to making the models.</P></DIV></DIV>
+  <UL class=3D"children">
+    <LI class=3D"comment even depth-2" id=3D"dsq-comment-4963">
+    <DIV class=3D"dsq-comment-header" =
+id=3D"dsq-comment-header-4963"><CITE id=3D"dsq-cite-4963"><SPAN=20
+    id=3D"dsq-author-user-4963">Rick Gould</SPAN>             </CITE>    =
+    =20
+    </DIV>
+    <DIV class=3D"dsq-comment-body" id=3D"dsq-comment-body-4963">
+    <DIV class=3D"dsq-comment-message" id=3D"dsq-comment-message-4963">
+    <P>On my version  F:xamppphpphp.exe artisan -v<BR>Laravel Framework =
+version=20
+    5.0.6<BR>The =E2=80=93no-migration option does not exist.<BR>Is =
+there a=20
+    fix?</P></DIV></DIV></LI><!-- #comment-## --> </UL><!-- .children =
+--> </LI><!-- #comment-## -->=20
+     =20
+  <LI class=3D"comment odd alt thread-odd thread-alt depth-1" =
+id=3D"dsq-comment-5013">
+  <DIV class=3D"dsq-comment-header" id=3D"dsq-comment-header-5013"><CITE =
+id=3D"dsq-cite-5013"><SPAN=20
+  id=3D"dsq-author-user-5013">Carlos Ballena</SPAN>             </CITE>  =
+      =20
+  </DIV>
+  <DIV class=3D"dsq-comment-body" id=3D"dsq-comment-body-5013">
+  <DIV class=3D"dsq-comment-message" id=3D"dsq-comment-message-5013">
+  <P>I think it=E2=80=99s worth noting that when running `php artisan =
+make:model=20
+  modelName` it automatically creates the migration files for each =
+model, i.e.:=20
+  projects and tasks.</P></DIV></DIV></LI><!-- #comment-## -->           =
+ =20
+</UL></DIV></DIV>
+<SCRIPT type=3D"text/javascript">=0A=
+var disqus_url =3D =
+'https://www.flynsarmy.com/2015/02/creating-a-basic-todo-application-in-l=
+aravel-5-part-1/';=0A=
+var disqus_identifier =3D '1878 https://www.flynsarmy.com/?p=3D1878';=0A=
+var disqus_container_id =3D 'disqus_thread';=0A=
+var disqus_shortname =3D 'flynsarmy';=0A=
+var disqus_title =3D "Creating a Basic ToDo Application in Laravel 5 =
+&#8211; Part 1";=0A=
+var disqus_config_custom =3D window.disqus_config;=0A=
+var disqus_config =3D function () {=0A=
+    /*=0A=
+    All currently supported events:=0A=
+    onReady: fires when everything is ready,=0A=
+    onNewComment: fires when a new comment is posted,=0A=
+    onIdentify: fires when user is authenticated=0A=
+    */=0A=
+    =0A=
+    =0A=
+    this.language =3D '';=0A=
+        this.callbacks.onReady.push(function () {=0A=
+=0A=
+        // sync comments in the background so we don't block the page=0A=
+        var script =3D document.createElement('script');=0A=
+        script.async =3D true;=0A=
+        script.src =3D '?cf_action=3Dsync_comments&post_id=3D1878';=0A=
+=0A=
+        var firstScript =3D document.getElementsByTagName('script')[0];=0A=
+        firstScript.parentNode.insertBefore(script, firstScript);=0A=
+    });=0A=
+    =0A=
+    if (disqus_config_custom) {=0A=
+        disqus_config_custom.call(this);=0A=
+    }=0A=
+};=0A=
+=0A=
+(function() {=0A=
+    var dsq =3D document.createElement('script'); dsq.type =3D =
+'text/javascript';=0A=
+    dsq.async =3D true;=0A=
+    dsq.src =3D '//' + disqus_shortname + '.disqus.com/embed.js';=0A=
+    (document.getElementsByTagName('head')[0] || =
+document.getElementsByTagName('body')[0]).appendChild(dsq);=0A=
+})();=0A=
+</SCRIPT>
+ </DIV>
+<DIV class=3D"sidebar">
+<DIV class=3D"widget widget_search">
+<FORM name=3D"sidebarsearch" class=3D"sidebarsearch" =
+action=3D"https://www.flynsarmy.com"=20
+method=3D"get">
+<DIV><INPUT name=3D"s" class=3D"keyword" type=3D"text">
+	 <INPUT class=3D"searchsubmit" type=3D"submit" =
+value=3D"Search"></DIV></FORM></DIV>
+<DIV class=3D"widget widget_rss_widget">
+<DIV class=3D"widget widget_rssfeed">
+<UL>
+  <LI class=3D"rss"><A =
+href=3D"https://www.flynsarmy.com/feed/">Subscribe to RSS=20
+  Feed</A></LI>
+  <LI class=3D"twitter"><A href=3D"http://twitter.com/flynsarmy">Follow =
+me on=20
+  Twitter</A></LI></UL></DIV></DIV>
+<DIV class=3D"widget widget_text">
+<DIV class=3D"textwidget">
+<H3><A =
+href=3D"https://www.flynsarmy.com/archive">Archive</A></H3></DIV></DIV>
+<DIV class=3D"widget widget_categories">
+<H3>Categories</H3>
+<UL>
+  <LI class=3D"cat-item cat-item-8"><A =
+href=3D"https://www.flynsarmy.com/category/database/">Database</A>=20
+  </LI>
+  <LI class=3D"cat-item cat-item-6"><A =
+href=3D"https://www.flynsarmy.com/category/javascript/">Javascript</A>=20
+  </LI>
+  <LI class=3D"cat-item cat-item-65"><A =
+href=3D"https://www.flynsarmy.com/category/linux/">Linux</A>=20
+  </LI>
+  <LI class=3D"cat-item cat-item-7"><A =
+href=3D"https://www.flynsarmy.com/category/php/">PHP</A>=20
+  </LI>
+  <LI class=3D"cat-item cat-item-1"><A =
+href=3D"https://www.flynsarmy.com/category/uncategorized/">Uncategorized<=
+/A>=20
+  </LI></UL></DIV>
+<DIV class=3D"widget widget_text">
+<H3>Donate</H3>
+<DIV class=3D"textwidget">
+<P class=3D"pad10">Keep a developer fed and donate.</P>
+<FORM class=3D"paypal" action=3D"https://www.paypal.com/cgi-bin/webscr" =
+method=3D"post"=20
+target=3D"_top"><INPUT name=3D"cmd" type=3D"hidden" value=3D"_s-xclick"> =
+<INPUT name=3D"encrypted" type=3D"hidden" value=3D"-----BEGIN =
+PKCS7-----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3D=3D-----END=
+ PKCS7-----&#10;">=20
+<INPUT name=3D"submit" type=3D"image" alt=3D"PayPal =E2=80=94 The safer, =
+easier way to pay online."=20
+src=3D"https://www.paypalobjects.com/en_AU/i/btn/btn_donateCC_LG.gif"> =
+<IMG width=3D"1"=20
+height=3D"1" alt=3D"" =
+src=3D"https://www.paypalobjects.com/en_AU/i/scr/pixel.gif">=20
+</FORM></DIV></DIV></DIV></DIV></DIV>
+<DIV id=3D"footer">
+<DIV class=3D"footernav">
+<UL id=3D"menu-footer">
+  <LI class=3D"menu-item menu-item-type-custom menu-item-object-custom =
+menu-item-first menu-item-1800"><A=20
+  href=3D"http://www.flynsarmy.com/">Home</A></LI>
+  <LI class=3D"menu-item menu-item-type-post_type menu-item-object-page =
+menu-item-1801"><A=20
+  href=3D"https://www.flynsarmy.com/archive/">Archive</A></LI>
+  <LI class=3D"menu-item menu-item-type-post_type menu-item-object-page =
+menu-item-1802"><A=20
+  href=3D"https://www.flynsarmy.com/et/">ET</A></LI>
+  <LI class=3D"menu-item menu-item-type-post_type menu-item-object-page =
+menu-item-1803"><A=20
+  href=3D"https://www.flynsarmy.com/portfolio/">Portfolio</A></LI>
+  <LI class=3D"menu-item menu-item-type-post_type menu-item-object-page =
+menu-item-last menu-item-1804"><A=20
+  =
+href=3D"https://www.flynsarmy.com/contact/">Contact</A></LI></UL></DIV>
+<DIV class=3D"copyright">=C2=A9 2015 Flynsarmy. All rights reserved.
+			 </DIV></DIV></DIV><!--[if IE 6]><script type=3D"text/javascript"> =
+Cufon.now(); </script><![endif]-->=20
+<SCRIPT>=0A=
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=3Dr;i[r]=3Di[r]||func=
+tion(){=0A=
+(i[r].q=3Di[r].q||[]).push(arguments)},i[r].l=3D1*new =
+Date();a=3Ds.createElement(o),=0A=
+m=3Ds.getElementsByTagName(o)[0];a.async=3D1;a.src=3Dg;m.parentNode.inser=
+tBefore(a,m)=0A=
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga=
+');=0A=
+=0A=
+ga('create', 'UA-13299126-1', 'flynsarmy.com');=0A=
+ga('require', 'displayfeatures');=0A=
+ga('send', 'pageview');=0A=
+</SCRIPT>
+	        =20
+<SCRIPT type=3D"text/javascript">=0A=
+        // <![CDATA[=0A=
+        var disqus_shortname =3D 'flynsarmy';=0A=
+        (function () {=0A=
+            var nodes =3D document.getElementsByTagName('span');=0A=
+            for (var i =3D 0, url; i < nodes.length; i++) {=0A=
+                if (nodes[i].className.indexOf('dsq-postid') !=3D -1) {=0A=
+                    =
+nodes[i].parentNode.setAttribute('data-disqus-identifier', =
+nodes[i].getAttribute('data-dsqidentifier'));=0A=
+                    url =3D nodes[i].parentNode.href.split('#', 1);=0A=
+                    if (url.length =3D=3D 1) { url =3D url[0]; }=0A=
+                    else { url =3D url[1]; }=0A=
+                    nodes[i].parentNode.href =3D url + '#disqus_thread';=0A=
+                }=0A=
+            }=0A=
+            var s =3D document.createElement('script'); =0A=
+            s.async =3D true;=0A=
+            s.type =3D 'text/javascript';=0A=
+            s.src =3D '//' + disqus_shortname + '.disqus.com/count.js';=0A=
+            (document.getElementsByTagName('HEAD')[0] || =
+document.getElementsByTagName('BODY')[0]).appendChild(s);=0A=
+        }());=0A=
+        // ]]>=0A=
+        </SCRIPT>
+        	 <!-- 19 queries. 0.193 seconds. --> </BODY></HTML><!-- =
+Performance optimized by W3 Total Cache. Learn more: =
+http://www.w3-edge.com/wordpress-plugins/=0A=
+=0A=
+Page Caching using memcached=0A=
+Database Caching 9/28 queries in 0.007 seconds using memcached=0A=
+Object Caching 1023/1104 objects using memcached=0A=
+Content Delivery Network via Amazon Web Services: CloudFront: =
+d3oxhle8ytlqpy.cloudfront.net=0A=
+=0A=
+ Served from: www.flynsarmy.com @ 2015-05-20 21:39:06 by W3 Total Cache =
+-->
+
+------=_NextPart_000_0000_01D092D3.D92F39D0
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: https://www.paypalobjects.com/en_AU/i/scr/pixel.gif
+
+R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==
+
+------=_NextPart_000_0000_01D092D3.D92F39D0
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: https://www.paypalobjects.com/en_AU/i/btn/btn_donateCC_LG.gif
+
+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
+
+------=_NextPart_000_0000_01D092D3.D92F39D0
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://d3oxhle8ytlqpy.cloudfront.net/wp-content/themes/simplefolio/assets/css/style.css.gzip?20150511-3
+
+@font-face {
+	font-family: Museo;
+	src: url(../../assets/fonts/museo/Museo500-Regular-webfont.eot?2) =
+format("eot"), =
+url(../../assets/fonts/minified/museo/Museo500-Regular-webfont.svg?2) =
+format("svg"), =
+url(../../assets/fonts/museo/Museo500-Regular-webfont.woff?2) =
+format("woff"), =
+url(../../assets/fonts/museo/Museo500-Regular-webfont.ttf?2) =
+format("truetype");
+}
+.content img {
+	max-width: 100%;
+}
+p img {
+	max-width: 100%;
+}
+.content li {
+	list-style: none;
+}
+.content ul {
+	list-style: none;
+}
+.footernav ul {
+	list-style: none;
+}
+.sf-menu li {
+	list-style: none;
+}
+.widget ul {
+	list-style: none;
+}
+#folio {
+	overflow: hidden;
+}
+#footer {
+	overflow: hidden;
+}
+#main {
+	overflow: hidden;
+}
+#main .container {
+	overflow: hidden;
+}
+.blogpost .comments a {
+	overflow: hidden;
+}
+.blogpost .entry {
+	overflow: hidden;
+}
+.footernav ul {
+	overflow: hidden;
+}
+.post_aside {
+	overflow: hidden;
+}
+img.aligncenter {
+	overflow: hidden;
+}
+img.centered {
+	overflow: hidden;
+}
+#footer {
+	clear: both;
+}
+#main {
+	clear: both;
+}
+.clear {
+	clear: both;
+}
+.wp-pagenavi {
+	clear: both;
+}
+a {
+	margin: 0px; padding: 0px; border: 0px currentColor; border-image: =
+none; font-family: inherit; font-size: 100%; font-style: inherit; =
+font-weight: inherit; vertical-align: baseline;
+}
+abbr {
+	margin: 0px; padding: 0px; border: 0px currentColor; border-image: =
+none; font-family: inherit; font-size: 100%; font-style: inherit; =
+font-weight: inherit; vertical-align: baseline;
+}
+acronym {
+	margin: 0px; padding: 0px; border: 0px currentColor; border-image: =
+none; font-family: inherit; font-size: 100%; font-style: inherit; =
+font-weight: inherit; vertical-align: baseline;
+}
+address {
+	margin: 0px; padding: 0px; border: 0px currentColor; border-image: =
+none; font-family: inherit; font-size: 100%; font-style: inherit; =
+font-weight: inherit; vertical-align: baseline;
+}
+blockquote {
+	margin: 0px; padding: 0px; border: 0px currentColor; border-image: =
+none; font-family: inherit; font-size: 100%; font-style: inherit; =
+font-weight: inherit; vertical-align: baseline;
+}
+body {
+	margin: 0px; padding: 0px; border: 0px currentColor; border-image: =
+none; font-family: inherit; font-size: 100%; font-style: inherit; =
+font-weight: inherit; vertical-align: baseline;
+}
+caption {
+	margin: 0px; padding: 0px; border: 0px currentColor; border-image: =
+none; font-family: inherit; font-size: 100%; font-style: inherit; =
+font-weight: inherit; vertical-align: baseline;
+}
+code {
+	margin: 0px; padding: 0px; border: 0px currentColor; border-image: =
+none; font-family: inherit; font-size: 100%; font-style: inherit; =
+font-weight: inherit; vertical-align: baseline;
+}
+dd {
+	margin: 0px; padding: 0px; border: 0px currentColor; border-image: =
+none; font-family: inherit; font-size: 100%; font-style: inherit; =
+font-weight: inherit; vertical-align: baseline;
+}
+del {
+	margin: 0px; padding: 0px; border: 0px currentColor; border-image: =
+none; font-family: inherit; font-size: 100%; font-style: inherit; =
+font-weight: inherit; vertical-align: baseline;
+}
+dfn {
+	margin: 0px; padding: 0px; border: 0px currentColor; border-image: =
+none; font-family: inherit; font-size: 100%; font-style: inherit; =
+font-weight: inherit; vertical-align: baseline;
+}
+div {
+	margin: 0px; padding: 0px; border: 0px currentColor; border-image: =
+none; font-family: inherit; font-size: 100%; font-style: inherit; =
+font-weight: inherit; vertical-align: baseline;
+}
+dl {
+	margin: 0px; padding: 0px; border: 0px currentColor; border-image: =
+none; font-family: inherit; font-size: 100%; font-style: inherit; =
+font-weight: inherit; vertical-align: baseline;
+}
+dt {
+	margin: 0px; padding: 0px; border: 0px currentColor; border-image: =
+none; font-family: inherit; font-size: 100%; font-style: inherit; =
+font-weight: inherit; vertical-align: baseline;
+}
+em {
+	margin: 0px; padding: 0px; border: 0px currentColor; border-image: =
+none; font-family: inherit; font-size: 100%; font-style: inherit; =
+font-weight: inherit; vertical-align: baseline;
+}
+fieldset {
+	margin: 0px; padding: 0px; border: 0px currentColor; border-image: =
+none; font-family: inherit; font-size: 100%; font-style: inherit; =
+font-weight: inherit; vertical-align: baseline;
+}
+form {
+	margin: 0px; padding: 0px; border: 0px currentColor; border-image: =
+none; font-family: inherit; font-size: 100%; font-style: inherit; =
+font-weight: inherit; vertical-align: baseline;
+}
+h1 {
+	margin: 0px; padding: 0px; border: 0px currentColor; border-image: =
+none; font-family: inherit; font-size: 100%; font-style: inherit; =
+font-weight: inherit; vertical-align: baseline;
+}
+h2 {
+	margin: 0px; padding: 0px; border: 0px currentColor; border-image: =
+none; font-family: inherit; font-size: 100%; font-style: inherit; =
+font-weight: inherit; vertical-align: baseline;
+}
+h3 {
+	margin: 0px; padding: 0px; border: 0px currentColor; border-image: =
+none; font-family: inherit; font-size: 100%; font-style: inherit; =
+font-weight: inherit; vertical-align: baseline;
+}
+h4 {
+	margin: 0px; padding: 0px; border: 0px currentColor; border-image: =
+none; font-family: inherit; font-size: 100%; font-style: inherit; =
+font-weight: inherit; vertical-align: baseline;
+}
+h5 {
+	margin: 0px; padding: 0px; border: 0px currentColor; border-image: =
+none; font-family: inherit; font-size: 100%; font-style: inherit; =
+font-weight: inherit; vertical-align: baseline;
+}
+h6 {
+	margin: 0px; padding: 0px; border: 0px currentColor; border-image: =
+none; font-family: inherit; font-size: 100%; font-style: inherit; =
+font-weight: inherit; vertical-align: baseline;
+}
+html {
+	margin: 0px; padding: 0px; border: 0px currentColor; border-image: =
+none; font-family: inherit; font-size: 100%; font-style: inherit; =
+font-weight: inherit; vertical-align: baseline;
+}
+iframe {
+	margin: 0px; padding: 0px; border: 0px currentColor; border-image: =
+none; font-family: inherit; font-size: 100%; font-style: inherit; =
+font-weight: inherit; vertical-align: baseline;
+}
+img {
+	margin: 0px; padding: 0px; border: 0px currentColor; border-image: =
+none; font-family: inherit; font-size: 100%; font-style: inherit; =
+font-weight: inherit; vertical-align: baseline;
+}
+label {
+	margin: 0px; padding: 0px; border: 0px currentColor; border-image: =
+none; font-family: inherit; font-size: 100%; font-style: inherit; =
+font-weight: inherit; vertical-align: baseline;
+}
+legend {
+	margin: 0px; padding: 0px; border: 0px currentColor; border-image: =
+none; font-family: inherit; font-size: 100%; font-style: inherit; =
+font-weight: inherit; vertical-align: baseline;
+}
+li {
+	margin: 0px; padding: 0px; border: 0px currentColor; border-image: =
+none; font-family: inherit; font-size: 100%; font-style: inherit; =
+font-weight: inherit; vertical-align: baseline;
+}
+object {
+	margin: 0px; padding: 0px; border: 0px currentColor; border-image: =
+none; font-family: inherit; font-size: 100%; font-style: inherit; =
+font-weight: inherit; vertical-align: baseline;
+}
+ol {
+	margin: 0px; padding: 0px; border: 0px currentColor; border-image: =
+none; font-family: inherit; font-size: 100%; font-style: inherit; =
+font-weight: inherit; vertical-align: baseline;
+}
+p {
+	margin: 0px; padding: 0px; border: 0px currentColor; border-image: =
+none; font-family: inherit; font-size: 100%; font-style: inherit; =
+font-weight: inherit; vertical-align: baseline;
+}
+pre {
+	margin: 0px; padding: 0px; border: 0px currentColor; border-image: =
+none; font-family: inherit; font-size: 100%; font-style: inherit; =
+font-weight: inherit; vertical-align: baseline;
+}
+q {
+	margin: 0px; padding: 0px; border: 0px currentColor; border-image: =
+none; font-family: inherit; font-size: 100%; font-style: inherit; =
+font-weight: inherit; vertical-align: baseline;
+}
+span {
+	margin: 0px; padding: 0px; border: 0px currentColor; border-image: =
+none; font-family: inherit; font-size: 100%; font-style: inherit; =
+font-weight: inherit; vertical-align: baseline;
+}
+table {
+	margin: 0px; padding: 0px; border: 0px currentColor; border-image: =
+none; font-family: inherit; font-size: 100%; font-style: inherit; =
+font-weight: inherit; vertical-align: baseline;
+}
+tbody {
+	margin: 0px; padding: 0px; border: 0px currentColor; border-image: =
+none; font-family: inherit; font-size: 100%; font-style: inherit; =
+font-weight: inherit; vertical-align: baseline;
+}
+td {
+	margin: 0px; padding: 0px; border: 0px currentColor; border-image: =
+none; font-family: inherit; font-size: 100%; font-style: inherit; =
+font-weight: inherit; vertical-align: baseline;
+}
+tfoot {
+	margin: 0px; padding: 0px; border: 0px currentColor; border-image: =
+none; font-family: inherit; font-size: 100%; font-style: inherit; =
+font-weight: inherit; vertical-align: baseline;
+}
+th {
+	margin: 0px; padding: 0px; border: 0px currentColor; border-image: =
+none; font-family: inherit; font-size: 100%; font-style: inherit; =
+font-weight: inherit; vertical-align: baseline;
+}
+thead {
+	margin: 0px; padding: 0px; border: 0px currentColor; border-image: =
+none; font-family: inherit; font-size: 100%; font-style: inherit; =
+font-weight: inherit; vertical-align: baseline;
+}
+tr {
+	margin: 0px; padding: 0px; border: 0px currentColor; border-image: =
+none; font-family: inherit; font-size: 100%; font-style: inherit; =
+font-weight: inherit; vertical-align: baseline;
+}
+ul {
+	margin: 0px; padding: 0px; border: 0px currentColor; border-image: =
+none; font-family: inherit; font-size: 100%; font-style: inherit; =
+font-weight: inherit; vertical-align: baseline;
+}
+h1 {
+	line-height: 35px; font-size: 31px;
+}
+h2 {
+	line-height: 35px; font-size: 31px;
+}
+h5 {
+	font-size: 1em; font-weight: 700;
+}
+h6 {
+	font-size: 1em; font-weight: 700;
+}
+address {
+	font-style: italic;
+}
+blockquote {
+	font-style: italic;
+}
+em {
+	font-style: italic;
+}
+tfoot {
+	font-style: italic;
+}
+caption {
+	text-align: left; font-weight: 400;
+}
+td {
+	text-align: left; font-weight: 400;
+}
+th {
+	text-align: left; font-weight: 400;
+}
+.blogpost .comments {
+	text-align: center;
+}
+.center {
+	text-align: center;
+}
+.paypal {
+	text-align: center;
+}
+.wp-caption {
+	text-align: center;
+}
+.wpcf7 .wpcf7-mail-sent-ok {
+	text-align: center;
+}
+table {
+	vertical-align: middle;
+}
+td {
+	vertical-align: middle;
+}
+th {
+	vertical-align: middle;
+}
+blockquote::after {
+	content: "";
+}
+blockquote::before {
+	content: "";
+}
+q::after {
+	content: "";
+}
+q::before {
+	content: "";
+}
+blockquote {
+	quotes: "" "";
+}
+q {
+	quotes: "" "";
+}
+a img {
+	border: currentColor; border-image: none;
+}
+html {
+	font-size: 100.01%;
+}
+h1 {
+	color: rgb(17, 17, 17); letter-spacing: 0px; font-family: Museo; =
+font-weight: 400; -ms-zoom: 1;
+}
+h2 {
+	color: rgb(17, 17, 17); letter-spacing: 0px; font-family: Museo; =
+font-weight: 400; -ms-zoom: 1;
+}
+h3 {
+	color: rgb(17, 17, 17); letter-spacing: 0px; font-family: Museo; =
+font-weight: 400; -ms-zoom: 1;
+}
+h4 {
+	color: rgb(17, 17, 17); letter-spacing: 0px; font-family: Museo; =
+font-weight: 400; -ms-zoom: 1;
+}
+h5 {
+	color: rgb(17, 17, 17); letter-spacing: 0px; font-family: Museo; =
+font-weight: 400; -ms-zoom: 1;
+}
+h6 {
+	color: rgb(17, 17, 17); letter-spacing: 0px; font-family: Museo; =
+font-weight: 400; -ms-zoom: 1;
+}
+h1 {
+	margin-bottom: 0.5em;
+}
+h2 {
+	margin-bottom: 0.75em;
+}
+h3 {
+	line-height: 1; font-size: 1.5em; margin-bottom: 1em;
+}
+h4 {
+	line-height: 1.25; font-size: 1.2em; margin-bottom: 1.25em;
+}
+h5 {
+	margin-bottom: 1.5em;
+}
+p {
+	padding: 0px 0px 1.5em;
+}
+p img.left {
+	margin: 1.5em 1.5em 1.5em 0px; padding: 0px; float: left;
+}
+.alignright {
+	float: right;
+}
+p img.right {
+	float: right;
+}
+p img.right {
+	margin: 1.5em 0px 1.5em 1.5em;
+}
+a {
+	color: rgb(0, 0, 153); text-decoration: underline;
+}
+blockquote {
+	margin: 1.5em; color: rgb(102, 102, 102);
+}
+sub {
+	line-height: 0;
+}
+sup {
+	line-height: 0;
+}
+abbr {
+	border-bottom-color: rgb(102, 102, 102); border-bottom-width: 1px; =
+border-bottom-style: dotted;
+}
+acronym {
+	border-bottom-color: rgb(102, 102, 102); border-bottom-width: 1px; =
+border-bottom-style: dotted;
+}
+address {
+	margin: 0px 0px 1.5em;
+}
+pre {
+	white-space: pre;
+}
+code {
+	font: 1em/1.5 "andale mono", "lucida console", monospace; =
+font-size-adjust: none; font-stretch: normal;
+}
+pre {
+	font: 1em/1.5 "andale mono", "lucida console", monospace; =
+font-size-adjust: none; font-stretch: normal;
+}
+tt {
+	font: 1em/1.5 "andale mono", "lucida console", monospace; =
+font-size-adjust: none; font-stretch: normal;
+}
+code {
+	background: rgb(249, 249, 249); padding: 5px; border: 1px solid =
+rgb(210, 210, 207); border-image: none;
+}
+li ol {
+	margin: 0px;
+}
+li ul {
+	margin: 0px;
+}
+ol {
+	margin: 0px 1.5em 1.5em 0px; padding-left: 3.33em;
+}
+ul {
+	margin: 0px 1.5em 1.5em 0px; padding-left: 3.33em;
+}
+ul {
+	list-style-type: disc;
+}
+ol {
+	list-style-type: decimal;
+}
+dl {
+	margin: 0px 0px 1.5em;
+}
+dl dt {
+	font-weight: 700;
+}
+th {
+	font-weight: 700;
+}
+dd {
+	margin-left: 1.5em;
+}
+table {
+	width: 100%; margin-bottom: 1.4em;
+}
+thead th {
+	background: rgb(195, 217, 255);
+}
+caption {
+	padding: 4px 10px 4px 5px;
+}
+td {
+	padding: 4px 10px 4px 5px;
+}
+th {
+	padding: 4px 10px 4px 5px;
+}
+tr.even td {
+	background: rgb(229, 236, 249);
+}
+td {
+	vertical-align: top;
+}
+caption {
+	background: rgb(238, 238, 238);
+}
+.hide {
+	display: none;
+}
+.first {
+	padding-left: 0px; margin-left: 0px;
+}
+.last {
+	padding-right: 0px; margin-right: 0px;
+}
+body {
+	background: url("../../assets/images/main_bg.png") repeat-x left top =
+rgb(231, 231, 226); color: rgb(105, 103, 103); line-height: 22px; =
+font-family: "Lucida Grande",Verdana,"Bitstream Vera =
+Sans",Arial,sans-serif; font-size: 14px;
+}
+a:active {
+	color: rgb(79, 145, 176); text-decoration: none;
+}
+a:link {
+	color: rgb(79, 145, 176); text-decoration: none;
+}
+a:visited {
+	color: rgb(79, 145, 176); text-decoration: none;
+}
+a:hover {
+	color: rgb(0, 0, 0);
+}
+input {
+	color: rgb(123, 125, 111);
+}
+textarea {
+	color: rgb(123, 125, 111);
+}
+strong {
+	font-weight: 700;
+}
+p img {
+	padding: 0px;
+}
+img.aligncenter {
+	margin: 0px auto; padding: 4px; border: 1px solid silver; border-image: =
+none; display: block;
+}
+img.centered {
+	margin: 0px auto; padding: 4px; border: 1px solid silver; border-image: =
+none; display: block;
+}
+img.alignleft {
+	padding: 4px; border: 1px solid silver; border-image: none; display: =
+inline;
+}
+img.alignright {
+	padding: 4px; border: 1px solid silver; border-image: none; display: =
+inline;
+}
+img.alignright {
+	margin: 2px 0px 2px 7px;
+}
+img.alignleft {
+	margin: 2px 7px 2px 0px;
+}
+.wp-caption {
+	margin: 10px; border: 1px solid rgb(221, 221, 221); border-image: none; =
+background-color: rgb(243, 243, 243);
+}
+.wp-caption img {
+	margin: 0px; padding: 0px; border: 0px currentColor; border-image: =
+none;
+}
+.wp-caption-text {
+	margin: 0px; padding: 0px 4px 5px; line-height: 17px; font-size: 11px;
+}
+#logo {
+	float: left;
+}
+.alignleft {
+	float: left;
+}
+.aligncenter {
+	margin-right: auto; margin-left: auto; display: block;
+}
+#wrapper {
+	margin: 10px auto 0px; width: 960px;
+}
+#header {
+	padding: 0px 10px; width: 940px; margin-bottom: 20px; display: block;
+}
+#logo a {
+	background: url("../../assets/images/logo.png"); width: 360px; height: =
+80px; display: block;
+}
+#mobile_menu {
+	display: none;
+}
+#pagenav {
+	float: right;
+}
+.sf-menu {
+	margin: 20px 1.5em 1em;
+}
+.sf-menu li {
+	font-size: 18px; float: left;
+}
+.sf-menu a {
+	padding: 10px; outline: 0px; color: rgb(92, 135, 155); display: block;
+}
+.sf-menu .current_page_item {
+	border-bottom-color: rgb(210, 210, 207); border-bottom-width: 1px; =
+border-bottom-style: solid;
+}
+.sf-menu a:hover {
+	border-bottom-color: rgb(210, 210, 207); border-bottom-width: 1px; =
+border-bottom-style: solid;
+}
+.single.blogpost {
+	border-bottom-color: rgb(227, 227, 227); border-bottom-width: 1px; =
+border-bottom-style: solid;
+}
+.portfolio .title {
+	border-bottom-color: rgb(227, 227, 227); border-bottom-width: 1px; =
+border-bottom-style: solid;
+}
+.post_aside {
+	border-bottom-color: rgb(227, 227, 227); border-bottom-width: 1px; =
+border-bottom-style: solid;
+}
+.widget h3 {
+	border-bottom-color: rgb(227, 227, 227); border-bottom-width: 1px; =
+border-bottom-style: solid;
+}
+#main .container {
+	padding: 29px; border: 1px solid rgb(210, 210, 207); border-image: =
+none; background-color: rgb(255, 255, 255);
+}
+.returnto {
+	margin-bottom: 15px;
+}
+.portfolio .title {
+	color: rgb(129, 129, 129); padding-bottom: 10px;
+}
+.portfolio .title h2 {
+	color: rgb(92, 150, 176); font-size: 30px;
+}
+.portfolio.blogpost .meta {
+	margin-left: 0px;
+}
+.portfolio.blogpost h2.title {
+	margin-left: 0px;
+}
+.blogpost iframe {
+	padding: 10px; border-radius: 5px; border: 1px dashed rgb(131, 184, =
+208); border-image: none; width: 535px; margin-top: 10px;
+}
+.opensource {
+	margin-bottom: 30px;
+}
+.opensource img {
+	border: currentColor; border-image: none;
+}
+.opensource .left {
+	width: 308px; float: left;
+}
+.opensource .right {
+	width: 308px; float: right;
+}
+.left.opensource .left {
+	width: 240px;
+}
+.right.opensource .right {
+	width: 240px;
+}
+#folio {
+	margin-top: 30px;
+}
+#folio .item {
+	padding: 0px 25px; width: 400px; margin-bottom: 40px; float: left;
+}
+#folio .item img {
+	background: rgb(237, 237, 237); padding: 5px 4px; border: 1px solid =
+rgb(221, 221, 221); border-image: none; width: 390px; height: 205px; =
+margin-bottom: 10px;
+}
+#folio .item h2 {
+	font-size: 18px; margin-bottom: 10px;
+}
+#folio .item p {
+	color: rgb(138, 138, 138); font-size: 12px;
+}
+.content {
+	width: 560px; color: rgb(126, 126, 126); float: left;
+}
+.content .title {
+	color: rgb(92, 150, 176); font-size: 30px; margin-bottom: 15px;
+}
+.content h1 {
+	color: rgb(105, 126, 135); margin-bottom: 15px;
+}
+.content h2 {
+	color: rgb(105, 126, 135); margin-bottom: 15px;
+}
+.content h3 {
+	color: rgb(105, 126, 135); margin-bottom: 15px;
+}
+.content h4 {
+	color: rgb(105, 126, 135); margin-bottom: 15px;
+}
+.entry h1 {
+	color: rgb(92, 150, 176);
+}
+.entry h2 {
+	color: rgb(92, 150, 176);
+}
+.entry h3 {
+	color: rgb(92, 150, 176);
+}
+.entry h4 {
+	color: rgb(92, 150, 176);
+}
+.content h1 {
+	font-size: 30px;
+}
+.content h2 {
+	font-size: 24px;
+}
+.content h3 {
+	font-size: 18px;
+}
+.content h4 {
+	font-size: 16px;
+}
+.content ul {
+	margin: 10px 0px; padding-left: 0px;
+}
+.content li {
+	background: url("../../assets/images/sprite.png") no-repeat -85px 3px; =
+padding-bottom: 5px; padding-left: 25px;
+}
+.content blockquote {
+	background: url("../../assets/images/sprite.png") no-repeat -40px =
+-462px; padding-right: 50px; padding-left: 50px; margin-right: 0px; =
+margin-left: 0px;
+}
+.content blockquote::after {
+	margin: -22px 0px 0px 470px; position: absolute; content: =
+url(../../assets/images/close_quote.png);
+}
+.content blockquote p {
+	padding: 10px 0px;
+}
+.content a {
+	text-decoration: underline;
+}
+.content form {
+	margin: 20px 40px;
+}
+.content form label {
+	margin-bottom: 5px; display: block;
+}
+.content form input {
+	padding: 5px; border: 1px solid rgb(204, 204, 186); border-image: none; =
+color: rgb(51, 51, 51); background-color: rgb(231, 231, 226);
+}
+.content form select {
+	padding: 5px; border: 1px solid rgb(204, 204, 186); border-image: none; =
+color: rgb(51, 51, 51); background-color: rgb(231, 231, 226);
+}
+.content form textarea {
+	padding: 5px; border: 1px solid rgb(204, 204, 186); border-image: none; =
+color: rgb(51, 51, 51); background-color: rgb(231, 231, 226);
+}
+.content .alert {
+	margin: 10px 0px; padding: 10px 0px 10px 20px; border-left-color: =
+rgb(221, 238, 255); border-left-width: 3px; border-left-style: solid;
+}
+.content .info.alert {
+	border-color: rgb(221, 238, 255);
+}
+.content .danger.alert {
+	border-color: rgb(210, 97, 97); color: rgb(169, 68, 66); =
+background-color: rgb(242, 222, 222);
+}
+.wpcf7 .screen-reader-response {
+	display: none;
+}
+.wpcf7 input[type=3Demail] {
+	min-width: 340px;
+}
+.wpcf7 input[type=3Dtext] {
+	min-width: 340px;
+}
+.wpcf7 .wpcf7-not-valid-tip {
+	color: red; display: block;
+}
+.content form input.wpcf7-not-valid {
+	border-color: red;
+}
+.content form textarea.wpcf7-not-valid {
+	border-color: red;
+}
+.wpcf7 textarea {
+	width: 100%;
+}
+.wpcf7 .wpcf7-validation-errors {
+	color: red;
+}
+.wpcf7 .wpcf7-mail-sent-ok {
+	padding: 5px; border-radius: 2px; border: 1px solid green; =
+border-image: none;
+}
+.blogpost {
+	overflow: hidden; padding-bottom: 20px;
+}
+.blogpost .comments {
+	background: url("../../assets/images/sprite.png") no-repeat 0px -420px; =
+width: 35px; height: 33px; padding-top: 2px; font-size: 11px; =
+font-weight: 600; margin-top: 5px; margin-right: 10px; float: left;
+}
+.blogpost .comments a {
+	height: 28px; color: rgb(110, 110, 110); text-decoration: none; =
+display: block;
+}
+.blogpost h2.title {
+	margin: 0px 0px 0px 45px; padding: 1px 0px 0px;
+}
+.blogpost h2 a {
+	line-height: 1.1em; text-decoration: none;
+}
+.blogpost .meta {
+	font-size: 12px; margin-left: 45px;
+}
+.blogpost .entry {
+	clear: both; margin-top: 15px;
+}
+.archive-list {
+	padding-bottom: 30px;
+}
+#crp_related {
+	padding: 20px 0px 0px; border-top-color: rgb(227, 227, 227); =
+border-top-width: 1px; border-top-style: solid;
+}
+.post_aside {
+	padding: 20px 0px; margin-bottom: 20px;
+}
+.post_aside h3 {
+	margin: 0px; padding: 0px; color: rgb(81, 140, 155);
+}
+.social li {
+	background: 0px 0px !important; margin: 0px; padding: 0px !important;
+}
+.social ul {
+	background: 0px 0px !important; margin: 0px; padding: 0px !important;
+}
+.social li {
+	margin-right: 15px; float: left;
+}
+.social li a {
+	height: 38px; line-height: 38px; text-decoration: none; display: block;
+}
+.social .icon {
+	background: url("../../assets/images/sprite.png") no-repeat 0px -40px; =
+width: 37px; height: 38px; float: left; display: inline-block;
+}
+.widget h3 img {
+	display: none;
+}
+.search.custom.google.widget {
+	display: none;
+}
+.social .twitter .icon {
+	background-position: 0px -40px;
+}
+.social .delicious .icon {
+	background-position: 0px -166px;
+}
+.social .digg .icon {
+	background-position: 0px -208px;
+}
+.social .stumbleupon .icon {
+	background-position: 0px 2px;
+}
+.social .reddit .icon {
+	background-position: 0px -334px;
+}
+.donate .left {
+	width: 39%; float: left;
+}
+.donate .right {
+	width: 59%; float: left;
+}
+.paypal {
+	margin-top: 0px !important; margin-bottom: 0px !important;
+}
+#main .fullwidth .thumblarge {
+	margin-bottom: 20px;
+}
+.widget {
+	margin-bottom: 20px;
+}
+.paypal input {
+	background: 0px 0px !important; border: currentColor !important; =
+border-image: none !important;
+}
+#main .fullwidth {
+	width: 900px;
+}
+.sidebar {
+	width: 300px; margin-left: 40px; float: left;
+}
+.widget .pad10 {
+	padding-left: 10px;
+}
+.widget h3 {
+	padding: 0px 10px 10px; font-size: 24px; margin-bottom: 15px;
+}
+.widget h3 {
+	color: rgb(116, 116, 116);
+}
+.widget h3 a {
+	color: rgb(116, 116, 116);
+}
+.widget ul {
+	padding-left: 10px;
+}
+.widget ul li {
+	background: url("../../assets/images/sprite.png") no-repeat -85px 3px; =
+padding-bottom: 5px; padding-left: 20px;
+}
+.widget_rssfeed {
+	font-size: 16px;
+}
+.widget_rssfeed .rss {
+	background-position: 0px -82px; padding: 6px 0px 10px 38px;
+}
+.widget_rssfeed .twitter {
+	background-position: 0px -40px; padding: 6px 0px 10px 38px;
+}
+#gcs .gsc-control-cse-en.gsc-control-cse {
+	padding: 0px;
+}
+.widget_search div {
+	background: rgb(231, 231, 226); padding: 5px; border: 1px solid =
+rgb(203, 203, 201); border-image: none;
+}
+.widget_search input {
+	background: 0px 0px; padding: 0px 5px; border: 0px currentColor; =
+border-image: none; color: rgb(102, 102, 102);
+}
+.flyn_syntax {
+	border: 1px solid rgb(210, 210, 207); border-image: none;
+}
+span.code {
+	border: 1px solid rgb(210, 210, 207); border-image: none;
+}
+.sidebarsearch .keyword {
+	padding: 3px 95px 3px 15px; outline: 0px; width: 100%; height: 27px; =
+line-height: 27px; display: inline-block; box-sizing: border-box;
+}
+.sidebarsearch .searchsubmit {
+	top: 0px; width: 78px; height: 28px; text-align: center; right: 0px; =
+color: rgb(97, 97, 97); line-height: 28px; border-left-color: rgb(203, =
+203, 201); border-left-width: 1px; border-left-style: solid; display: =
+block; position: absolute; cursor: pointer;
+}
+#footer {
+	padding: 20px; font-size: 12px;
+}
+.footernav {
+	float: left;
+}
+.footernav ul {
+	padding: 0px;
+}
+.footernav li {
+	padding: 0px 10px; border-left-color: rgb(190, 190, 167); =
+border-left-width: 1px; border-left-style: solid; float: left;
+}
+.footernav li.menu-item-first {
+	border-left-color: currentColor; border-left-width: medium; =
+border-left-style: none;
+}
+.footernav a {
+	color: rgb(66, 66, 66);
+}
+.footernav a:hover {
+	color: rgb(102, 102, 102);
+}
+.copyright {
+	text-align: right; float: right;
+}
+.wp-pagenavi {
+	padding: 20px 10px 0px; text-align: right; text-transform: uppercase; =
+font-size: 12px; border-top-color: rgb(227, 227, 227); border-top-width: =
+1px; border-top-style: solid;
+}
+.wp-pagenavi a {
+	margin: 2px; padding: 2px 4px; color: rgb(135, 181, 202); =
+text-decoration: none; background-color: rgb(255, 255, 255);
+}
+.wp-pagenavi a:link {
+	margin: 2px; padding: 2px 4px; color: rgb(135, 181, 202); =
+text-decoration: none; background-color: rgb(255, 255, 255);
+}
+.wp-pagenavi a:visited {
+	margin: 2px; padding: 2px 4px; color: rgb(135, 181, 202); =
+text-decoration: none;
+}
+.wp-pagenavi a:hover {
+	color: rgb(0, 0, 0);
+}
+.wp-pagenavi a:active {
+	margin: 2px; padding: 2px 4px; color: rgb(135, 181, 202); =
+text-decoration: none;
+}
+.wp-pagenavi .pages {
+	color: rgb(115, 115, 115); float: left;
+}
+.wp-pagenavi .current {
+	margin: 2px; padding: 2px 4px; color: rgb(48, 48, 48); font-weight: =
+700;
+}
+.wp-pagenavi .extend {
+	margin: 2px; padding: 2px 4px; color: rgb(0, 0, 0);
+}
+.container {
+	border-radius: 10px;
+}
+.qbutton a {
+	border-radius: 10px;
+}
+#cse-search-box div {
+	padding: 0px; border-radius: 20px; position: relative;
+}
+.comment-nav a {
+	padding: 0px; border-radius: 20px; position: relative;
+}
+.navigation a {
+	padding: 0px; border-radius: 20px; position: relative;
+}
+.sidebarsearch div {
+	padding: 0px; border-radius: 20px; position: relative;
+}
+.flyn_syntax {
+	margin: 0px 0px 1.5em; width: 99%; color: rgb(17, 0, 0); overflow: =
+auto; -ms-overflow-x: auto; -ms-overflow-y: hidden; background-color: =
+rgb(249, 249, 249);
+}
+.flyn_syntax table {
+	margin-bottom: 0px; border-collapse: collapse;
+}
+.flyn_syntax div {
+	padding: 2px 4px; vertical-align: top;
+}
+.flyn_syntax td {
+	padding: 2px 4px; vertical-align: top;
+}
+.flyn_syntax .line_numbers {
+	width: 30px; text-align: right; color: gray; overflow: visible; =
+min-width: 30px; background-color: rgb(221, 238, 255);
+}
+.flyn_syntax pre {
+	margin: 0px; width: auto; line-height: 1.333; overflow: visible; clear: =
+none; font-size: 12px; float: none; white-space: pre;
+}
+span.code {
+	padding: 0px 3px; color: rgb(17, 0, 0); background-color: rgb(249, 249, =
+249);
+}
+#redis_powered {
+	background: url("/wp-content/uploads/2013/03/redis.png") no-repeat 10px =
+rgb(255, 255, 255); margin: auto auto 10px; padding: 10px; border: 1px =
+solid rgb(215, 216, 223); border-image: none; width: 190px;
+}
+#redis_powered div {
+	font: 10px/11px arial, sans-serif; width: 190px; text-align: right; =
+color: rgb(0, 0, 0); font-size-adjust: none; font-stretch: normal;
+}
+@media only screen and (max-width:960px), only screen and =
+(max-device-width:960px)
+{
+#header {
+	width: auto;
+}
+#wrapper {
+	width: auto;
+}
+.sidebar {
+	display: none;
+}
+.content {
+	width: 100%;
+}
+#mobile_menu {
+	display: block;
+}
+#mobile_menu .widget_rssfeed ul {
+	margin: 0px; padding: 0px;
+}
+#mobile_menu .rss {
+	background: url("../../assets/images/sprite.png") no-repeat -85px 3px; =
+list-style: none; padding-left: 40px; margin-left: 0px;
+}
+#mobile_menu .twitter {
+	background: url("../../assets/images/sprite.png") no-repeat -85px 3px; =
+list-style: none; padding-left: 40px; margin-left: 0px;
+}
+#mobile_menu .rss {
+	background-position: 0px -82px;
+}
+#mobile_menu .twitter {
+	background-position: 0px -40px;
+}
+.wpcf7 input[type=3Demail] {
+	width: 100%; min-width: 0px;
+}
+.wpcf7 input[type=3Dtext] {
+	width: 100%; min-width: 0px;
+}
+.content blockquote::after {
+	margin: 0px; content: normal;
+}
+}
+@media only screen and (max-width:640px), only screen and =
+(max-device-width:640px)
+{
+.sf-menu {
+	margin: 20px 0px 1em; padding-left: 0px;
+}
+.donate .left {
+	width: 100%; float: none; display: block;
+}
+}
+
+------=_NextPart_000_0000_01D092D3.D92F39D0--
