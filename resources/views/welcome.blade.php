@@ -40,7 +40,7 @@
 	<body>
 		<div class="container">
 			<div class="content">
-				<div class="title">Getting Things Done with Laravel 5/div>
+				<div class="title">Getting Things Done</div>
 				<div class="quote">{{ Inspiring::quote() }}</div>
 			</div>
 		</div>
