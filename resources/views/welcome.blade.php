@@ -40,7 +40,11 @@
 	<body>
 		<div class="container">
 			<div class="content">
+<<<<<<< HEAD
 				<div class="title">Laravel 5 my update me too</div>
+=======
+				<div class="title">Getting Things Done</div>
+>>>>>>> a35aff52e0989eaf7b87fbe5a0a749f2f60fcbe4
 				<div class="quote">{{ Inspiring::quote() }}</div>
 			</div>
 		</div>
