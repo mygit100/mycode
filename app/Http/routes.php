@@ -17,9 +17,18 @@ Route::get('home', 'HomeController@index');
 
 Route::get('about', 'WelcomeController@about');
 
-Route::get('login', array('as' => 'login', 'uses' => '                '));
+//Route::get('login', array('as' => 'login', 'uses' => '                '));
+
+Route::resource('projects.tasks', 'TasksController');
+
+/* Initial routes chg to text about
+Route::resource('projects', 'ProjectsController');
+Route::resource('tasks', 'TasksController');
+*/
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
-]);
+	'password' => 'Auth\PasswordController',]);
+
+
+
