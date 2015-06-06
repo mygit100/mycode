@@ -12,9 +12,7 @@
 */
 
 Route::get('/', 'WelcomeController@index');
-
 Route::get('home', 'HomeController@index');
-
 Route::get('about', 'WelcomeController@about');
 
 //Route::get('login', array('as' => 'login', 'uses' => '                '));
@@ -25,6 +23,15 @@ Route::resource('projects.tasks', 'TasksController');
 Route::resource('projects', 'ProjectsController');
 Route::resource('tasks', 'TasksController');
 */
+
+Route::bind('tasks', function($value, $route) {
+	return App\Task::whereSlug($value)->first();
+});
+Route::bind('projects', function($value, $route) {
+	return App\Project::whereSlug($value)->first();
+});
+
+
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

@@ -35,6 +35,7 @@ class ProjectsController extends Controller {
 	public function store()
 	{
 		//
+		return view('projects.index');
 	}
 
 	/**
